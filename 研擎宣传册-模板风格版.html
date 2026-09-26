@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>研擎 NebulaLab · 宣传册（模板风格版）</title>
+<style>
+/* ================================================================
+   研擎 NebulaLab 六页宣传册 · 模板字体风格版
+   设计规范（严格参照用户模板图）：
+   - 字体：思源黑体 Noto Sans SC（多字重：300 细正文 / 500 中黑 / 700 粗 / 900 特粗标题）
+   - 层级：页面大标题 : 正文 ≈ 3:1；英文标签细体大写 + 0.25em 字距
+   - 配色：白底 + 清华深蓝 #1F419B 主色 + 浅灰分隔 + 淡蓝底纹
+   ================================================================ */
+@page { size: A4; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+html, body { margin:0; padding:0; background:#EDEFF4; }
+body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif; color:#1A2233; }
+
+:root{
+  --blue:#1F419B; --deep:#16306F; --ink:#1A2233; --mut:#6B7488; --faint:#9AA3B8;
+  --line:#E3E7EF; --tint:#F4F7FC; --tint2:#EEF2F9; --gold:#B08A2E;
+}
+.page{
+  width:210mm; height:297mm; position:relative; overflow:hidden; background:#fff;
+  page-break-after:always; break-after:page;
+}
+.page:last-child { page-break-after:auto; break-after:auto; }
+@media screen { .page{ margin:16px auto; box-shadow:0 8px 40px rgba(23,33,64,.14); } }
+@media print { .page{ margin:0; box-shadow:none; } }
+
+/* ---------- 通用 ---------- */
+.brandbar{ display:flex; align-items:center; justify-content:space-between; padding:11mm 12mm 0; }
+.brand{ display:flex; align-items:center; gap:8px; }
+.brand .mk{ width:30px; height:30px; background:var(--blue); color:#fff; display:grid; place-items:center;
+  font-weight:900; font-size:15px; border-radius:7px; }
+.brand .nm{ font-size:15px; font-weight:700; color:var(--blue); letter-spacing:.02em; }
+.brand .nm span{ font-weight:300; color:var(--faint); font-size:10px; margin-left:5px; letter-spacing:.14em; }
+.pageno{ font-size:8.5px; font-weight:300; color:var(--faint); letter-spacing:.28em; }
+.kicker{ font-size:8.5px; font-weight:300; color:var(--blue); letter-spacing:.32em; text-transform:uppercase; }
+.sec{ padding:0 12mm; }
+.sec-head{ display:flex; align-items:baseline; gap:10px; margin-top:9mm; }
+.sec-head h2{ font-size:27px; font-weight:900; color:var(--blue); letter-spacing:.01em; line-height:1.2; }
+.sec-head .sub{ font-size:10.5px; font-weight:300; color:var(--mut); letter-spacing:.06em; }
+.sec-head .tag{ margin-left:auto; font-size:8.5px; font-weight:500; color:var(--blue);
+  border:1px solid var(--blue); padding:3px 12px; border-radius:999px; letter-spacing:.12em; }
+.rule{ height:2.5px; background:var(--blue); margin:4.5mm 12mm 0; }
+.rule.thin{ height:1px; background:var(--line); }
+.body{ padding:7mm 12mm 0; }
+
+/* 卡片（模板1式：浅底细边） */
+.card{ background:var(--tint); border:1px solid var(--line); border-radius:10px; }
+.card b{ font-weight:700; }
+/* 深蓝实心卡（模板2式） */
+.solid{ background:var(--blue); color:#fff; border-radius:10px; }
+.solid .en{ color:#B9C8EE; }
+
+/* 编号（模板风格：细体大数字） */
+.bignum{ font-weight:300; color:var(--blue); }
+
+/* ============ P1 封面（模板2式：整页深蓝） ============ */
+.cover{ background:var(--blue); color:#fff; display:flex; flex-direction:column; }
+.cover .brandbar .brand .nm{ color:#fff; } .cover .brandbar .nm span{ color:#8FA3D9; }
+.cover .brandbar .mk{ background:#fff; color:var(--blue); }
+.cover .brandbar .pageno{ color:#8FA3D9; }
+.cover-mid{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 16mm; }
+.cover-kicker{ font-size:10px; font-weight:300; color:#8FA3D9; letter-spacing:.5em; }
+.cover h1{ font-size:56px; font-weight:900; line-height:1.28; letter-spacing:.02em; margin:7mm 0 5mm; }
+.cover h1 small{ display:block; font-size:56px; font-weight:300; }
+.cover .en-line{ font-size:9.5px; font-weight:300; color:#8FA3D9; letter-spacing:.3em; text-transform:uppercase; }
+.cover .zh-line{ margin-top:6mm; font-size:12.5px; font-weight:300; color:#C9D5F2; letter-spacing:.24em; }
+.cover .zh-line b{ font-weight:700; color:#fff; }
+.cover-foot{ padding:0 16mm 12mm; display:flex; justify-content:space-between; align-items:flex-end; }
+.cover-foot .l{ font-size:9px; font-weight:300; color:#8FA3D9; line-height:1.8; }
+.cover-foot .r{ font-size:9px; font-weight:300; color:#8FA3D9; letter-spacing:.2em; text-align:right; }
+.wm{ position:absolute; right:-8mm; top:24mm; font-size:170px; font-weight:900; color:rgba(255,255,255,.05);
+  letter-spacing:-.02em; line-height:1; pointer-events:none; }
+.chips-row{ display:flex; gap:6px; margin-top:7mm; flex-wrap:wrap; }
+.chip-w{ font-size:9px; font-weight:500; color:#fff; border:1px solid rgba(255,255,255,.35);
+  padding:4px 13px; border-radius:999px; letter-spacing:.1em; }
+
+/* ============ P2 ERP ============ */
+.mods{ display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.mod{ display:flex; gap:10px; align-items:baseline; padding:12px 14px; }
+.mod .n{ font-size:19px; font-weight:300; color:var(--blue); flex:none; width:26px; line-height:1; }
+.mod b{ font-size:11.5px; font-weight:700; color:var(--ink); display:block; }
+.mod span{ font-size:8.5px; font-weight:300; color:var(--mut); letter-spacing:.02em; display:block; margin-top:1px; }
+.blk-t{ display:flex; align-items:baseline; gap:9px; margin:9mm 0 5mm; }
+.blk-t .en{ font-size:8px; font-weight:300; color:var(--faint); letter-spacing:.3em; text-transform:uppercase; }
+.blk-t h3{ font-size:16.5px; font-weight:900; color:var(--ink); }
+.blk-t .s{ font-size:9.5px; font-weight:300; color:var(--mut); }
+.loop{ display:flex; align-items:stretch; }
+.loop .st{ flex:1; text-align:center; padding:9px 4px; }
+.loop .st .n{ font-size:17px; font-weight:300; color:var(--blue); }
+.loop .st b{ display:block; font-size:10.5px; font-weight:700; margin:2px 0 1px; }
+.loop .st span{ display:block; font-size:7.8px; font-weight:300; color:var(--mut); }
+.loop .ar{ width:16px; display:grid; place-items:center; color:var(--faint); font-size:10px; font-weight:300; }
+.note-c{ text-align:center; font-size:9.5px; font-weight:500; color:var(--blue); letter-spacing:.14em; margin-top:3.5mm; }
+.note-c small{ display:block; font-size:8px; font-weight:300; color:var(--faint); letter-spacing:.2em; margin-top:1mm; }
+.tri{ display:flex; gap:8px; margin-top:4mm; }
+.tri .t{ flex:1; text-align:center; padding:8px 4px; background:var(--tint2); border-radius:9px; }
+.tri .t b{ font-size:11px; font-weight:900; color:var(--blue); display:block; }
+.tri .t span{ font-size:7.8px; font-weight:300; color:var(--mut); }
+.quad{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.quad .q{ text-align:center; padding:11px 8px; }
+.quad .q .e{ font-size:16px; }
+.quad .q b{ display:block; font-size:10.5px; font-weight:700; margin:3px 0 2px; }
+.quad .q span{ font-size:7.8px; font-weight:300; color:var(--mut); }
+.chain{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:4mm; }
+.chain .c{ font-size:8.5px; font-weight:500; color:var(--blue); background:var(--tint2);
+  border:1px solid #D7E0F2; padding:5px 12px; border-radius:7px; letter-spacing:.04em; }
+.chain .a{ color:var(--faint); font-weight:300; }
+.chain.dark .c{ background:var(--blue); color:#fff; border-color:var(--blue); }
+
+/* ============ P3 慧眼+Lab ============ */
+.hl{ display:flex; gap:10px; padding:14px 15px; margin-bottom:9px; align-items:baseline; }
+.hl .n{ font-size:22px; font-weight:300; color:var(--blue); flex:none; width:32px; line-height:1; }
+.hl b{ font-size:11.5px; font-weight:700; display:block; }
+.hl span{ font-size:8.5px; font-weight:300; color:var(--mut); display:block; margin-top:2px; line-height:1.55; }
+.flywrap{ position:relative; height:78mm; margin:3mm 0; }
+.fly-c{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:150px; height:150px;
+  border:1.5px dashed #B9C8EE; border-radius:50%; }
+.fly-c2{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:104px; height:104px;
+  border:1px solid var(--line); border-radius:50%; }
+.fly-n{ position:absolute; width:58px; height:58px; background:#fff; border:1.5px solid var(--blue);
+  border-radius:50%; display:grid; place-items:center; transform:translate(-50%,-50%); text-align:center; }
+.fly-n b{ font-size:8.5px; font-weight:700; color:var(--blue); display:block; line-height:1.2 }
+.fly-n small{ font-size:6.5px; font-weight:300; color:var(--mut); }
+.fly-ctr{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; width:100px; }
+.fly-ctr b{ font-size:11px; font-weight:900; color:var(--blue); display:block; }
+.fly-ctr span{ font-size:7px; font-weight:300; color:var(--faint); letter-spacing:.1em; }
+.assets{ display:flex; gap:8px; }
+.assets .a{ flex:1; text-align:center; padding:9px 6px; background:#FBF7EC; border:1px solid #E8DDC2; border-radius:9px; }
+.assets .a b{ font-size:10px; font-weight:700; color:var(--gold); display:block; }
+.assets .a span{ font-size:7.6px; font-weight:300; color:#8B7E5E; }
+.steps6{ display:flex; }
+.steps6 .s6{ flex:1; text-align:center; padding:12px 3px; }
+.steps6 .s6 .n{ font-size:15px; font-weight:300; color:var(--blue); }
+.steps6 .s6 b{ display:block; font-size:9.5px; font-weight:700; margin-top:1px; }
+.steps6 .s6 span{ display:block; font-size:7.2px; font-weight:300; color:var(--mut); }
+
+/* ============ P4 投稿+Match ============ */
+.vals5{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+.vals5 .v{ text-align:center; padding:16px 8px; }
+.vals5 .v .e{ font-size:15px; }
+.vals5 .v b{ display:block; font-size:10.5px; font-weight:700; margin:4px 0 3px; color:var(--blue); }
+.vals5 .v span{ font-size:7.4px; font-weight:300; color:var(--mut); line-height:1.5; display:block; }
+.psix{ display:flex; }
+.psix .p{ flex:1; text-align:center; padding:12px 3px; }
+.psix .p .n{ width:22px; height:22px; line-height:22px; margin:0 auto 3px; border-radius:50%;
+  background:var(--blue); color:#fff; font-size:9.5px; font-weight:700; }
+.psix .p b{ display:block; font-size:9px; font-weight:700; }
+.match2{ display:flex; gap:10px; }
+.match2 .m{ flex:1; padding:14px 16px; }
+.match2 .m h5{ font-size:11px; font-weight:700; color:var(--blue); margin-bottom:5px; }
+.match2 .m h5 small{ font-weight:300; color:var(--faint); font-size:8px; margin-left:6px; letter-spacing:.15em; }
+.match2 .m li{ list-style:none; font-size:8.5px; font-weight:300; color:var(--mut); line-height:1.9; padding-left:12px; position:relative; }
+.match2 .m li::before{ content:""; position:absolute; left:0; top:6px; width:4px; height:4px; border-radius:50%; background:var(--blue); }
+.match-note{ margin-top:4mm; text-align:center; font-size:8.3px; font-weight:300; color:var(--mut);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:6px 0; letter-spacing:.05em; }
+.tl4{ display:flex; }
+.tl4 .t{ flex:1; text-align:center; padding:14px 4px; background:var(--blue); color:#fff; border-radius:9px; }
+.tl4 .t b{ display:block; font-size:12px; font-weight:900; letter-spacing:.08em; }
+.tl4 .t span{ display:block; font-size:7.8px; font-weight:300; color:#B9C8EE; margin-top:2px; }
+.wake{ text-align:center; margin-top:9mm; font-size:16px; font-weight:900; color:var(--blue); letter-spacing:.2em; }
+.wake small{ display:block; font-size:8px; font-weight:300; color:var(--faint); letter-spacing:.3em; margin-top:1.5mm; }
+
+/* 收尾带与数据行 */
+.endband{ margin-top:8mm; background:var(--tint2); border:1px solid #D7E0F2; border-radius:10px;
+  padding:13px 16px; text-align:center; }
+.endband b{ font-size:12px; font-weight:900; color:var(--blue); letter-spacing:.12em; }
+.endband span{ display:block; font-size:8px; font-weight:300; color:var(--mut); letter-spacing:.22em; margin-top:2mm; }
+.statrow{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:7mm; }
+.statrow .s{ text-align:center; padding:12px 6px; border-top:2.5px solid var(--blue); background:var(--tint); border-radius:0 0 9px 9px; }
+.statrow .s b{ display:block; font-size:19px; font-weight:300; color:var(--blue); line-height:1.1; }
+.statrow .s b i{ font-style:normal; font-size:10px; font-weight:500; margin-left:2px; }
+.statrow .s span{ font-size:8px; font-weight:300; color:var(--mut); letter-spacing:.1em; }
+
+/* ============ P5 Claw ============ */
+.cf5{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+.cf5 .c{ text-align:center; padding:16px 9px; }
+.cf5 .c .e{ font-size:16px; }
+.cf5 .c .no{ font-size:7px; font-weight:300; color:var(--faint); letter-spacing:.3em; }
+.cf5 .c b{ display:block; font-size:10.5px; font-weight:700; margin:3px 0 2px; }
+.cf5 .c span{ font-size:7.4px; font-weight:300; color:var(--mut); line-height:1.5; display:block; }
+.exp8{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.exp8 .e{ display:flex; gap:9px; align-items:center; padding:13px 12px; }
+.exp8 .e .ic{ width:30px; height:30px; flex:none; border-radius:8px; background:var(--tint2);
+  border:1px solid #D7E0F2; display:grid; place-items:center; font-size:14px; }
+.exp8 .e b{ font-size:10px; font-weight:700; display:block; }
+.exp8 .e span{ font-size:7.4px; font-weight:300; color:var(--mut); }
+.bp5{ display:flex; }
+.bp5 .b{ flex:1; text-align:center; padding:12px 3px; background:var(--tint2); border-radius:8px; }
+.bp5 .b b{ font-size:9px; font-weight:500; color:var(--blue); letter-spacing:.04em; }
+.bp5 .ar{ width:14px; display:grid; place-items:center; color:var(--faint); font-weight:300; }
+.pr3{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.pr3 .p{ text-align:center; padding:14px 9px; }
+.pr3 .p b{ display:block; font-size:10.5px; font-weight:900; color:var(--blue); }
+.pr3 .p span{ font-size:7.6px; font-weight:300; color:var(--mut); }
+.demo-q{ margin-top:8mm; padding:15px 18px; }
+.demo-q .q{ font-size:10px; font-weight:700; color:var(--ink); }
+.demo-q .q small{ font-weight:300; color:var(--faint); margin-right:6px; letter-spacing:.1em; }
+.demo-q .a{ font-size:9px; font-weight:300; color:var(--mut); margin-top:3px; line-height:1.6; }
+.demo-q .a b{ font-weight:500; color:var(--blue); }
+
+/* ============ P6 尾页 ============ */
+.final-mid{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 12mm; text-align:center; }
+.fk{ font-size:9px; font-weight:300; color:var(--faint); letter-spacing:.5em; }
+.fv4{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:9mm 0; }
+.fv4 .f{ text-align:center; padding:13px 8px; }
+.fv4 .f b{ display:block; font-size:14px; font-weight:900; color:var(--blue); margin:4px 0 3px; }
+.fv4 .f span{ font-size:8px; font-weight:300; color:var(--mut); }
+.fslogan{ font-size:24px; font-weight:900; color:var(--blue); letter-spacing:.16em; }
+.fslogan small{ display:block; font-size:8.5px; font-weight:300; color:var(--faint); letter-spacing:.3em; margin-top:2.5mm; }
+.contact{ display:flex; gap:10mm; margin-top:10mm; text-align:left; }
+.contact .cl{ flex:1.4; }
+.contact .row{ display:flex; gap:10px; padding:7px 0; border-bottom:1px solid var(--line); }
+.contact .row:last-child{ border-bottom:none; }
+.contact .k{ flex:none; width:15mm; font-size:8.5px; font-weight:300; color:var(--faint); letter-spacing:.2em; }
+.contact .v{ font-size:11px; font-weight:700; color:var(--ink); }
+.contact .v small{ display:block; font-size:7.5px; font-weight:300; color:var(--mut); letter-spacing:.04em; margin-top:1px; }
+.qrbox{ width:30mm; text-align:center; }
+.qrbox .q{ width:30mm; height:30mm; border:1.5px solid var(--blue); border-radius:8px; display:grid; place-items:center;
+  color:var(--faint); font-size:8px; font-weight:300; letter-spacing:.2em; }
+.qrbox span{ display:block; font-size:7.5px; font-weight:300; color:var(--mut); margin-top:2mm; letter-spacing:.1em; }
+.tryline{ margin-top:8mm; font-size:8.5px; font-weight:300; color:var(--mut); letter-spacing:.04em; }
+.tryline b{ color:var(--blue); font-weight:500; }
+.copy{ padding:0 12mm 10mm; text-align:center; font-size:7.5px; font-weight:300; color:#B3BACB; letter-spacing:.14em; }
+</style>
+</head>
+<body>
+
+<!-- ================= P1 封面 ================= -->
+<div class="page cover">
+  <div class="wm">Nebula<br>Lab</div>
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">AI RESEARCH OS · 01</div>
+  </div>
+  <div class="cover-mid">
+    <div class="cover-kicker">AI-DRIVEN RESEARCH SYSTEM</div>
+    <h1>让科研，<small>自己跑起来。</small></h1>
+    <div class="en-line">Literature · Reproduction · Publishing · Management</div>
+    <div class="zh-line">文献 · 复现 · 写作 · 发表 · 招生 · 调度 · 经费 · 日程 —— <b>AI 全程参与</b></div>
+    <div class="chips-row">
+      <span class="chip-w">研擎 Claw 中枢</span><span class="chip-w">六大引擎</span>
+      <span class="chip-w">四种身份</span><span class="chip-w">数据不出校</span>
+    </div>
+  </div>
+  <div class="cover-foot">
+    <div class="l">面向高校 · 科研院所 · 课题组<br>一站式 AI 科研经营平台</div>
+    <div class="r">TSINGHUA SHENZHEN<br>INTERNATIONAL GRADUATE SCHOOL</div>
+  </div>
+</div>
+
+<!-- ================= P2 研擎ERP ================= -->
+<div class="page">
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">RESEARCH ERP · 02</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><h2>研擎 ERP</h2><div class="sub">科研经营的操作内核</div><div class="tag">痛点 5 / 6 / 7 / 8</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="mods">
+      <div class="card mod"><div class="n">01</div><div><b>项目管理</b><span>申报日历 · 里程碑 · 结题自动化</span></div></div>
+      <div class="card mod"><div class="n">02</div><div><b>成果管理</b><span>论文专利台账 · 学科评估归集</span></div></div>
+      <div class="card mod"><div class="n">03</div><div><b>经费管理</b><span>预算编制 · 执行监控 · 决算</span></div></div>
+      <div class="card mod"><div class="n">04</div><div><b>人员管理</b><span>能力画像 · 成长档案 · 负载热力</span></div></div>
+      <div class="card mod"><div class="n">05</div><div><b>招生管理</b><span>套磁收件箱 · 匹配评分 · 面试</span></div></div>
+      <div class="card mod"><div class="n">06</div><div><b>日程管理</b><span>全域日历 · 组会论坛 · 提醒</span></div></div>
+      <div class="card mod"><div class="n">07</div><div><b>文献资产</b><span>机构文献库 · 组内知识沉淀</span></div></div>
+      <div class="card mod"><div class="n">08</div><div><b>实验与设备</b><span>设备预约 · 电子实验记录本</span></div></div>
+      <div class="card mod"><div class="n">09</div><div><b>伦理与合规</b><span>学术诚信 · AIGC 使用披露</span></div></div>
+      <div class="card mod"><div class="n">10</div><div><b>统计分析</b><span>科研驾驶舱 · 三级预警</span></div></div>
+    </div>
+
+    <div class="blk-t"><span class="en">AI Synergy</span><h3>AI 科研协同</h3><div class="s">从发现到行动的闭环</div></div>
+    <div class="loop">
+      <div class="card st"><div class="n">01</div><b>发现问题</b><span>关键信号第一时间发现</span></div><div class="ar">→</div>
+      <div class="card st"><div class="n">02</div><b>理解原因</b><span>政策规律解释有据</span></div><div class="ar">→</div>
+      <div class="card st"><div class="n">03</div><b>定位对象</b><span>精确到人、钱、事</span></div><div class="ar">→</div>
+      <div class="card st"><div class="n">04</div><b>推动处理</b><span>消息直达协同跟进</span></div><div class="ar">→</div>
+      <div class="card st"><div class="n">05</div><b>结果反馈</b><span>沉淀为组内经验</span></div>
+    </div>
+    <div class="note-c">从「人找问题」到「问题主动找人」<small>每一轮反馈，都进入下一轮判断与协同</small></div>
+    <div class="tri">
+      <div class="t"><b>看得清</b><span>科研关键信号一屏尽览</span></div>
+      <div class="t"><b>算得准</b><span>政策规则内置解释有据</span></div>
+      <div class="t"><b>动得快</b><span>定位人事钱行动闭环</span></div>
+    </div>
+
+    <div class="blk-t"><span class="en">Studio</span><h3>研擎 Studio</h3><div class="s">科研启航与创作工厂 · 痛点 1</div></div>
+    <div class="quad">
+      <div class="card q"><div class="e">✍️</div><b>AI 写作</b><span>IMRaD 逐节辅导润色</span></div>
+      <div class="card q"><div class="e">📊</div><b>AI 图表</b><span>机制图数据图 · 期刊规范</span></div>
+      <div class="card q"><div class="e">🌐</div><b>AI 翻译</b><span>学术中英互译 · 术语一致</span></div>
+      <div class="card q"><div class="e">📽️</div><b>AI 汇报</b><span>组会 PPT / Poster 生成</span></div>
+    </div>
+    <div class="chain"><span class="c">科研启航学院 · 12 周路线图</span><span class="a">→</span><span class="c">工具选型百科</span><span class="a">→</span><span class="c">学术规范课</span></div>
+    <div class="chain dark"><span class="c">01 一组数据</span><span class="a" style="color:#B9C8EE">→</span><span class="c">02 一张图</span><span class="a" style="color:#B9C8EE">→</span><span class="c">03 一篇初稿</span><span class="a" style="color:#B9C8EE">→</span><span class="c">04 一次汇报</span><span class="a" style="color:#B9C8EE">→</span><span class="c">05 一份投稿件</span></div>
+  </div>
+</div>
+
+<!-- ================= P3 慧眼 + Lab ================= -->
+<div class="page">
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">INSIGHT & LAB · 03</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><h2>研擎慧眼</h2><div class="sub">文献情报与创新发现引擎</div><div class="tag">痛点 2 / 4</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="hl card"><div class="n">01</div><div><b>Gap 诊断与机会挖掘</b><span>方向拥挤度 · 方法组合空白 · 跨学科交叉机会，附数据可得性评估</span></div></div>
+    <div class="hl card"><div class="n">02</div><div><b>选题—验证—追踪全自动化</b><span>语义检索 · AI 精读卡片 · 每日情报订阅 · 五维选题评分防撞车</span></div></div>
+    <div class="hl card"><div class="n">03</div><div><b>AI 自迭代闭环</b><span>每一轮反馈进入下一轮选题与探索，越用越懂你的课题</span></div></div>
+
+    <div class="flywrap">
+      <div class="fly-c"></div><div class="fly-c2"></div>
+      <div class="fly-n" style="left:50%; top:8%"><b>发现</b><small>机会</small></div>
+      <div class="fly-n" style="left:88%; top:32%"><b>创新</b><small>验证</small></div>
+      <div class="fly-n" style="left:73%; top:84%"><b>成果</b><small>产出</small></div>
+      <div class="fly-n" style="left:27%; top:84%"><b>影响</b><small>扩散</small></div>
+      <div class="fly-n" style="left:12%; top:32%"><b>迭代</b><small>优化</small></div>
+      <div class="fly-ctr"><b>科研增长飞轮</b><span>越转越快 · 越转越大</span></div>
+    </div>
+
+    <div class="assets">
+      <div class="a"><b>知识资产</b><span>文献库 · 实验记录 · 组会纪要</span></div>
+      <div class="a"><b>数据资产</b><span>数据集 · 代码 · 复现模板</span></div>
+      <div class="a"><b>声誉资产</b><span>成果 · 学术影响 · 招生引力</span></div>
+    </div>
+
+    <div class="blk-t" style="margin-top:7mm"><span class="en">Lab</span><h3>研擎 Lab</h3><div class="s">零代码复现与实验引擎 · 痛点 3</div></div>
+    <div class="steps6">
+      <div class="card s6"><div class="n">01</div><b>论文解析</b><span>方法说明书</span></div>
+      <div class="card s6"><div class="n">02</div><b>环境即开</b><span>GPU 按需拉起</span></div>
+      <div class="card s6"><div class="n">03</div><b>AI 结对</b><span>报错自动诊断</span></div>
+      <div class="card s6"><div class="n">04</div><b>一键复现</b><span>模板库共建</span></div>
+      <div class="card s6"><div class="n">05</div><b>实验台账</b><span>自动记录回溯</span></div>
+      <div class="card s6"><div class="n">06</div><b>复现报告</b><span>对比归因分析</span></div>
+    </div>
+    <div class="chain"><span class="c">安全沙箱 · 数据不出校</span><span class="a">→</span><span class="c">算力调度 · 闲时复现</span><span class="a">→</span><span class="c">自然语言生成代码 · 边跑边学</span></div>
+  </div>
+</div>
+
+<!-- ================= P4 投稿 + Match ================= -->
+<div class="page">
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">PUBLISH & MATCH · 04</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><h2>研擎投稿</h2><div class="sub">让发表更简单，让等待更短</div><div class="tag">痛点 4</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="vals5">
+      <div class="card v"><div class="e">🔍</div><b>期刊全诊断</b><span>范围/分区/周期/接受率五维打分，冲稳保三档</span></div>
+      <div class="card v"><div class="e">🧠</div><b>智能策略</b><span>热点窗口×履历制定投稿顺序</span></div>
+      <div class="card v"><div class="e">⚡</div><b>自动优化</b><span>模板适配 · Cover Letter · 材料核对</span></div>
+      <div class="card v"><div class="e">⚠️</div><b>避坑预警</b><span>预警/掠夺性期刊 · 一稿多投红线</span></div>
+      <div class="card v"><div class="e">📈</div><b>全链路洞察</b><span>审稿耗时对比中位数 · 超期催稿</span></div>
+    </div>
+
+    <div class="blk-t"><span class="en">Workflow</span><h3>发表六步全托管</h3><div class="s">从成稿到见刊，全程可见可控可追踪</div></div>
+    <div class="psix">
+      <div class="card p"><div class="n">1</div><b>成果整理</b></div>
+      <div class="card p"><div class="n">2</div><b>期刊诊断</b></div>
+      <div class="card p"><div class="n">3</div><b>开启托管</b></div>
+      <div class="card p"><div class="n">4</div><b>自动执行</b></div>
+      <div class="card p"><div class="n">5</div><b>状态追踪</b></div>
+      <div class="card p"><div class="n">6</div><b>复盘转投</b></div>
+    </div>
+
+    <div class="blk-t"><span class="en">Match</span><h3>研擎 Match</h3><div class="s">师生双向匹配引擎 · 痛点 5</div></div>
+    <div class="match2">
+      <div class="card m">
+        <h5>学生端<small>BE SEEN</small></h5>
+        <li>AI 套磁信教练：基于导师真实研究生成有内容的信</li>
+        <li>科研画像：成绩 · 项目 · 技能 · 开源贡献结构化</li>
+        <li>自主授权范围，隐私可控，到期自动删除</li>
+      </div>
+      <div class="card m">
+        <h5>导师端<small>BE PRECISE</small></h5>
+        <li>套磁收件箱：邮件一键解析为结构化档案</li>
+        <li>真实性核验：论文 / 专利交叉验证可信度</li>
+        <li>匹配评分：方向图谱 × 画像 + 成才数据回流</li>
+      </div>
+    </div>
+    <div class="match-note">⚖️ 合规内建：个保法最小化采集 · AI 只做排序与解释，录取决策永远留给导师 · 全程留痕可审计</div>
+
+    <div class="blk-t"><span class="en">24 / 7</span><h3>深夜到清晨，循环不停摆</h3></div>
+    <div class="tl4">
+      <div class="t"><b>22:00</b><span>扫文献筛新论文</span></div>
+      <div class="t"><b>01:00</b><span>沙箱跑复现实验</span></div>
+      <div class="t"><b>05:00</b><span>汇总组会材料</span></div>
+      <div class="t"><b>07:48</b><span>晨报一页纸就绪</span></div>
+    </div>
+    <div class="wake">你醒来，新进展已经发生。<small>GOOD MORNING, RESEARCHER</small></div>
+    <div class="endband"><b>慧眼发现问题 → 投稿交付成果 —— 从选题到见刊的完整闭环</b><span>FROM IDEA TO PUBLICATION, ONE LOOP</span></div>
+  </div>
+</div>
+
+<!-- ================= P5 Claw ================= -->
+<div class="page">
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">CLAW · 05</div>
+  </div>
+  <div class="sec">
+    <div class="sec-head"><h2>研擎 Claw</h2><div class="sub">AI 科研智能体中枢 · 让科研自己跑起来</div><div class="tag">五大核心功能</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cf5">
+      <div class="card c"><div class="no">01</div><div class="e">🛠️</div><b>IDE 创作中心</b><span>轻应用·Agent·工作流·技能，沉淀可复用能力</span></div>
+      <div class="card c"><div class="no">02</div><div class="e">👥</div><b>科研专家团队</b><span>八大 Agent 按专业分工，协同推进落地</span></div>
+      <div class="card c"><div class="no">03</div><div class="e">🔔</div><b>任务及通知</b><span>进度待办异常主动送达，及时跟进</span></div>
+      <div class="card c"><div class="no">04</div><div class="e">🧩</div><b>扩展空间</b><span>技能工作流按需调用，机构可自建</span></div>
+      <div class="card c"><div class="no">05</div><div class="e">🌐</div><b>科研生态</b><span>连接六大产品与校内系统真实动作</span></div>
+    </div>
+
+    <div class="blk-t"><span class="en">Agents</span><h3>八位 AI 专家，常驻课题组</h3></div>
+    <div class="exp8">
+      <div class="card e"><div class="ic">🧠</div><div><b>科研大脑</b><span>统筹进度风险</span></div></div>
+      <div class="card e"><div class="ic">📚</div><div><b>文献情报专家</b><span>情报·Gap·精读</span></div></div>
+      <div class="card e"><div class="ic">⚙️</div><div><b>复现工程师</b><span>解析·代码·报告</span></div></div>
+      <div class="card e"><div class="ic">✍️</div><div><b>写作教练</b><span>辅导·润色·查重</span></div></div>
+      <div class="card e"><div class="ic">📮</div><div><b>投稿顾问</b><span>诊断·适配·转投</span></div></div>
+      <div class="card e"><div class="ic">🎯</div><div><b>招生匹配官</b><span>套磁·核验·排序</span></div></div>
+      <div class="card e"><div class="ic">💰</div><div><b>经费财务专家</b><span>预算·预警·决算</span></div></div>
+      <div class="card e"><div class="ic">📅</div><div><b>日程管家</b><span>排期·冲突·倒计时</span></div></div>
+    </div>
+
+    <div class="blk-t"><span class="en">Best Practice</span><h3>最佳实践</h3><div class="s">一句话，开始推进科研任务</div></div>
+    <div class="bp5">
+      <div class="b">明确科研目标</div><div class="ar">→</div>
+      <div class="b">拆解研究计划</div><div class="ar">→</div>
+      <div class="b">多专家协同推进</div><div class="ar">→</div>
+      <div class="b">调用业务系统执行</div><div class="ar">→</div>
+      <div class="b">持续反馈与优化</div>
+    </div>
+
+    <div class="blk-t"><span class="en">Principles</span><h3>人机协同三原则</h3></div>
+    <div class="pr3">
+      <div class="card p"><b>AI 建议 · 人决策</b><span>关键决策人工确认，AI 给方案+依据+风险</span></div>
+      <div class="card p"><b>结论可溯源</b><span>文献引用 / 数据来源 / 规则条款给出处</span></div>
+      <div class="card p"><b>全程留痕</b><span>AI 参与的每个环节记录日志，可审计</span></div>
+    </div>
+
+    <div class="solid demo-q">
+      <div class="q"><small style="color:#8FA3D9">导师</small>“帮我把这学期组里的项目，安排到最合适的人身上。”</div>
+      <div class="a" style="color:#C9D5F2"><b style="color:#fff">Claw：</b>读取能力画像 × 负载 × 意愿 → 生成分配方案 → 您确认 → 任务自动下发成员日历</div>
+    </div>
+    <div class="statrow">
+      <div class="s"><b>8<i>位</i></b><span>AI 科研专家</span></div>
+      <div class="s"><b>9<i>大</i></b><span>业务模块</span></div>
+      <div class="s"><b>4<i>级</i></b><span>角色权限体系</span></div>
+      <div class="s"><b>0<i>份</i></b><span>数据出校</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= P6 尾页 ================= -->
+<div class="page" style="display:flex; flex-direction:column">
+  <div class="brandbar">
+    <div class="brand"><div class="mk">N</div><div class="nm">研擎<span>NEBULALAB</span></div></div>
+    <div class="pageno">VISION · 06</div>
+  </div>
+  <div class="final-mid">
+    <div class="fk">AI RESEARCH · NEXT GENERATION</div>
+    <div class="fv4">
+      <div class="card f"><div class="e">🔭</div><b>深入科研</b><span>聚焦高校院所真实需求</span></div>
+      <div class="card f"><div class="e">📊</div><b>参与决策</b><span>AI 参与经营每次决策</span></div>
+      <div class="card f"><div class="e">⚡</div><b>推动执行</b><span>重构科研组织协作方式</span></div>
+      <div class="card f"><div class="e">🌍</div><b>走向世界</b><span>从组会到顶刊被看见</span></div>
+    </div>
+    <div class="fslogan">助力中国科研，更上一层楼<small>LET RESEARCH RUN ITSELF</small></div>
+
+    <div class="contact">
+      <div class="cl">
+        <div class="row"><div class="k">地址</div><div class="v">清华大学深圳国际研究生院<small>Tsinghua Shenzhen International Graduate School</small></div></div>
+        <div class="row"><div class="k">联系人</div><div class="v">杨女士</div></div>
+        <div class="row"><div class="k">电话</div><div class="v">198 0211 5986</div></div>
+        <div class="row"><div class="k">产品</div><div class="v">研擎 NebulaLab<small>AI 驱动的下一代科研经营体系</small></div></div>
+      </div>
+      <div class="qrbox"><div class="q">二维码<br>占位</div><span>扫码申请产品演示</span></div>
+    </div>
+    <div class="tryline">▶ <b>在线演示（四种身份任选）</b>：jennyyang58.github.io/AIIC-personal-product/app.html</div>
+  </div>
+  <div class="copy">© 2026 研擎 NEBULALAB · 私有化部署 · 数据不出校 · 等保三级 · 信创适配</div>
+</div>
+
+</body>
+</html>
