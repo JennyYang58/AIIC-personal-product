@@ -2,12 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>研擎 NebulaLab · 宣传册（智创星云复刻 · 模板配色 v2 精调）</title>
+<title>研擎 NebulaLab · 宣传册（智创复刻 · 模板配色 · 丰富插图版）</title>
 <style>
 /* ================================================================
-   复刻基准：智创星云六页（版式/图表/文案结构/字号比例）
-   本版修正：字体全面放大对齐原版比例；图标改用大尺寸容器化呈现
-   配色：可画模板 白底 + 清华深蓝 #1F419B；字体：思源黑体 900/700/500/300
+   智创星云结构复刻 + 模板配色（白底+清华蓝）+ 代码生成矢量插图版
+   字号体系：按原版 PDF 实测比例（900 特粗标题 / 300 细正文）
    ================================================================ */
 @page { size: A4; margin: 0; }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -24,7 +23,7 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 @media screen{ body{padding:14px} .page{ margin:0 auto 14px; box-shadow:0 8px 36px rgba(22,48,111,.16);} }
 @media print{ body{padding:0} .page{ margin:0; box-shadow:none; } }
 
-.bb{ display:flex; align-items:center; justify-content:space-between; padding:8mm 10mm 0; flex:none; }
+.bb{ display:flex; align-items:center; justify-content:space-between; padding:8mm 10mm 0; flex:none; position:relative; z-index:5 }
 .brand{ display:flex; align-items:center; gap:9px; }
 .mk{ width:30px; height:30px; background:var(--blue); color:#fff; border-radius:8px; display:grid; place-items:center;
   font-weight:900; font-size:15px; }
@@ -37,170 +36,201 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 
 .ct{ text-align:center; font-weight:900; color:var(--blue); }
 .ct.big{ font-size:42px; letter-spacing:.02em; }
-.ct.s{ font-size:13px; font-weight:300; color:var(--mut); margin-top:3mm; letter-spacing:.1em; }
-.ct.tiny{ font-size:12.5px; font-weight:700; color:var(--ink); margin-top:5mm; }
-.itile{ border-radius:12px; background:linear-gradient(135deg,#EDF2FB,#E3EAF7); border:1px solid #D8E1F2;
+.ct.mid{ font-size:36px; font-weight:900; color:var(--blue); }
+.ct.s{ font-size:20px; font-weight:300; color:var(--mut); margin-top:2mm; letter-spacing:.1em; }
+.ct.tiny{ font-size:18px; font-weight:700; color:var(--ink); margin-top:5mm; }
+.body{ padding:0 10mm; position:relative; z-index:2 }
+.itile{ border-radius:13px; background:linear-gradient(135deg,#EDF2FB,#E3EAF7); border:1px solid #D8E1F2;
   display:grid; place-items:center; flex:none; }
+.card{ background:var(--tint); border:1px solid var(--line); border-radius:11px; }
+.solid{ background:var(--blue); color:#fff; border-radius:11px; }
+.ar{ color:#B7C2D9; font-weight:300; display:grid; place-items:center; }
+.rel{ position:relative }
+.illus{ display:block }
 
 /* ============ P1 封面 ============ */
 .p1{ background:linear-gradient(168deg,var(--deep) 0%,var(--blue) 62%,#24499F 100%); color:#fff; }
-.p1 .wm{ position:absolute; right:-6mm; top:18mm; font-size:150px; font-weight:900; line-height:1.04;
-  color:rgba(255,255,255,.05); letter-spacing:-.02em; }
-.p1 .mid{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 14mm; position:relative; z-index:2 }
+.p1 .nebula{ position:absolute; inset:0; z-index:1 }
+.p1 .mid{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 15mm; position:relative; z-index:3 }
 .p1 .kk{ font-size:10px; font-weight:300; color:#8FA3D9; letter-spacing:.5em; }
-.p1 h1{ margin:7mm 0 5mm; }
-.p1 h1 .w9{ display:block; font-size:70px; font-weight:900; letter-spacing:.02em; line-height:1.22; }
-.p1 h1 .w3{ display:block; font-size:64px; font-weight:900; letter-spacing:.05em; line-height:1.3; }
+.p1 h1{ margin:8mm 0 6mm; }
+.p1 h1 .w9{ display:block; font-size:74px; font-weight:900; letter-spacing:.02em; line-height:1.22; }
+.p1 h1 .w3{ display:block; font-size:64px; font-weight:900; letter-spacing:.05em; line-height:1.3; color:#AFC6FF; }
 .p1 .en{ font-size:9px; font-weight:300; color:#8FA3D9; letter-spacing:.36em; }
-.p1 .zh{ margin-top:6mm; font-size:13px; font-weight:300; color:#C9D5F2; letter-spacing:.18em; }
+.p1 .zh{ margin-top:6mm; font-size:12px; font-weight:300; color:#C9D5F2; letter-spacing:.18em; }
 .p1 .zh b{ font-weight:700; color:#fff; }
-.p1 .foot{ flex:none; display:flex; justify-content:space-between; align-items:flex-end; padding:0 14mm 9mm;
-  font-size:9px; font-weight:300; color:#8FA3D9; }
+.p1 .foot{ flex:none; display:flex; justify-content:space-between; align-items:flex-end; padding:0 15mm 9mm;
+  font-size:9px; font-weight:300; color:#8FA3D9; position:relative; z-index:3 }
 .p1 .foot .r{ text-align:right; letter-spacing:.18em; line-height:1.7 }
-.p1 .bb{ padding:8mm 14mm 0; }
+.p1 .bb{ padding:8mm 15mm 0; position:relative; z-index:3 }
 
-.orb{ position:relative; height:66mm; margin:6mm 14mm 2mm; }
+.orb{ position:relative; height:74mm; margin:5mm 12mm 0; z-index:3 }
 .orb .o1{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:52mm; height:52mm;
   border:1.5px solid rgba(255,255,255,.32); border-radius:50%; }
 .orb .o2{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:80mm; height:80mm;
   border:1px dashed rgba(255,255,255,.25); border-radius:50%; }
-.orb .core{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:27mm; height:27mm;
-  border-radius:50%; background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.5);
-  display:grid; place-items:center; text-align:center; box-shadow:0 0 22mm rgba(255,255,255,.15); }
-.orb .core b{ font-size:12px; font-weight:900; letter-spacing:.03em }
+.orb .core{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:28mm; height:28mm;
+  border-radius:50%; background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.25),rgba(255,255,255,.06));
+  border:1.5px solid rgba(255,255,255,.55); display:grid; place-items:center; text-align:center;
+  box-shadow:0 0 20mm rgba(159,192,255,.35); }
+.orb .core b{ font-size:11.5px; font-weight:900; letter-spacing:.03em }
 .orb .core span{ display:block; font-size:7px; font-weight:300; color:#C9D5F2; margin-top:1px; }
-.orb .g{ position:absolute; width:34mm; padding:2.6mm 0 2.2mm; text-align:center; background:rgba(255,255,255,.10);
+.orb .g{ position:absolute; width:35mm; padding:2.8mm 0 2.4mm; text-align:center; background:rgba(255,255,255,.10);
   border:1px solid rgba(255,255,255,.38); border-radius:3mm; }
-.orb .g b{ display:block; font-size:11.5px; font-weight:700; }
-.orb .g span{ display:block; font-size:8px; font-weight:300; color:#C9D5F2; margin-top:.6mm; }
+.orb .g b{ display:block; font-size:11px; font-weight:700; }
+.orb .g span{ display:block; font-size:7px; font-weight:300; color:#C9D5F2; margin-top:.6mm; }
 
 /* ============ P2 ============ */
-.bigclaw{ display:flex; margin:8mm 10mm 0; border-radius:14px; overflow:hidden; }
-.bigclaw .lft{ width:37%; background:var(--deep); display:grid; place-items:center; }
-.bigclaw .rgt{ flex:1; padding:11mm 11mm; }
+.bigclaw{ display:flex; margin:7mm 10mm 0; border-radius:14px; overflow:hidden; }
+.bigclaw .lft{ width:37%; background:radial-gradient(circle at 60% 40%,#1A2C6B,var(--deep) 75%);
+  display:grid; place-items:center; padding:6mm 4mm; }
+.bigclaw .rgt{ flex:1; padding:9mm 10mm; }
 .bigclaw h3{ font-size:32px; font-weight:900; }
 .bigclaw h5{ font-size:21px; font-weight:700; color:#C9D5F2; margin:2mm 0 4.5mm; letter-spacing:.04em; }
 .bigclaw p{ font-size:15px; font-weight:400; color:#EAF0FC; line-height:1.9; }
 .bigclaw .tg{ margin-top:7mm; font-size:12.5px; font-weight:500; letter-spacing:.2em; color:#fff; }
+.claw-stats{ display:flex; gap:8px; margin-top:6mm; }
+.claw-stats .cs{ flex:1; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.25);
+  border-radius:9px; padding:6px 8px; text-align:center; }
+.claw-stats .cs b{ display:block; font-size:13px; font-weight:900; color:#fff; }
+.claw-stats .cs span{ font-size:7.5px; font-weight:300; color:#B9C8EE; }
 .four{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8mm 10mm 0; }
-.four .f{ display:flex; gap:13px; padding:15px 16px; align-items:center; }
+.four .f{ display:flex; gap:14px; padding:15px 16px; align-items:center; }
 .four .f .itile{ width:52px; height:52px; font-size:26px; }
 .four .f b{ font-size:15px; font-weight:700; color:var(--blue); display:block; }
 .four .f i{ font-style:normal; font-size:11px; font-weight:500; color:var(--ink); display:block; margin:1px 0 3px; }
 .four .f span{ font-size:9.8px; font-weight:300; color:var(--mut); line-height:1.6; display:block; }
-.p2low{ display:flex; margin:11mm 10mm 0; }
+.p2low{ display:flex; margin:10mm 10mm 0; }
 .p2low .lft{ flex:1; padding-right:9mm; }
-.p2low .lft .it{ margin-bottom:10mm; }
+.p2low .lft .it{ margin-bottom:9mm; }
 .p2low .lft .it b{ font-size:19px; font-weight:900; color:var(--ink); display:block; }
 .p2low .lft .it span{ font-size:10.5px; font-weight:300; color:var(--mut); }
 .p2low .div{ width:1px; background:var(--line); }
-.p2low .rgt{ flex:1.1; padding-left:9mm; display:grid; grid-template-columns:1fr 1fr; gap:11mm 5mm; }
+.p2low .rgt{ flex:1.1; padding-left:9mm; display:grid; grid-template-columns:1fr 1fr; gap:10mm 5mm; }
 .p2low .rgt .g4{ text-align:center; }
-.p2low .rgt .g4 .itile{ width:48px; height:48px; margin:0 auto 5px; font-size:23px; }
+.p2low .rgt .g4 .itile{ width:50px; height:50px; margin:0 auto 5px; font-size:24px; }
 .p2low .rgt .g4 b{ font-size:14px; font-weight:900; display:block; }
 .p2low .rgt .g4 span{ font-size:10px; font-weight:300; color:var(--mut); }
 
 /* ============ P3 ============ */
-.mods10{ display:grid; grid-template-columns:repeat(5,1fr); gap:7px; margin:4mm 10mm 0; }
-.mods10 .m{ padding:8px 8px; border-radius:10px; }
+.mods10{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:4mm 10mm 0; }
+.mods10 .m{ padding:9px 9px; border-radius:10px; }
 .mods10 .m .e{ font-size:19px; display:block; margin-bottom:3px; }
 .mods10 .m b{ font-size:12px; font-weight:700; display:block; }
 .mods10 .m span{ font-size:8.2px; font-weight:300; color:var(--mut); display:block; margin-top:2px; letter-spacing:.02em; }
-.loop{ position:relative; height:42mm; margin:3mm 12mm 0; border:1.5px solid var(--blue); border-radius:21mm; }
-.loop .nd{ position:absolute; width:110px; text-align:center; transform:translate(-50%,-50%); }
+.loop{ position:relative; height:44mm; margin:3mm 12mm 0; border:1.5px solid var(--blue); border-radius:22mm;
+  background:linear-gradient(180deg,#FAFCFF,#F1F5FC); }
+.loop .nd{ position:absolute; width:120px; text-align:center; transform:translate(-50%,-50%); }
 .loop .nd .c{ width:30px; height:30px; line-height:28px; margin:0 auto 3px; border-radius:50%;
-  border:1.5px solid var(--blue); color:var(--blue); font-size:12px; font-weight:500; background:#fff; }
-.loop .nd b{ font-size:13.5px; font-weight:700; display:block; }
+  border:1.5px solid var(--blue); color:var(--blue); font-size:12.5px; font-weight:700; background:#fff;
+  box-shadow:0 0 0 4px rgba(31,65,155,.08); }
+.loop .nd b{ font-size:13px; font-weight:700; display:block; }
 .loop .midq{ position:absolute; left:50%; top:47%; transform:translate(-50%,-50%); text-align:center; width:86%; }
-.loop .midq b{ font-size:19px; font-weight:900; color:var(--ink); }
-.loop .midq div{ font-size:8.5px; font-weight:300; color:var(--faint); margin-top:1.5mm; }
+.loop .midq b{ font-size:18px; font-weight:900; color:var(--ink); }
+.loop .midq div{ font-size:9px; font-weight:300; color:var(--faint); margin-top:1.5mm; }
 .tri3{ display:flex; gap:8px; margin:3mm 10mm 0; }
-.tri3 .t{ flex:1; text-align:center; padding:9px 6px; }
-.tri3 .t b{ font-size:15px; font-weight:900; color:var(--blue); display:block; }
-.tri3 .t span{ font-size:8.5px; font-weight:300; color:var(--mut); }
-.stu4{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:3mm 10mm 0; }
-.stu4 .s{ padding:9px 11px; border-radius:10px; }
-.stu4 .s .hd{ display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
-.stu4 .s .hd b{ font-size:12.5px; font-weight:700; color:var(--ink); }
-.stu4 .s .hd span{ font-size:9px; font-weight:500; color:var(--blue); background:#fff; border:1px solid var(--blue);
+.tri3 .t{ flex:1; text-align:center; padding:10px 6px; }
+.tri3 .t b{ font-size:14px; font-weight:900; color:var(--blue); display:block; }
+.tri3 .t span{ font-size:8.8px; font-weight:300; color:var(--mut); }
+.stu4{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin:3mm 10mm 0; }
+.stu4 .s{ border-radius:11px; overflow:hidden; }
+.stu4 .s .th{ height:13mm; display:grid; place-items:center; font-size:19px; }
+.stu4 .s .bd{ padding:9px 12px 11px; background:var(--tint); border:1px solid var(--line); border-top:none; }
+.stu4 .s .hd{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.stu4 .s .hd b{ font-size:12px; font-weight:700; color:var(--ink); }
+.stu4 .s .hd span{ font-size:8.5px; font-weight:500; color:var(--blue); background:#fff; border:1px solid var(--blue);
   padding:1.5px 9px; border-radius:999px; }
-.stu4 .s p{ font-size:9.5px; font-weight:300; color:var(--mut); line-height:1.65; }
+.stu4 .s p{ font-size:9px; font-weight:300; color:var(--mut); line-height:1.65; }
 .chain4{ display:flex; align-items:stretch; margin:3mm 10mm 0; }
-.chain4 .c4{ flex:1; text-align:center; padding:8px 4px; }
+.chain4 .c4{ flex:1; text-align:center; padding:9px 4px; }
 .chain4 .c4 .n{ font-size:17px; font-weight:300; color:var(--blue); }
 .chain4 .c4 b{ display:block; font-size:12.5px; font-weight:700; margin:1px 0; }
 .chain4 .c4 span{ font-size:8.8px; font-weight:300; color:var(--mut); }
 .chain4 .a{ width:16px; display:grid; place-items:center; color:#B7C2D9; font-weight:300; }
 .databar{ display:flex; margin:3mm 10mm 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-.databar .d{ flex:1; text-align:center; padding:8px 4px; border-right:1px solid var(--line); }
+.databar .d{ flex:1; text-align:center; padding:9px 4px; border-right:1px solid var(--line); }
 .databar .d:last-child{ border-right:none; }
-.databar .d b{ font-size:22px; font-weight:900; color:var(--blue); }
-.databar .d span{ display:block; font-size:9.5px; font-weight:300; color:var(--mut); margin-top:1px; }
+.databar .d b{ font-size:21px; font-weight:900; color:var(--blue); }
+.databar .d span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
 
 /* ============ P4 ============ */
-.vals5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:6mm 10mm 0; }
-.vals5 .v{ text-align:center; padding:14px 9px; border-radius:10px; }
+.vals5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 10mm 0; }
+.vals5 .v{ text-align:center; padding:13px 9px 12px; border-radius:10px; }
 .vals5 .v .itile{ width:48px; height:48px; margin:0 auto 7px; font-size:24px; }
-.vals5 .v b{ display:block; font-size:15px; font-weight:900; font-weight:700; margin:0 0 3px; }
-.vals5 .v p{ font-size:9.5px; font-weight:300; color:var(--mut); line-height:1.6; min-height:40px; }
-.vals5 .v .tg{ margin-top:5px; font-size:9px; font-weight:500; color:var(--blue); letter-spacing:.1em; }
-.psix{ display:flex; margin:6mm 10mm 0; }
-.psix .p{ flex:1; text-align:center; padding:12px 3px; border-radius:10px; }
+.vals5 .v b{ display:block; font-size:14px; font-weight:900; margin:0 0 3px; }
+.vals5 .v p{ font-size:9.3px; font-weight:300; color:var(--mut); line-height:1.6; min-height:42px; }
+.vals5 .v .tg{ margin-top:4px; font-size:8.8px; font-weight:500; color:var(--blue); letter-spacing:.1em; }
+.psix{ display:flex; margin:5mm 10mm 0; }
+.psix .p{ flex:1; text-align:center; padding:11px 3px; border-radius:10px; }
 .psix .p .n{ width:30px; height:30px; line-height:28px; margin:0 auto 5px; border-radius:50%;
-  border:1.5px solid var(--blue); color:var(--blue); font-size:11.5px; font-weight:700; background:#fff; }
+  border:1.5px solid var(--blue); color:var(--blue); font-size:12.5px; font-weight:700; background:#fff; }
 .psix .p b{ display:block; font-size:13px; font-weight:700; }
 .psix .p span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
-.cover-line{ text-align:center; font-size:9.5px; font-weight:300; color:var(--faint); margin:4mm 10mm 0; letter-spacing:.08em; }
-.p4low{ display:flex; gap:10mm; margin:6mm 10mm 0; }
-.p4low .lft{ width:70mm; flex:none; }
-.p4low .lft .sub-t{ font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4mm; }
-.p4low .lft .hl{ padding:11px 13px; margin-bottom:9px; border-radius:10px; display:flex; gap:11px; align-items:baseline; }
+.cover-line{ text-align:center; font-size:9.5px; font-weight:300; color:var(--faint); margin:3.5mm 10mm 0; letter-spacing:.08em; }
+.p4low{ display:flex; gap:10mm; margin:5mm 10mm 0; }
+.p4low .lft{ width:72mm; flex:none; }
+.p4low .lft .sub-t{ font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:4mm; }
+.p4low .lft .hl{ padding:11px 13px; margin-bottom:8px; border-radius:10px; display:flex; gap:12px; align-items:baseline; }
 .p4low .lft .hl .n{ font-size:22px; font-weight:300; color:var(--blue); flex:none; }
-.p4low .lft .hl b{ font-size:13px; font-weight:700; display:block; }
-.p4low .lft .hl span{ font-size:9.5px; font-weight:300; color:var(--mut); line-height:1.6; display:block; margin-top:2px; }
-.p4low .rgt{ flex:1; position:relative; height:78mm; }
-.p4low .rgt .sub-t{ font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4mm; }
-.p4low .rgt .o1{ position:absolute; left:50%; top:54%; transform:translate(-50%,-50%); width:62mm; height:62mm;
-  border:1.5px dashed var(--lblue); border-radius:50%; }
-.p4low .rgt .nd{ position:absolute; width:70px; transform:translate(-50%,-50%); text-align:center; }
-.p4low .rgt .nd .c{ width:28px; height:28px; line-height:28px; margin:0 auto 3px; border-radius:50%;
-  background:var(--blue); color:#fff; font-size:11px; font-weight:700; }
+.p4low .lft .hl b{ font-size:12.5px; font-weight:700; display:block; }
+.p4low .lft .hl span{ font-size:9.3px; font-weight:300; color:var(--mut); line-height:1.6; display:block; margin-top:2px; }
+.p4low .rgt{ flex:1; position:relative; height:76mm; }
+.p4low .rgt .sub-t{ font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:2mm; }
+.p4low .rgt .fw{ position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); width:66mm; height:66mm; }
+.p4low .rgt .nd{ position:absolute; width:76px; transform:translate(-50%,-50%); text-align:center; z-index:2 }
+.p4low .rgt .nd .c{ width:30px; height:30px; line-height:30px; margin:0 auto 3px; border-radius:50%;
+  background:var(--blue); color:#fff; font-size:12px; font-weight:700; box-shadow:0 0 0 4px rgba(31,65,155,.10); }
 .p4low .rgt .nd b{ font-size:10.5px; font-weight:700; display:block; }
-.p4low .rgt .ctr{ position:absolute; left:50%; top:54%; transform:translate(-50%,-50%); width:100px; text-align:center; }
+.p4low .rgt .ctr{ position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); width:110px; text-align:center; z-index:2 }
 .p4low .rgt .ctr b{ font-size:13px; font-weight:900; color:var(--blue); display:block; }
-.p4low .rgt .ctr span{ font-size:7.5px; font-weight:300; color:var(--faint); }
-.endnote{ text-align:center; font-size:12px; font-weight:500; color:var(--blue); letter-spacing:.12em; margin-top:4mm; }
-.databar{ display:flex; margin:5mm 10mm 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+.p4low .rgt .ctr span{ font-size:8px; font-weight:300; color:var(--faint); }
+.endnote{ text-align:center; font-size:11.5px; font-weight:500; color:var(--blue); letter-spacing:.12em; margin-top:4mm; }
+.databar{ display:flex; margin:4mm 10mm 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
 .databar .d{ flex:1; text-align:center; padding:10px 4px; border-right:1px solid var(--line); }
 .databar .d:last-child{ border-right:none; }
-.databar .d b{ font-size:16px; font-weight:900; color:var(--blue); }
-.databar .d span{ display:block; font-size:8px; font-weight:300; color:var(--mut); margin-top:1px; }
+.databar .d b{ font-size:22px; font-weight:900; color:var(--blue); }
+.databar .d span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
 
 /* ============ P5 ============ */
-.cf5{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:5mm 10mm 0; }
-.cf5 .c{ text-align:center; padding:12px 9px 11px; border-radius:10px; }
+.cf5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 10mm 0; }
+.cf5 .c{ text-align:center; padding:14px 10px 12px; border-radius:11px; }
 .cf5 .c .no{ font-size:9px; font-weight:300; color:var(--faint); letter-spacing:.34em; }
 .cf5 .c .itile{ width:48px; height:48px; margin:6px auto 8px; font-size:24px; }
 .cf5 .c b{ display:block; font-size:13px; font-weight:700; margin-bottom:3px; }
 .cf5 .c p{ font-size:9px; font-weight:300; color:var(--mut); line-height:1.65; }
-.ellipse{ position:relative; height:58mm; margin:2mm 12mm 0; }
-.ellipse .el{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100%; height:46mm;
+.ellipse{ position:relative; height:62mm; margin:2mm 12mm 0; }
+.ellipse .el{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100%; height:44mm;
   border:1.5px solid var(--blue); border-radius:50%; }
 .ellipse .arc{ position:absolute; font-size:12px; font-weight:500; color:var(--blue); letter-spacing:.24em; }
 .ellipse .item{ position:absolute; top:50%; transform:translate(-50%,-50%); background:#fff; border:1px solid var(--line);
-  border-radius:11px; padding:9px 14px; display:flex; gap:8px; align-items:center; }
+  border-radius:12px; padding:10px 15px; display:flex; gap:9px; align-items:center; white-space:nowrap;
+  box-shadow:0 6px 18px rgba(22,48,111,.10); }
 .ellipse .item .ic{ width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-size:16px; }
 .ellipse .item b{ font-size:13.5px; font-weight:700; color:var(--ink); }
-.exp8{ display:flex; justify-content:center; gap:13px; margin:4mm 10mm 0; }
-.exp8 .e{ text-align:center; width:44px; }
-.exp8 .e .c{ width:56px; height:56px; border-radius:50%; background:var(--tint2); border:1px solid #D7E0F2;
-  display:grid; place-items:center; font-size:27px; }
-.exp8 .e b{ display:block; font-size:11px; font-weight:500; color:var(--ink); margin-top:4px; white-space:nowrap; }
+.exp8{ display:flex; justify-content:center; gap:14px; margin:4mm 10mm 0; }
+.exp8 .e{ text-align:center; width:48px; }
+.exp8 .e .c{ width:52px; height:52px; margin:0 auto; border-radius:50%;
+  background:linear-gradient(135deg,#EDF2FB,#DCE6F8); border:1px solid #C9D6EE;
+  display:grid; place-items:center; font-size:25px; }
+.exp8 .e b{ display:block; font-size:10px; font-weight:500; color:var(--ink); margin-top:4px; white-space:nowrap; }
 .onec{ display:flex; gap:10px; margin:5mm 10mm 0; }
-.onec .lft{ flex:1.25; padding:14px 17px; border-radius:12px; }
-.onec .lft h5{ font-size:16px; font-weight:900; margin-bottom:5px; }
-.onec .lft .q{ font-size:11.5px; font-weight:300; color:#DCE5F7; line-height:1.8; }
+.onec .lft{ flex:1.25; border-radius:12px; overflow:hidden; display:flex; flex-direction:column }
+.onec .lft .txt{ padding:12px 16px 10px; }
+.onec .lft h5{ font-size:16px; font-weight:900; margin-bottom:4px; }
+.onec .lft .q{ font-size:11px; font-weight:300; color:#DCE5F7; line-height:1.8; }
 .onec .lft .q b{ font-weight:700; color:#fff; }
+.mock{ flex:1; margin:0 10px 10px; background:#0B1830; border-radius:9px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.14); }
+.mock .mbar{ display:flex; gap:4px; align-items:center; padding:6px 9px; background:#0E1F42; }
+.mock .mbar i{ width:6px; height:6px; border-radius:50%; background:#3D4E85; }
+.mock .mbar span{ margin-left:5px; font-size:7px; color:#8FA0C9; letter-spacing:.08em; }
+.mock .mrow{ display:flex; gap:7px; padding:8px 9px; }
+.mock .mstats{ flex:1.1; display:grid; gap:5px; }
+.mock .mstat{ background:#12224A; border-radius:6px; padding:5px 7px; }
+.mock .mstat b{ display:block; font-size:9.5px; font-weight:800; color:#7EE7F7; }
+.mock .mstat span{ font-size:6.5px; color:#8FA0C9; }
+.mock .mbars{ flex:1; display:flex; align-items:flex-end; gap:5px; padding:4px 6px; background:#12224A; border-radius:6px; }
+.mock .mbars i{ flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,#3E7BFA,#22D3EE); }
 .onec .rgt{ flex:1; }
 .onec .rgt .it{ display:flex; gap:9px; margin-bottom:6px; }
 .onec .rgt .it .n{ flex:none; width:9px; height:9px; border-radius:50%; background:var(--blue); align-self:center; }
@@ -213,37 +243,75 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 
 /* ============ P6 尾页 ============ */
 .p6{ background:linear-gradient(168deg,var(--deep) 0%,var(--blue) 70%,#24499F 100%); color:#fff; }
-.p6 .logo-c{ display:flex; align-items:center; justify-content:center; gap:11px; margin-top:15mm; }
-.p6 .logo-c .mk{ width:44px; height:44px; font-size:21px; border-radius:10px; }
+.p6 .netbg{ position:absolute; inset:0; z-index:1 }
+.p6 .z{ position:relative; z-index:2 }
+.p6 .logo-c{ display:flex; align-items:center; justify-content:center; gap:11px; margin-top:13mm; }
+.p6 .logo-c .mk{ width:44px; height:44px; font-size:21px; border-radius:10px; background:#fff; color:var(--blue); }
 .p6 .logo-c .nm{ font-size:30px; font-weight:900; letter-spacing:.06em; }
-.fv4{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14mm 11mm 0; }
-.fv4 .f{ text-align:center; padding:17px 9px 15px; background:rgba(255,255,255,.08);
+.fv4{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12mm 11mm 0; }
+.fv4 .f{ text-align:center; padding:17px 9px 15px; background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.3); border-radius:13px; }
-.fv4 .f .ic{ width:40px; height:40px; margin:0 auto 7px; border-radius:50%; border:1.5px solid rgba(255,255,255,.6);
-  display:grid; place-items:center; font-size:18px; }
+.fv4 .f .ic{ width:44px; height:44px; margin:0 auto 8px; border-radius:50%; border:1.5px solid rgba(255,255,255,.6);
+  display:grid; place-items:center; font-size:20px; }
 .fv4 .f b{ display:block; font-size:16px; font-weight:900; letter-spacing:.12em; }
 .fv4 .f .ln{ width:18px; height:1px; background:rgba(255,255,255,.4); margin:3mm auto; }
 .fv4 .f span{ font-size:10px; font-weight:300; color:#C9D5F2; line-height:1.75; display:block; }
-.searchbar{ display:flex; align-items:center; gap:11px; margin:12mm 24mm 0; border:1.5px solid rgba(255,255,255,.5);
+.searchbar{ display:flex; align-items:center; gap:11px; margin:11mm 24mm 0; border:1.5px solid rgba(255,255,255,.5);
   border-radius:999px; padding:14px 22px; font-size:12.5px; font-weight:300; color:#C9D5F2; }
 .searchbar .s{ font-size:15px; }
 .searchbar b{ font-weight:500; color:#fff; letter-spacing:.1em; }
-.qrs{ display:flex; justify-content:center; gap:13mm; margin-top:10mm; }
-.qrs .q{ width:29mm; text-align:center; }
+.qrs{ display:flex; justify-content:center; gap:13mm; margin-top:9mm; }
+.qrs .q{ width:33mm; text-align:center; }
 .qrs .q .box{ width:33mm; height:33mm; background:#fff; border-radius:3.5mm; display:grid; place-items:center;
-  color:var(--blue); font-size:8.5px; font-weight:500; }
+  color:var(--blue); font-size:9px; font-weight:500; }
 .qrs .q span{ display:block; font-size:10px; font-weight:300; color:#C9D5F2; margin-top:3mm; letter-spacing:.1em; }
 .p6 .contact{ display:flex; justify-content:center; gap:10mm; margin-top:9mm; font-size:13px; font-weight:300; color:#C9D5F2; }
 .p6 .contact b{ font-weight:700; color:#fff; }
 .p6 .copy{ text-align:center; margin-top:auto; padding-bottom:8mm; font-size:9px; font-weight:300;
-  color:#8FA3D9; letter-spacing:.14em; }
+  color:#8FA3D9; letter-spacing:.14em; position:relative; z-index:2 }
 </style>
 </head>
 <body>
 
 <!-- ============ P1 封面 ============ -->
 <div class="page p1 on-blue">
-  <div class="wm">Nebula<br>Lab</div>
+  <svg class="nebula" viewBox="0 0 794 1123" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="nb1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#3E7BFA" stop-opacity=".5"/><stop offset="100%" stop-color="#3E7BFA" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="nb2" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#8B5CF6" stop-opacity=".38"/><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="nb3" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#22D3EE" stop-opacity=".3"/><stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="lnk" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#7F9BFF" stop-opacity=".8"/><stop offset="100%" stop-color="#67E8F7" stop-opacity=".5"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="180" cy="240" rx="300" ry="240" fill="url(#nb1)"/>
+    <ellipse cx="640" cy="700" rx="340" ry="260" fill="url(#nb2)"/>
+    <ellipse cx="420" cy="980" rx="360" ry="220" fill="url(#nb3)"/>
+    <g stroke="url(#lnk)" stroke-width="1">
+      <line x1="120" y1="760" x2="240" y2="700"/><line x1="240" y1="700" x2="360" y2="740"/><line x1="360" y1="740" x2="470" y2="690"/>
+      <line x1="470" y1="690" x2="590" y2="730"/><line x1="590" y1="730" x2="700" y2="680"/><line x1="240" y1="700" x2="330" y2="640"/>
+      <line x1="470" y1="690" x2="410" y2="620"/><line x1="120" y1="760" x2="180" y2="850"/><line x1="180" y1="850" x2="300" y2="820"/>
+      <line x1="300" y1="820" x2="430" y2="850"/><line x1="430" y1="850" x2="560" y2="810"/><line x1="560" y1="810" x2="680" y2="850"/>
+      <line x1="700" y1="680" x2="720" y2="600"/><line x1="330" y1="640" x2="410" y2="620"/>
+    </g>
+    <g fill="#BFD3FF">
+      <circle cx="120" cy="760" r="3"/><circle cx="240" cy="700" r="4"/><circle cx="360" cy="740" r="3"/><circle cx="470" cy="690" r="4"/>
+      <circle cx="590" cy="730" r="3"/><circle cx="700" cy="680" r="3.5"/><circle cx="330" cy="640" r="2.5"/><circle cx="410" cy="620" r="3"/>
+      <circle cx="180" cy="850" r="3"/><circle cx="300" cy="820" r="3.5"/><circle cx="430" cy="850" r="3"/><circle cx="560" cy="810" r="3"/>
+      <circle cx="680" cy="850" r="3"/><circle cx="720" cy="600" r="2.5"/>
+    </g>
+    <g fill="#8FA3D9" opacity=".7">
+      <circle cx="90" cy="140" r="1.3"/><circle cx="200" cy="90" r="1.6"/><circle cx="330" cy="60" r="1.2"/><circle cx="470" cy="110" r="1.5"/>
+      <circle cx="600" cy="70" r="1.3"/><circle cx="700" cy="150" r="1.6"/><circle cx="90" cy="480" r="1.4"/><circle cx="730" cy="420" r="1.4"/>
+      <circle cx="60" cy="620" r="1.3"/><circle cx="740" cy="900" r="1.5"/><circle cx="70" cy="1040" r="1.4"/><circle cx="760" cy="1040" r="1.3"/>
+    </g>
+  </svg>
   <div class="bb"><div class="brand"><div class="mk w">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
     <div class="pn">AI RESEARCH OS · 01</div></div>
   <div class="mid">
@@ -270,31 +338,46 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 <div class="page">
   <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
     <div class="pn">RESEARCH OS · 02</div></div>
-  <div class="ct big" style="margin-top:12mm">科研所需，一站汇聚</div>
+  <div class="ct big" style="margin-top:10mm">科研所需，一站汇聚</div>
 
   <div class="bigclaw">
-    <div class="lft"><svg viewBox="0 0 200 160">
-      <g stroke="#5F86E8" stroke-width="1" opacity=".85">
-        <line x1="30" y1="40" x2="70" y2="25"/><line x1="70" y1="25" x2="110" y2="38"/><line x1="110" y1="38" x2="150" y2="28"/>
-        <line x1="30" y1="40" x2="45" y2="80"/><line x1="70" y1="25" x2="85" y2="70"/><line x1="110" y1="38" x2="130" y2="75"/>
-        <line x1="150" y1="28" x2="160" y2="70"/><line x1="45" y1="80" x2="85" y2="70"/><line x1="85" y1="70" x2="130" y2="75"/>
-        <line x1="45" y1="80" x2="60" y2="118"/><line x1="85" y1="70" x2="100" y2="112"/><line x1="130" y1="75" x2="145" y2="112"/>
-        <line x1="60" y1="118" x2="100" y2="112"/><line x1="100" y1="112" x2="145" y2="112"/><line x1="30" y1="40" x2="20" y2="90"/>
-        <line x1="20" y1="90" x2="45" y2="80"/><line x1="20" y1="90" x2="60" y2="118"/><line x1="160" y1="70" x2="175" y2="105"/>
-        <line x1="175" y1="105" x2="145" y2="112"/><line x1="110" y1="38" x2="85" y2="70"/>
-      </g>
-      <g fill="#9FC0FF">
-        <circle cx="30" cy="40" r="4"/><circle cx="70" cy="25" r="5"/><circle cx="110" cy="38" r="4"/><circle cx="150" cy="28" r="4"/>
-        <circle cx="45" cy="80" r="5"/><circle cx="85" cy="70" r="6"/><circle cx="130" cy="75" r="4"/><circle cx="160" cy="70" r="4"/>
-        <circle cx="20" cy="90" r="3.5"/><circle cx="60" cy="118" r="4"/><circle cx="100" cy="112" r="5"/><circle cx="145" cy="112" r="4"/>
-        <circle cx="175" cy="105" r="3.5"/>
-      </g>
-    </svg></div>
+    <div class="lft">
+      <svg viewBox="0 0 200 170" style="width:100%">
+        <defs><radialGradient id="brg" cx="50%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="#3E7BFA" stop-opacity=".55"/><stop offset="100%" stop-color="#3E7BFA" stop-opacity="0"/>
+        </radialGradient></defs>
+        <ellipse cx="100" cy="82" rx="95" ry="78" fill="url(#brg)"/>
+        <g stroke="#6D8CE8" stroke-width="1" opacity=".9">
+          <line x1="30" y1="40" x2="70" y2="25"/><line x1="70" y1="25" x2="110" y2="38"/><line x1="110" y1="38" x2="150" y2="28"/>
+          <line x1="30" y1="40" x2="45" y2="80"/><line x1="70" y1="25" x2="85" y2="70"/><line x1="110" y1="38" x2="130" y2="75"/>
+          <line x1="150" y1="28" x2="160" y2="70"/><line x1="45" y1="80" x2="85" y2="70"/><line x1="85" y1="70" x2="130" y2="75"/>
+          <line x1="45" y1="80" x2="60" y2="118"/><line x1="85" y1="70" x2="100" y2="112"/><line x1="130" y1="75" x2="145" y2="112"/>
+          <line x1="60" y1="118" x2="100" y2="112"/><line x1="100" y1="112" x2="145" y2="112"/><line x1="30" y1="40" x2="20" y2="90"/>
+          <line x1="20" y1="90" x2="45" y2="80"/><line x1="20" y1="90" x2="60" y2="118"/><line x1="160" y1="70" x2="175" y2="105"/>
+          <line x1="175" y1="105" x2="145" y2="112"/><line x1="110" y1="38" x2="85" y2="70"/><line x1="45" y1="80" x2="100" y2="112"/>
+          <line x1="160" y1="70" x2="100" y2="112"/><line x1="70" y1="25" x2="45" y2="80"/>
+        </g>
+        <g fill="#9FC0FF">
+          <circle cx="30" cy="40" r="4"/><circle cx="70" cy="25" r="5"/><circle cx="110" cy="38" r="4"/><circle cx="150" cy="28" r="4"/>
+          <circle cx="45" cy="80" r="5"/><circle cx="85" cy="70" r="6"/><circle cx="130" cy="75" r="4"/><circle cx="160" cy="70" r="4"/>
+          <circle cx="20" cy="90" r="3.5"/><circle cx="60" cy="118" r="4"/><circle cx="100" cy="112" r="5"/><circle cx="145" cy="112" r="4"/>
+          <circle cx="175" cy="105" r="3.5"/>
+        </g>
+        <g fill="#fff">
+          <circle cx="85" cy="70" r="2"/><circle cx="100" cy="112" r="1.8"/><circle cx="45" cy="80" r="1.6"/>
+        </g>
+      </svg>
+    </div>
     <div class="rgt">
       <h3>研擎 Claw</h3>
       <h5>让科研自己跑起来</h5>
       <p>理解科研目标，组织专家协作，调用文献数据与业务系统，持续推进任务并交付科研成果。</p>
       <div class="tg">理解目标 · 拆解任务 · 协同执行</div>
+      <div class="claw-stats">
+        <div class="cs"><b>23 篇</b><span>文献自动精读</span></div>
+        <div class="cs"><b>3 次</b><span>复现沙箱运行</span></div>
+        <div class="cs"><b>92%</b><span>任务按时交付</span></div>
+      </div>
     </div>
   </div>
 
@@ -305,7 +388,7 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="card f"><div class="itile">🚀</div><div><b>研擎投稿</b><i>让发表持续提速</i><span>聚焦期刊匹配与审稿追踪，AI 完成诊断、适配与投稿优化。</span></div></div>
   </div>
 
-  <div class="ct mid" style="margin-top:14mm; font-size:37px">从科研洞察，到科研成果</div>
+  <div class="ct mid" style="margin-top:11mm; font-size:37px">从科研洞察，到科研成果</div>
   <div class="ct s" style="margin-top:2mm; font-size:21px">分析有依据，决策有方向，执行有动作，交付有结果</div>
 
   <div class="p2low">
@@ -328,8 +411,8 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 <div class="page">
   <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
     <div class="pn">RESEARCH ERP · 03</div></div>
-  <div class="ct big" style="margin-top:7mm">研擎 ERP</div>
-  <div class="ct s" style="margin-top:2mm; font-size:20px">科研经营的操作内核</div>
+  <div class="ct big" style="margin-top:6mm">研擎 ERP</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:20px">科研经营的操作内核</div>
   <div class="ct tiny" style="font-size:18px">十大核心业务模块</div>
 
   <div class="mods10">
@@ -347,15 +430,15 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 
   <div class="ct tiny" style="margin-top:6mm; font-size:20px">AI 科研协同，从发现到行动</div>
   <div class="loop">
-    <div class="nd" style="left:22%; top:15%"><div class="c">01</div><b>发现问题</b></div>
+    <div class="nd" style="left:22%; top:16%"><div class="c">01</div><b>发现问题</b></div>
     <div class="nd" style="left:50%; top:10%"><div class="c">02</div><b>理解原因</b></div>
-    <div class="nd" style="left:78%; top:15%"><div class="c">03</div><b>定位对象</b></div>
+    <div class="nd" style="left:78%; top:16%"><div class="c">03</div><b>定位对象</b></div>
     <div class="midq">
       <b>从“人找问题”，到“问题主动找人”</b>
       <div>每一轮反馈，都进入下一轮判断与协同</div>
     </div>
-    <div class="nd" style="left:26%; top:80%"><div class="c">05</div><b>结果反馈</b></div>
-    <div class="nd" style="left:74%; top:80%"><div class="c">04</div><b>推动处理</b></div>
+    <div class="nd" style="left:26%; top:81%"><div class="c">05</div><b>结果反馈</b></div>
+    <div class="nd" style="left:74%; top:81%"><div class="c">04</div><b>推动处理</b></div>
   </div>
   <div class="tri3">
     <div class="card t"><b>看得清</b><span>关键科研信号统一呈现</span></div>
@@ -364,16 +447,20 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
   </div>
 
   <div class="ct mid" style="margin-top:7mm; font-size:30px">研擎 Studio</div>
-  <div class="ct s" style="margin-top:2mm; font-size:20px">让创意无限释放，让科研更有表达力</div>
-  <div class="ct tiny" style="font-size:18px">功能模块介绍</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让创意无限释放，让科研更有表达力</div>
+  <div class="ct tiny" style="font-size:18px; margin-top:4mm">功能模块介绍</div>
   <div class="stu4">
-    <div class="solid s"><div class="hd"><b>✍️ AI 写作</b><span>5 大场景</span></div><p>文献综述 / 期刊论文 / 基金本子 / 审稿回复 / 学术邮件，风格与格式自动适配</p></div>
-    <div class="card s"><div class="hd"><b>📊 AI 图表</b><span>期刊规范</span></div><p>机制图 / 数据图 / 流程图，符合期刊分辨率与色盲友好配色</p></div>
-    <div class="card s"><div class="hd"><b>🌐 AI 翻译</b><span>术语一致</span></div><p>学术中英互译，保留公式与引用，支持全文术语统一检查</p></div>
-    <div class="card s"><div class="hd"><b>📽️ AI 汇报</b><span>一键生成</span></div><p>组会 PPT / 会议 Poster / 答辩讲稿，多场景自动适配</p></div>
+    <div class="s"><div class="th" style="background:linear-gradient(120deg,#1F419B,#3E7BFA)">✍️</div>
+      <div class="bd"><div class="hd"><b>AI 写作</b><span>5 大场景</span></div><p>文献综述 / 期刊论文 / 基金本子 / 审稿回复 / 学术邮件，风格与格式自动适配</p></div></div>
+    <div class="s"><div class="th" style="background:linear-gradient(120deg,#7C3AED,#C084FC)">📊</div>
+      <div class="bd"><div class="hd"><b>AI 图表</b><span>期刊规范</span></div><p>机制图 / 数据图 / 流程图，符合期刊分辨率与色盲友好配色</p></div></div>
+    <div class="s"><div class="th" style="background:linear-gradient(120deg,#0E7490,#22D3EE)">🌐</div>
+      <div class="bd"><div class="hd"><b>AI 翻译</b><span>术语一致</span></div><p>学术中英互译，保留公式与引用，支持全文术语统一检查</p></div></div>
+    <div class="s"><div class="th" style="background:linear-gradient(120deg,#B45309,#F59E0B)">📽️</div>
+      <div class="bd"><div class="hd"><b>AI 汇报</b><span>一键生成</span></div><p>组会 PPT / 会议 Poster / 答辩讲稿，多场景自动适配</p></div></div>
   </div>
 
-  <div class="ct tiny" style="margin-top:6mm; font-size:20px">一站式创作全链路</div>
+  <div class="ct tiny" style="margin-top:5mm; font-size:20px">一站式创作全链路</div>
   <div class="chain4">
     <div class="card c4"><div class="n">01</div><b>原始数据</b><span>清洗 / 标注导入</span></div><div class="a">→</div>
     <div class="card c4"><div class="n">02</div><b>一张图</b><span>发表级图表</span></div><div class="a">→</div>
@@ -392,9 +479,9 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 <div class="page">
   <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
     <div class="pn">PUBLISH & INSIGHT · 04</div></div>
-  <div class="ct big" style="margin-top:7mm">研擎投稿</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:14px">让发表更简单，让等待更短</div>
-  <div class="ct tiny" style="font-size:13.5px">核心价值主张</div>
+  <div class="ct big" style="margin-top:6mm">研擎投稿</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让发表更简单，让等待更短</div>
+  <div class="ct tiny" style="font-size:18px">核心价值主张</div>
 
   <div class="vals5">
     <div class="card v"><div class="itile">🔍</div><b>全流程托管</b><p>从期刊诊断到投稿执行，AI 持续管理发表流程</p><div class="tg">诊断 · 执行 · 反馈</div></div>
@@ -405,7 +492,7 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
   </div>
 
   <div class="ct tiny" style="font-size:21px">发表操作流程</div>
-  <div class="ct s" style="margin-top:1mm; font-size:13px">从成稿到见刊，全程可见、可控、可追踪</div>
+  <div class="ct s" style="margin-top:0; font-size:13px">从成稿到见刊，全程可见、可控、可追踪</div>
   <div class="psix">
     <div class="card p"><div class="n">01</div><b>成果整理</b><span>稿件数据齐备检查</span></div>
     <div class="card p"><div class="n">02</div><b>期刊诊断</b><span>冲稳保梯度方案</span></div>
@@ -416,8 +503,8 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
   </div>
   <div class="cover-line">全链路覆盖：标题 · 期刊 · 审稿 · 修改 · 录用 · 检索 · 影响力</div>
 
-  <div class="ct mid" style="margin-top:11mm; font-size:32px">研擎慧眼</div>
-  <div class="ct s" style="margin-top:2mm; font-size:22px">让创新点主动敲门</div>
+  <div class="ct mid" style="margin-top:9mm; font-size:32px">研擎慧眼</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让创新点主动敲门</div>
   <div class="p4low">
     <div class="lft">
       <div class="sub-t">三大核心亮点</div>
@@ -427,12 +514,29 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     </div>
     <div class="rgt">
       <div class="sub-t">从选题到转化的科研增长飞轮</div>
-      <div class="o1"></div>
-      <div class="nd" style="left:50%; top:5%"><div class="c">1</div><b>发现机会</b></div>
-      <div class="nd" style="left:92%; top:37%"><div class="c">2</div><b>创新验证</b></div>
-      <div class="nd" style="left:73%; top:90%"><div class="c">3</div><b>成果产出</b></div>
-      <div class="nd" style="left:27%; top:90%"><div class="c">4</div><b>影响力扩散</b></div>
-      <div class="nd" style="left:8%; top:37%"><div class="c">5</div><b>迭代优化</b></div>
+      <div class="fw">
+        <svg viewBox="0 0 200 200" style="width:100%">
+          <defs>
+            <linearGradient id="fw1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1F419B"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
+            <linearGradient id="fw2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3E7BFA"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient>
+            <linearGradient id="fw3" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22D3EE"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
+            <linearGradient id="fw4" x1="1" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#6D5CF6"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
+            <marker id="ah" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto">
+              <path d="M0,0 L7,3.5 L0,7 Z" fill="#1F419B"/>
+            </marker>
+          </defs>
+          <path d="M 62.4 29.4 A 80 80 0 0 1 137.6 29.4" fill="none" stroke="url(#fw1)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M 155.6 42.5 A 80 80 0 0 1 178.8 113.9" fill="none" stroke="url(#fw2)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M 171.9 135.1 A 80 80 0 0 1 111.1 179.2" fill="none" stroke="url(#fw3)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M 88.9 179.2 A 80 80 0 0 1 21.2 113.9" fill="none" stroke="url(#fw4)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M 21.2 113.9 A 80 80 0 0 1 44.4 42.5" fill="none" stroke="url(#fw1)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
+        </svg>
+      </div>
+      <div class="nd" style="left:50%; top:4%"><div class="c">1</div><b>发现机会</b></div>
+      <div class="nd" style="left:92%; top:36%"><div class="c">2</div><b>创新验证</b></div>
+      <div class="nd" style="left:72%; top:89%"><div class="c">3</div><b>成果产出</b></div>
+      <div class="nd" style="left:28%; top:89%"><div class="c">4</div><b>影响力扩散</b></div>
+      <div class="nd" style="left:8%; top:36%"><div class="c">5</div><b>迭代优化</b></div>
       <div class="ctr"><b>科研增长飞轮</b><span>持续增长 · 越转越快</span></div>
     </div>
   </div>
@@ -449,9 +553,9 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 <div class="page">
   <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
     <div class="pn">CLAW · 05</div></div>
-  <div class="ct big" style="margin-top:7mm">研擎 Claw</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:14px">让科研自己跑起来</div>
-  <div class="ct tiny" style="font-size:13.5px">五大核心功能，让 AI 真正进入科研</div>
+  <div class="ct big" style="margin-top:6mm">研擎 Claw</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让科研自己跑起来</div>
+  <div class="ct tiny" style="font-size:18px">五大核心功能，让 AI 真正进入科研</div>
 
   <div class="cf5">
     <div class="card c"><div class="no">01</div><div class="itile">🛠️</div><b>IDE 创作中心</b><p>从一个需求出发，创建轻应用、专家、工作流与技能，沉淀可复用能力</p></div>
@@ -464,14 +568,14 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
   <div class="blk" style="margin-top:6mm"><h4 style="font-size:16px">IDE 创作中心 × 扩展空间</h4><span>创作与扩展，一体贯通</span></div>
   <div class="ellipse">
     <div class="el"></div>
-    <div class="arc" style="left:16%; top:8%">创建</div>
-    <div class="arc" style="right:15%; top:8%">发布</div>
-    <div class="arc" style="left:15%; bottom:5%">扩展</div>
-    <div class="arc" style="right:17%; bottom:5%">使用</div>
+    <div class="arc" style="left:12%; top:4%">创建</div>
+    <div class="arc" style="right:11%; top:4%">发布</div>
+    <div class="arc" style="left:11%; bottom:2%">扩展</div>
+    <div class="arc" style="right:13%; bottom:2%">使用</div>
     <div class="item" style="left:18%"><div class="ic" style="background:#E8F0FE">🗃️</div><b>轻应用</b></div>
-    <div class="item" style="left:39.5%"><div class="ic" style="background:#E6F8F0">🧑‍🔬</div><b>Agent 专家</b></div>
+    <div class="item" style="left:39%"><div class="ic" style="background:#E6F8F0">🧑‍🔬</div><b>Agent 专家</b></div>
     <div class="item" style="left:61%"><div class="ic" style="background:#FFF3DE">🔀</div><b>工作流</b></div>
-    <div class="item" style="left:82%"><div class="ic" style="background:#F1E8FE">⚡</div><b>Skill 技能</b></div>
+    <div class="item" style="left:80%"><div class="ic" style="background:#F1E8FE">⚡</div><b>Skill 技能</b></div>
   </div>
 
   <div class="exp8">
@@ -484,16 +588,32 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="e"><div class="c">💰</div><b>经费财务</b></div>
     <div class="e"><div class="c">📅</div><b>日程管家</b></div>
   </div>
-  <div class="blk" style="margin-top:5mm"><h4 style="font-size:20px">办公室 · 专家团队</h4><span style="font-size:12px">交代目标，专业分工，协同推进</span></div>
+  <div class="blk" style="margin-top:3mm"><h4 style="font-size:20px">办公室 · 专家团队</h4><span style="font-size:12px">交代目标，专业分工，协同推进</span></div>
 
   <div class="onec">
     <div class="solid lft">
-      <h5>一句话，开始推进科研任务</h5>
-      <div class="q"><b>导师：</b>“帮我把这学期组里的项目，安排到最合适的人身上。”</div>
-      <div class="q"><b>Claw：</b>读取能力画像 × 负载 × 意愿，生成分配方案，您确认后任务自动下发成员日历</div>
+      <div class="txt">
+        <h5>一句话，开始推进科研任务</h5>
+        <div class="q"><b>导师：</b>“帮我把这学期组里的项目，安排到最合适的人身上。”</div>
+        <div class="q"><b>Claw：</b>读取能力画像 × 负载 × 意愿，生成分配方案，您确认后任务自动下发成员日历</div>
+      </div>
+      <div class="mock">
+        <div class="mbar"><i></i><i></i><i></i><span>研擎 CLAW · 本周科研计划执行中</span></div>
+        <div class="mrow">
+          <div class="mstats">
+            <div class="mstat"><b>12 项</b><span>任务推进中</span></div>
+            <div class="mstat"><b>8 项</b><span>已完成</span></div>
+            <div class="mstat" style="background:#3A2A12"><b style="color:#FBBF24">2 项</b><span>风险预警</span></div>
+          </div>
+          <div class="mbars">
+            <i style="height:34%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:70%"></i>
+            <i style="height:58%"></i><i style="height:82%"></i><i style="height:95%"></i>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="rgt">
-      <div class="blk" style="justify-content:flex-start; margin:0 0 5px"><h4 style="font-size:13px">最佳实践</h4></div>
+      <div class="blk" style="justify-content:flex-start; margin:0 0 6px"><h4 style="font-size:14px">最佳实践</h4></div>
       <div class="it"><div class="n"></div><div><b>明确科研目标</b><span>说清创新、成果或育人目标</span></div></div>
       <div class="it"><div class="n"></div><div><b>拆解研究计划</b><span>明确任务、责任与交付结果</span></div></div>
       <div class="it"><div class="n"></div><div><b>多专家协同推进</b><span>按专业领域分工、接力执行</span></div></div>
@@ -510,19 +630,32 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 
 <!-- ============ P6 尾页 ============ -->
 <div class="page p6 on-blue">
-  <div class="logo-c"><div class="mk">N</div><div class="nm">研擎</div></div>
-  <div class="fv4">
+  <svg class="netbg" viewBox="0 0 794 1123" preserveAspectRatio="xMidYMid slice">
+    <g stroke="rgba(159,192,255,.35)" stroke-width="1">
+      <line x1="80" y1="180" x2="220" y2="120"/><line x1="220" y1="120" x2="360" y2="170"/>
+      <line x1="560" y1="920" x2="680" y2="850"/><line x1="680" y1="850" x2="740" y2="960"/>
+      <line x1="90" y1="930" x2="200" y2="990"/><line x1="200" y1="990" x2="330" y2="940"/>
+    </g>
+    <g fill="#8FA3D9" opacity=".8">
+      <circle cx="80" cy="180" r="2.5"/><circle cx="220" cy="120" r="3"/><circle cx="360" cy="170" r="2.5"/>
+      <circle cx="560" cy="920" r="3"/><circle cx="680" cy="850" r="2.5"/><circle cx="740" cy="960" r="2.5"/>
+      <circle cx="90" cy="930" r="2.5"/><circle cx="200" cy="990" r="3"/><circle cx="330" cy="940" r="2.5"/>
+      <circle cx="640" cy="200" r="1.6"/><circle cx="150" cy="560" r="1.6"/><circle cx="680" cy="520" r="1.6"/>
+    </g>
+  </svg>
+  <div class="z logo-c"><div class="mk">N</div><div class="nm">研擎</div></div>
+  <div class="z fv4">
     <div class="f"><div class="ic">🔭</div><b>深入科研</b><div class="ln"></div><span>聚焦高校院所<br>的科研需求</span></div>
     <div class="f"><div class="ic">📊</div><b>参与决策</b><div class="ln"></div><span>让 AI 真正参与<br>科研决策</span></div>
     <div class="f"><div class="ic">⚡</div><b>推动执行</b><div class="ln"></div><span>以 AI 重构<br>科研协作方式</span></div>
     <div class="f"><div class="ic">🌍</div><b>走向世界</b><div class="ln"></div><span>助力中国科研<br>提升全球竞争力</span></div>
   </div>
-  <div class="searchbar"><span class="s">🔍</span><span>|</span><b>在线演示</b><span>|</span><span>jennyyang58.github.io/AIIC-personal-product/app.html</span></div>
-  <div class="qrs">
+  <div class="z searchbar"><span class="s">🔍</span><span>|</span><b>在线演示</b><span>|</span><span>jennyyang58.github.io/AIIC-personal-product/app.html</span></div>
+  <div class="z qrs">
     <div class="q"><div class="box">公众号<br>二维码</div><span>公众号二维码</span></div>
     <div class="q"><div class="box">交流群<br>二维码</div><span>研擎交流群</span></div>
   </div>
-  <div class="contact">
+  <div class="z contact">
     <span>地址：<b>清华大学深圳国际研究生院</b></span>
     <span>联系人：<b>杨女士</b></span>
     <span>电话：<b>198 0211 5986</b></span>
