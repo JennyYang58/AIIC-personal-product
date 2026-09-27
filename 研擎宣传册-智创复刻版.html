@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>研擎 NebulaLab · 宣传册（智创复刻 · 模板配色 · 丰富插图版）</title>
+<title>研擎 NebulaLab · 宣传册（智创结构一比一复刻 · 模板配色版）</title>
 <style>
 /* ================================================================
-   智创星云结构复刻 + 模板配色（白底+清华蓝）+ 代码生成矢量插图版
-   字号体系：按原版 PDF 实测比例（900 特粗标题 / 300 细正文）
+   结构一比一复刻智创星云宣传册（6 页），配色沿用本 MVP：白底 + 清华蓝
+   封面/尾页：深蓝渐变；内页：白底浅卡；无内页页眉页脚（对齐参考册）
    ================================================================ */
 @page { size: A4; margin: 0; }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -23,249 +23,258 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 @media screen{ body{padding:14px} .page{ margin:0 auto 14px; box-shadow:0 8px 36px rgba(22,48,111,.16);} }
 @media print{ body{padding:0} .page{ margin:0; box-shadow:none; } }
 
-.bb{ display:flex; align-items:center; justify-content:space-between; padding:8mm 10mm 0; flex:none; position:relative; z-index:5 }
-.brand{ display:flex; align-items:center; gap:9px; }
-.mk{ width:30px; height:30px; background:var(--blue); color:#fff; border-radius:8px; display:grid; place-items:center;
-  font-weight:900; font-size:15px; }
-.mk.w{ background:#fff; color:var(--blue); }
-.bn{ font-size:15px; font-weight:700; color:var(--blue); }
-.bn span{ font-weight:300; font-size:9.5px; color:var(--faint); margin-left:6px; letter-spacing:.22em; }
-.pn{ font-size:8.5px; font-weight:300; color:var(--faint); letter-spacing:.3em; }
-.page.on-blue .bn{ color:#fff; } .page.on-blue .bn span{ color:#8FA3D9; }
-.page.on-blue .pn{ color:#8FA3D9; }
-
-.ct{ text-align:center; font-weight:900; color:var(--blue); }
-.ct.big{ font-size:42px; letter-spacing:.02em; }
-.ct.mid{ font-size:36px; font-weight:900; color:var(--blue); }
-.ct.s{ font-size:20px; font-weight:300; color:var(--mut); margin-top:2mm; letter-spacing:.1em; }
-.ct.tiny{ font-size:18px; font-weight:700; color:var(--ink); margin-top:5mm; }
-.body{ padding:0 10mm; position:relative; z-index:2 }
-.itile{ border-radius:13px; background:linear-gradient(135deg,#EDF2FB,#E3EAF7); border:1px solid #D8E1F2;
-  display:grid; place-items:center; flex:none; }
 .card{ background:var(--tint); border:1px solid var(--line); border-radius:11px; }
 .solid{ background:var(--blue); color:#fff; border-radius:11px; }
-.ar{ color:#B7C2D9; font-weight:300; display:grid; place-items:center; }
-.rel{ position:relative }
-.illus{ display:block }
+
+/* ---- 标题体系（对齐参考册：产品名特大 / 副题加粗 / 小节标题次之） ---- */
+.ct{ text-align:center; font-weight:900; color:var(--blue); }
+.ct.big{ font-size:44px; letter-spacing:.02em; }
+.ct.s{ font-size:22px; font-weight:500; color:#46557A; margin-top:2.5mm; letter-spacing:.04em; }
+.ct.tag{ font-size:20px; font-weight:700; color:var(--ink); margin-top:4.5mm; }
+.ct.mid{ font-size:38px; font-weight:900; color:var(--blue); }
+.ct.s2{ font-size:20px; font-weight:500; color:#46557A; margin-top:2mm; }
+.body{ padding:0 10mm; position:relative; z-index:2 }
 
 /* ============ P1 封面 ============ */
 .p1{ background:linear-gradient(168deg,var(--deep) 0%,var(--blue) 62%,#24499F 100%); color:#fff; }
 .p1 .nebula{ position:absolute; inset:0; z-index:1 }
-.p1 .mid{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 15mm; position:relative; z-index:3 }
-.p1 .kk{ font-size:10px; font-weight:300; color:#8FA3D9; letter-spacing:.5em; }
-.p1 h1{ margin:8mm 0 6mm; }
-.p1 h1 .w9{ display:block; font-size:74px; font-weight:900; letter-spacing:.02em; line-height:1.22; }
-.p1 h1 .w3{ display:block; font-size:64px; font-weight:900; letter-spacing:.05em; line-height:1.3; color:#AFC6FF; }
-.p1 .en{ font-size:9px; font-weight:300; color:#8FA3D9; letter-spacing:.36em; }
-.p1 .zh{ margin-top:6mm; font-size:12px; font-weight:300; color:#C9D5F2; letter-spacing:.18em; }
-.p1 .zh b{ font-weight:700; color:#fff; }
-.p1 .foot{ flex:none; display:flex; justify-content:space-between; align-items:flex-end; padding:0 15mm 9mm;
-  font-size:9px; font-weight:300; color:#8FA3D9; position:relative; z-index:3 }
-.p1 .foot .r{ text-align:right; letter-spacing:.18em; line-height:1.7 }
-.p1 .bb{ padding:8mm 15mm 0; position:relative; z-index:3 }
+.p1 .top{ display:flex; align-items:center; gap:11px; padding:11mm 15mm 0; position:relative; z-index:5 }
+.p1 .mk{ width:36px; height:36px; background:#fff; color:var(--blue); border-radius:9px; display:grid; place-items:center;
+  font-weight:900; font-size:18px; }
+.p1 .bn{ font-size:23px; font-weight:700; letter-spacing:.04em; }
+.p1 .bn span{ font-weight:300; font-size:10px; color:#8FA3D9; margin-left:9px; letter-spacing:.26em; }
+.p1 .mid{ flex:none; padding:16mm 15mm 0; position:relative; z-index:3 }
+.p1 h1 .w{ display:block; font-size:84px; font-weight:900; letter-spacing:.02em; line-height:1.24; color:#fff; }
+.p1 .sub{ margin-top:7mm; font-size:26px; font-weight:500; color:#EAF0FC; letter-spacing:.06em; }
+.p1 .orb{ position:relative; flex:1; margin:0 15mm; z-index:3 }
+.p1 .ring{ position:absolute; left:50%; top:52%; border:1px solid rgba(255,255,255,.30); border-radius:50%; }
+.p1 .ring.r1{ width:170mm; height:64mm; transform:translate(-50%,-50%) rotate(-13deg); }
+.p1 .ring.r2{ width:128mm; height:46mm; transform:translate(-50%,-50%) rotate(-13deg);
+  border-style:dashed; border-color:rgba(255,255,255,.24); }
+.p1 .ring.r3{ width:210mm; height:84mm; transform:translate(-50%,-50%) rotate(-13deg);
+  border-color:rgba(255,255,255,.14); }
+.p1 .odot{ position:absolute; width:5px; height:5px; border-radius:50%; background:rgba(191,211,255,.85); }
+.p1 .sphere{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:56mm; height:56mm;
+  border-radius:50%; background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),rgba(255,255,255,.05) 62%);
+  border:1.5px solid rgba(255,255,255,.60); display:grid; place-items:center;
+  box-shadow:0 0 26mm rgba(120,165,255,.45), inset 0 0 12mm rgba(255,255,255,.14); z-index:4 }
+.p1 .sphere b{ font-size:38px; font-weight:900; color:#fff; }
+.p1 .slabel{ position:absolute; left:50%; top:50%; transform:translate(-50%,44mm); z-index:4;
+  font-size:17px; font-weight:900; letter-spacing:.06em; text-shadow:0 2px 10px rgba(10,22,58,.5); }
+.p1 .pane{ position:absolute; z-index:5; display:flex; align-items:center; gap:3.2mm; padding:4mm 5.5mm;
+  background:rgba(255,255,255,.11); border:1px solid rgba(255,255,255,.45); border-radius:4mm;
+  box-shadow:0 4mm 12mm rgba(10,22,58,.28); }
+.p1 .pane .ic{ font-size:21px; }
+.p1 .pane span{ display:block; font-size:9px; font-weight:300; color:#C9D5F2; letter-spacing:.14em; }
+.p1 .pane b{ display:block; font-size:16.5px; font-weight:700; letter-spacing:.03em; }
 
-.orb{ position:relative; height:74mm; margin:5mm 12mm 0; z-index:3 }
-.orb .o1{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:52mm; height:52mm;
-  border:1.5px solid rgba(255,255,255,.32); border-radius:50%; }
-.orb .o2{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:80mm; height:80mm;
-  border:1px dashed rgba(255,255,255,.25); border-radius:50%; }
-.orb .core{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:28mm; height:28mm;
-  border-radius:50%; background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.25),rgba(255,255,255,.06));
-  border:1.5px solid rgba(255,255,255,.55); display:grid; place-items:center; text-align:center;
-  box-shadow:0 0 20mm rgba(159,192,255,.35); }
-.orb .core b{ font-size:11.5px; font-weight:900; letter-spacing:.03em }
-.orb .core span{ display:block; font-size:7px; font-weight:300; color:#C9D5F2; margin-top:1px; }
-.orb .g{ position:absolute; width:35mm; padding:2.8mm 0 2.4mm; text-align:center; background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.38); border-radius:3mm; }
-.orb .g b{ display:block; font-size:11px; font-weight:700; }
-.orb .g span{ display:block; font-size:7px; font-weight:300; color:#C9D5F2; margin-top:.6mm; }
-
-/* ============ P2 ============ */
-.bigclaw{ display:flex; margin:7mm 10mm 0; border-radius:14px; overflow:hidden; }
-.bigclaw .lft{ width:37%; background:radial-gradient(circle at 60% 40%,#1A2C6B,var(--deep) 75%);
-  display:grid; place-items:center; padding:6mm 4mm; }
-.bigclaw .rgt{ flex:1; padding:9mm 10mm; }
-.bigclaw h3{ font-size:32px; font-weight:900; }
-.bigclaw h5{ font-size:21px; font-weight:700; color:#C9D5F2; margin:2mm 0 4.5mm; letter-spacing:.04em; }
-.bigclaw p{ font-size:15px; font-weight:400; color:#EAF0FC; line-height:1.9; }
-.bigclaw .tg{ margin-top:7mm; font-size:12.5px; font-weight:500; letter-spacing:.2em; color:#fff; }
-.claw-stats{ display:flex; gap:8px; margin-top:6mm; }
-.claw-stats .cs{ flex:1; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.25);
-  border-radius:9px; padding:6px 8px; text-align:center; }
-.claw-stats .cs b{ display:block; font-size:13px; font-weight:900; color:#fff; }
-.claw-stats .cs span{ font-size:7.5px; font-weight:300; color:#B9C8EE; }
-.four{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8mm 10mm 0; }
-.four .f{ display:flex; gap:14px; padding:15px 16px; align-items:center; }
-.four .f .itile{ width:52px; height:52px; font-size:26px; }
-.four .f b{ font-size:15px; font-weight:700; color:var(--blue); display:block; }
-.four .f i{ font-style:normal; font-size:11px; font-weight:500; color:var(--ink); display:block; margin:1px 0 3px; }
-.four .f span{ font-size:9.8px; font-weight:300; color:var(--mut); line-height:1.6; display:block; }
-.p2low{ display:flex; margin:10mm 10mm 0; }
-.p2low .lft{ flex:1; padding-right:9mm; }
+/* ============ P2 一站汇聚 ============ */
+.bigclaw{ display:flex; margin:9mm 11mm 0; border-radius:14px; overflow:hidden;
+  background:linear-gradient(135deg,#1E3A85,var(--deep) 75%); }
+.bigclaw .lft{ width:36%; background:radial-gradient(circle at 60% 40%,rgba(62,123,250,.35),rgba(22,48,111,0) 72%);
+  display:grid; place-items:center; padding:7mm 4mm; }
+.bigclaw .rgt{ flex:1; padding:10mm 11mm; }
+.bigclaw h3{ font-size:35px; font-weight:900; color:#fff; }
+.bigclaw h5{ font-size:22px; font-weight:700; color:#C9D5F2; margin:2mm 0 5mm; letter-spacing:.04em; }
+.bigclaw p{ font-size:14.5px; font-weight:400; color:#EAF0FC; line-height:1.9; }
+.bigclaw .tg{ margin-top:8mm; font-size:13px; font-weight:500; letter-spacing:.2em; color:#fff; }
+.four{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:9mm 11mm 0; }
+.four .f{ display:flex; gap:15px; padding:17px 18px; align-items:center; }
+.four .f .itile{ width:56px; height:56px; font-size:28px; }
+.four .f b{ font-size:16.5px; font-weight:700; color:var(--blue); display:block; }
+.four .f i{ font-style:normal; font-size:12.5px; font-weight:700; color:var(--ink); display:block; margin:1px 0 3px; }
+.four .f span{ font-size:10.5px; font-weight:300; color:var(--mut); line-height:1.65; display:block; }
+.p2mid{ margin-top:12mm; }
+.p2low{ display:flex; margin:11mm 13mm 0; }
+.p2low .lft{ flex:1; padding-right:10mm; }
 .p2low .lft .it{ margin-bottom:9mm; }
-.p2low .lft .it b{ font-size:19px; font-weight:900; color:var(--ink); display:block; }
-.p2low .lft .it span{ font-size:10.5px; font-weight:300; color:var(--mut); }
+.p2low .lft .it b{ font-size:21px; font-weight:900; color:var(--ink); display:block; }
+.p2low .lft .it span{ font-size:11px; font-weight:300; color:var(--mut); }
 .p2low .div{ width:1px; background:var(--line); }
-.p2low .rgt{ flex:1.1; padding-left:9mm; display:grid; grid-template-columns:1fr 1fr; gap:10mm 5mm; }
+.p2low .rgt{ flex:1.15; padding-left:10mm; display:grid; grid-template-columns:1fr 1fr; gap:9mm 5mm; }
 .p2low .rgt .g4{ text-align:center; }
-.p2low .rgt .g4 .itile{ width:50px; height:50px; margin:0 auto 5px; font-size:24px; }
-.p2low .rgt .g4 b{ font-size:14px; font-weight:900; display:block; }
-.p2low .rgt .g4 span{ font-size:10px; font-weight:300; color:var(--mut); }
+.p2low .rgt .g4 .itile{ width:54px; height:54px; margin:0 auto 6px; font-size:26px; }
+.p2low .rgt .g4 b{ font-size:15.5px; font-weight:900; display:block; }
+.p2low .rgt .g4 span{ font-size:10.5px; font-weight:300; color:var(--mut); }
+.itile{ border-radius:13px; background:linear-gradient(135deg,#EDF2FB,#E3EAF7); border:1px solid #D8E1F2;
+  display:grid; place-items:center; flex:none; }
 
-/* ============ P3 ============ */
-.mods10{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:4mm 10mm 0; }
-.mods10 .m{ padding:9px 9px; border-radius:10px; }
-.mods10 .m .e{ font-size:19px; display:block; margin-bottom:3px; }
-.mods10 .m b{ font-size:12px; font-weight:700; display:block; }
-.mods10 .m span{ font-size:8.2px; font-weight:300; color:var(--mut); display:block; margin-top:2px; letter-spacing:.02em; }
-.loop{ position:relative; height:44mm; margin:3mm 12mm 0; border:1.5px solid var(--blue); border-radius:22mm;
+/* ============ P3 ERP + Studio ============ */
+.mods10{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:4mm 11mm 0; }
+.mods10 .m{ padding:10px 11px; border-radius:11px; }
+.mods10 .m .hd{ display:flex; align-items:center; gap:7px; margin-bottom:4px; }
+.mods10 .m .e{ font-size:17px; line-height:1; }
+.mods10 .m b{ font-size:13px; font-weight:700; display:block; }
+.mods10 .m span{ font-size:8.4px; font-weight:300; color:var(--mut); display:block; letter-spacing:.02em; line-height:1.5; }
+.loop{ position:relative; height:45mm; margin:6mm 13mm 0; border:1.5px solid var(--blue); border-radius:22.5mm;
   background:linear-gradient(180deg,#FAFCFF,#F1F5FC); }
 .loop .nd{ position:absolute; width:120px; text-align:center; transform:translate(-50%,-50%); }
-.loop .nd .c{ width:30px; height:30px; line-height:28px; margin:0 auto 3px; border-radius:50%;
-  border:1.5px solid var(--blue); color:var(--blue); font-size:12.5px; font-weight:700; background:#fff;
+.loop .nd .c{ width:31px; height:31px; line-height:29px; margin:0 auto 3px; border-radius:50%;
+  border:1.5px solid var(--blue); color:var(--blue); font-size:13px; font-weight:700; background:#fff;
   box-shadow:0 0 0 4px rgba(31,65,155,.08); }
-.loop .nd b{ font-size:13px; font-weight:700; display:block; }
-.loop .midq{ position:absolute; left:50%; top:47%; transform:translate(-50%,-50%); text-align:center; width:86%; }
-.loop .midq b{ font-size:18px; font-weight:900; color:var(--ink); }
-.loop .midq div{ font-size:9px; font-weight:300; color:var(--faint); margin-top:1.5mm; }
-.tri3{ display:flex; gap:8px; margin:3mm 10mm 0; }
-.tri3 .t{ flex:1; text-align:center; padding:10px 6px; }
-.tri3 .t b{ font-size:14px; font-weight:900; color:var(--blue); display:block; }
-.tri3 .t span{ font-size:8.8px; font-weight:300; color:var(--mut); }
-.stu4{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin:3mm 10mm 0; }
-.stu4 .s{ border-radius:11px; overflow:hidden; }
-.stu4 .s .th{ height:13mm; display:grid; place-items:center; font-size:19px; }
-.stu4 .s .bd{ padding:9px 12px 11px; background:var(--tint); border:1px solid var(--line); border-top:none; }
-.stu4 .s .hd{ display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
-.stu4 .s .hd b{ font-size:12px; font-weight:700; color:var(--ink); }
+.loop .nd b{ font-size:13.5px; font-weight:700; display:block; }
+.loop .midq{ position:absolute; left:50%; top:51%; transform:translate(-50%,-50%); text-align:center; width:82%; }
+.loop .midq b{ font-size:19px; font-weight:900; color:var(--ink); }
+.loop .midq div{ font-size:9.5px; font-weight:400; color:#66708A; margin-top:1.5mm; }
+.loop .ar{ position:absolute; color:var(--blue); font-size:12px; line-height:1; }
+.tri3{ display:flex; gap:9px; margin:4mm 11mm 0; }
+.tri3 .t{ flex:1; text-align:center; padding:10px 8px; }
+.tri3 .t b{ font-size:15px; font-weight:900; color:var(--blue); display:block; }
+.tri3 .t span{ font-size:9.2px; font-weight:300; color:var(--mut); }
+.stu4{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin:4mm 11mm 0; }
+.stu4 .s{ padding:12px 13px 13px; }
+.stu4 .s .hd{ display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+.stu4 .s .hd .e{ width:26px; height:26px; border-radius:7px; display:grid; place-items:center; font-size:14px;
+  background:linear-gradient(135deg,#E3EBFA,#D5E2F6); border:1px solid #C9D6EE; }
+.stu4 .s .hd b{ font-size:14px; font-weight:700; color:var(--ink); flex:1; }
 .stu4 .s .hd span{ font-size:8.5px; font-weight:500; color:var(--blue); background:#fff; border:1px solid var(--blue);
-  padding:1.5px 9px; border-radius:999px; }
-.stu4 .s p{ font-size:9px; font-weight:300; color:var(--mut); line-height:1.65; }
-.chain4{ display:flex; align-items:stretch; margin:3mm 10mm 0; }
-.chain4 .c4{ flex:1; text-align:center; padding:9px 4px; }
-.chain4 .c4 .n{ font-size:17px; font-weight:300; color:var(--blue); }
-.chain4 .c4 b{ display:block; font-size:12.5px; font-weight:700; margin:1px 0; }
-.chain4 .c4 span{ font-size:8.8px; font-weight:300; color:var(--mut); }
-.chain4 .a{ width:16px; display:grid; place-items:center; color:#B7C2D9; font-weight:300; }
-.databar{ display:flex; margin:3mm 10mm 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-.databar .d{ flex:1; text-align:center; padding:9px 4px; border-right:1px solid var(--line); }
+  padding:1.5px 8px; border-radius:999px; white-space:nowrap; }
+.stu4 .s p{ font-size:9.4px; font-weight:300; color:var(--mut); line-height:1.7; }
+.chain4{ display:flex; align-items:stretch; margin:4mm 11mm 0; }
+.chain4 .c4{ flex:1; text-align:center; }
+.chain4 .c4 .tt{ font-size:12.5px; font-weight:500; color:var(--ink); }
+.chain4 .c4 .tt .n{ font-size:15px; font-weight:900; color:var(--blue); margin-right:5px; }
+.chain4 .c4 .tt b{ font-weight:700; }
+.chain4 .c4 span.ds{ display:block; font-size:8.8px; font-weight:300; color:var(--mut); margin:1px 0 3px; }
+.chain4 .c4 .th{ height:23mm; border-radius:9px; border:1px solid #D8E1F2; background:linear-gradient(160deg,#F6F9FE,#E9F0FA);
+  display:grid; place-items:center; overflow:hidden; }
+.chain4 .c4 .th svg{ width:92%; height:88%; }
+.chain4 .a{ width:15px; display:grid; place-items:center; color:#B7C2D9; font-weight:300; font-size:13px; }
+.databar{ display:flex; margin:4mm 11mm 0; border:1px solid var(--line); border-radius:11px; overflow:hidden;
+  background:var(--tint); }
+.databar .d{ flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:9px 4px;
+  border-right:1px solid var(--line); }
 .databar .d:last-child{ border-right:none; }
-.databar .d b{ font-size:21px; font-weight:900; color:var(--blue); }
-.databar .d span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
+.databar .d b.n{ font-size:23px; font-weight:900; color:var(--blue); }
+.databar .d .tx b{ display:block; font-size:11.5px; font-weight:700; color:var(--ink); }
+.databar .d .tx span{ display:block; font-size:8.2px; font-weight:300; color:var(--mut); margin-top:1px; }
 
-/* ============ P4 ============ */
-.vals5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 10mm 0; }
-.vals5 .v{ text-align:center; padding:13px 9px 12px; border-radius:10px; }
-.vals5 .v .itile{ width:48px; height:48px; margin:0 auto 7px; font-size:24px; }
-.vals5 .v b{ display:block; font-size:14px; font-weight:900; margin:0 0 3px; }
-.vals5 .v p{ font-size:9.3px; font-weight:300; color:var(--mut); line-height:1.6; min-height:42px; }
+/* ============ P4 投稿 + 慧眼 ============ */
+.vals5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 11mm 0; }
+.vals5 .v{ text-align:center; padding:14px 9px 13px; border-radius:10px; }
+.vals5 .v .itile{ width:48px; height:48px; margin:0 auto 7px; font-size:24px; border-radius:12px;
+  background:linear-gradient(135deg,#EDF2FB,#E3EAF7); border:1px solid #D8E1F2; display:grid; place-items:center; }
+.vals5 .v b{ display:block; font-size:14.5px; font-weight:900; margin:0 0 3px; color:var(--ink); }
+.vals5 .v p{ font-size:9.3px; font-weight:300; color:var(--mut); line-height:1.6; min-height:44px; }
 .vals5 .v .tg{ margin-top:4px; font-size:8.8px; font-weight:500; color:var(--blue); letter-spacing:.1em; }
-.psix{ display:flex; margin:5mm 10mm 0; }
-.psix .p{ flex:1; text-align:center; padding:11px 3px; border-radius:10px; }
-.psix .p .n{ width:30px; height:30px; line-height:28px; margin:0 auto 5px; border-radius:50%;
-  border:1.5px solid var(--blue); color:var(--blue); font-size:12.5px; font-weight:700; background:#fff; }
-.psix .p b{ display:block; font-size:13px; font-weight:700; }
-.psix .p span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
-.cover-line{ text-align:center; font-size:9.5px; font-weight:300; color:var(--faint); margin:3.5mm 10mm 0; letter-spacing:.08em; }
-.p4low{ display:flex; gap:10mm; margin:5mm 10mm 0; }
-.p4low .lft{ width:72mm; flex:none; }
-.p4low .lft .sub-t{ font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:4mm; }
+.psix{ display:flex; gap:8px; margin:4mm 11mm 0; }
+.psix .p{ flex:1; text-align:left; padding:10px 11px; }
+.psix .p .tt{ font-size:12.5px; color:var(--ink); white-space:nowrap; }
+.psix .p .tt .n{ font-size:14px; font-weight:300; color:var(--blue); margin-right:4px; }
+.psix .p .tt b{ font-weight:700; }
+.psix .p span{ display:block; font-size:8.8px; font-weight:400; color:#59637D; margin-top:3px; }
+.cover-line{ text-align:center; font-size:9.5px; font-weight:300; color:var(--faint); margin:3.5mm 11mm 0; letter-spacing:.08em; }
+.p4low{ display:flex; gap:9mm; margin:4mm 13mm 0; }
+.p4low .lft{ width:70mm; flex:none; }
+.p4low .sub-t{ font-size:16px; font-weight:900; color:var(--ink); margin-bottom:3.5mm; }
 .p4low .lft .hl{ padding:11px 13px; margin-bottom:8px; border-radius:10px; display:flex; gap:12px; align-items:baseline; }
 .p4low .lft .hl .n{ font-size:22px; font-weight:300; color:var(--blue); flex:none; }
 .p4low .lft .hl b{ font-size:12.5px; font-weight:700; display:block; }
 .p4low .lft .hl span{ font-size:9.3px; font-weight:300; color:var(--mut); line-height:1.6; display:block; margin-top:2px; }
-.p4low .rgt{ flex:1; position:relative; height:76mm; }
-.p4low .rgt .sub-t{ font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:2mm; }
-.p4low .rgt .fw{ position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); width:66mm; height:66mm; }
-.p4low .rgt .nd{ position:absolute; width:76px; transform:translate(-50%,-50%); text-align:center; z-index:2 }
-.p4low .rgt .nd .c{ width:30px; height:30px; line-height:30px; margin:0 auto 3px; border-radius:50%;
-  background:var(--blue); color:#fff; font-size:12px; font-weight:700; box-shadow:0 0 0 4px rgba(31,65,155,.10); }
-.p4low .rgt .nd b{ font-size:10.5px; font-weight:700; display:block; }
-.p4low .rgt .ctr{ position:absolute; left:50%; top:55%; transform:translate(-50%,-50%); width:110px; text-align:center; z-index:2 }
-.p4low .rgt .ctr b{ font-size:13px; font-weight:900; color:var(--blue); display:block; }
-.p4low .rgt .ctr span{ font-size:8px; font-weight:300; color:var(--faint); }
-.endnote{ text-align:center; font-size:11.5px; font-weight:500; color:var(--blue); letter-spacing:.12em; margin-top:4mm; }
-.databar{ display:flex; margin:4mm 10mm 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-.databar .d{ flex:1; text-align:center; padding:10px 4px; border-right:1px solid var(--line); }
-.databar .d:last-child{ border-right:none; }
-.databar .d b{ font-size:22px; font-weight:900; color:var(--blue); }
-.databar .d span{ display:block; font-size:9px; font-weight:300; color:var(--mut); margin-top:1px; }
+.p4low .rgt{ flex:1; }
+.p4low .rgt .flow{ display:flex; align-items:center; gap:3mm; margin-top:2mm; }
+.phone{ width:26mm; height:46mm; flex:none; border:1.5px solid #B9C8EE; border-radius:4.5mm; background:#fff;
+  box-shadow:0 3mm 9mm rgba(22,48,111,.10); padding:2.4mm; display:flex; flex-direction:column; overflow:hidden; }
+.phone .pt{ font-size:8.8px; font-weight:700; color:var(--ink); text-align:center; padding-bottom:1.8mm;
+  border-bottom:1px solid var(--line); margin-bottom:2mm; }
+.phone .row{ display:flex; align-items:center; gap:4px; margin-bottom:1.8mm; line-height:1.3; }
+.phone .row i{ width:6px; height:6px; border-radius:2px; background:#3E7BFA; flex:none; }
+.phone .row i.g{ background:#22A39A; } .phone .row i.o{ background:#E8A23C; }
+.phone .row div{ flex:1; min-width:0; }
+.phone .row b{ display:block; font-size:7.2px; font-weight:700; color:var(--ink); }
+.phone .row span{ display:block; font-size:6.4px; font-weight:300; color:var(--mut); }
+.phone .bars{ margin-top:auto; display:flex; align-items:flex-end; gap:3px; height:9mm; padding:1.8mm 1mm 0;
+  border-top:1px dashed var(--line); }
+.phone .bars i{ flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,#3E7BFA,#8FB0F5); }
+.phone .ic3{ display:flex; justify-content:space-around; margin-top:2.2mm; text-align:center; }
+.phone .ic3 .c{ width:7mm; height:7mm; border-radius:50%; background:var(--tint2); border:1px solid #D8E1F2;
+  display:grid; place-items:center; font-size:10px; margin:0 auto 1.2mm; }
+.phone .ic3 span{ font-size:6.4px; font-weight:500; color:var(--mut); }
+.fwwrap{ flex:1; display:grid; place-items:center; }
+.fwwrap svg{ width:100%; max-width:60mm; }
+.endnote{ text-align:center; font-size:12px; font-weight:500; color:var(--blue); letter-spacing:.12em; margin-top:4.5mm; }
 
-/* ============ P5 ============ */
-.cf5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 10mm 0; }
-.cf5 .c{ text-align:center; padding:14px 10px 12px; border-radius:11px; }
-.cf5 .c .no{ font-size:9px; font-weight:300; color:var(--faint); letter-spacing:.34em; }
-.cf5 .c .itile{ width:48px; height:48px; margin:6px auto 8px; font-size:24px; }
-.cf5 .c b{ display:block; font-size:13px; font-weight:700; margin-bottom:3px; }
-.cf5 .c p{ font-size:9px; font-weight:300; color:var(--mut); line-height:1.65; }
-.ellipse{ position:relative; height:62mm; margin:2mm 12mm 0; }
-.ellipse .el{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100%; height:44mm;
-  border:1.5px solid var(--blue); border-radius:50%; }
-.ellipse .arc{ position:absolute; font-size:12px; font-weight:500; color:var(--blue); letter-spacing:.24em; }
+/* ============ P5 Claw ============ */
+.cf5{ display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:5mm 11mm 0; }
+.cf5 .c{ text-align:center; padding:12px 10px 13px; border-radius:11px; }
+.cf5 .c .tt{ font-size:12.5px; color:var(--ink); white-space:nowrap; }
+.cf5 .c .tt .n{ font-size:14px; font-weight:300; color:var(--blue); margin-right:4px; }
+.cf5 .c .tt b{ font-weight:700; }
+.cf5 .c .itile{ width:52px; height:52px; margin:8px auto; font-size:26px; }
+.cf5 .c p{ font-size:9.2px; font-weight:300; color:var(--mut); line-height:1.68; text-align:left; }
+.blk{ display:flex; align-items:baseline; justify-content:center; gap:12px; }
+.blk h4{ font-size:22px; font-weight:900; color:var(--ink); }
+.blk span{ font-size:12px; font-weight:300; color:var(--mut); }
+.ellipse{ position:relative; height:56mm; margin:2mm 14mm 0; }
+.ellipse svg.elarc{ position:absolute; inset:0; width:100%; height:100%; }
+.ellipse .arc{ position:absolute; font-size:12.5px; font-weight:500; color:var(--blue); letter-spacing:.24em; }
 .ellipse .item{ position:absolute; top:50%; transform:translate(-50%,-50%); background:#fff; border:1px solid var(--line);
-  border-radius:12px; padding:10px 15px; display:flex; gap:9px; align-items:center; white-space:nowrap;
-  box-shadow:0 6px 18px rgba(22,48,111,.10); }
-.ellipse .item .ic{ width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-size:16px; }
+  border-radius:12px; padding:9px 16px; display:flex; gap:9px; align-items:center; white-space:nowrap;
+  box-shadow:0 5px 16px rgba(22,48,111,.10); }
+.ellipse .item .ic{ width:28px; height:28px; border-radius:8px; display:grid; place-items:center; font-size:15px; }
 .ellipse .item b{ font-size:13.5px; font-weight:700; color:var(--ink); }
-.exp8{ display:flex; justify-content:center; gap:14px; margin:4mm 10mm 0; }
+.exp8{ display:flex; justify-content:center; gap:13px; margin:3mm 11mm 0; }
 .exp8 .e{ text-align:center; width:48px; }
 .exp8 .e .c{ width:52px; height:52px; margin:0 auto; border-radius:50%;
   background:linear-gradient(135deg,#EDF2FB,#DCE6F8); border:1px solid #C9D6EE;
   display:grid; place-items:center; font-size:25px; }
 .exp8 .e b{ display:block; font-size:10px; font-weight:500; color:var(--ink); margin-top:4px; white-space:nowrap; }
-.onec{ display:flex; gap:10px; margin:5mm 10mm 0; }
-.onec .lft{ flex:1.25; border-radius:12px; overflow:hidden; display:flex; flex-direction:column }
-.onec .lft .txt{ padding:12px 16px 10px; }
-.onec .lft h5{ font-size:16px; font-weight:900; margin-bottom:4px; }
-.onec .lft .q{ font-size:11px; font-weight:300; color:#DCE5F7; line-height:1.8; }
+.onec{ display:flex; gap:11px; margin:4mm 11mm 0; }
+.onec .lft{ flex:1.3; border-radius:12px; overflow:hidden; display:flex; flex-direction:column }
+.onec .lft .txt{ padding:11px 16px 9px; }
+.onec .lft h5{ font-size:16.5px; font-weight:900; margin-bottom:4px; }
+.onec .lft .q{ font-size:10.5px; font-weight:300; color:#DCE5F7; line-height:1.75; }
 .onec .lft .q b{ font-weight:700; color:#fff; }
-.mock{ flex:1; margin:0 10px 10px; background:#0B1830; border-radius:9px; overflow:hidden;
-  border:1px solid rgba(255,255,255,.14); }
-.mock .mbar{ display:flex; gap:4px; align-items:center; padding:6px 9px; background:#0E1F42; }
-.mock .mbar i{ width:6px; height:6px; border-radius:50%; background:#3D4E85; }
-.mock .mbar span{ margin-left:5px; font-size:7px; color:#8FA0C9; letter-spacing:.08em; }
-.mock .mrow{ display:flex; gap:7px; padding:8px 9px; }
-.mock .mstats{ flex:1.1; display:grid; gap:5px; }
-.mock .mstat{ background:#12224A; border-radius:6px; padding:5px 7px; }
-.mock .mstat b{ display:block; font-size:9.5px; font-weight:800; color:#7EE7F7; }
-.mock .mstat span{ font-size:6.5px; color:#8FA0C9; }
-.mock .mbars{ flex:1; display:flex; align-items:flex-end; gap:5px; padding:4px 6px; background:#12224A; border-radius:6px; }
-.mock .mbars i{ flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,#3E7BFA,#22D3EE); }
+.mock{ flex:1; margin:0 11px 11px; background:#F7F9FD; border-radius:9px; overflow:hidden;
+  border:1px solid #D8E1F2; display:flex; flex-direction:column; }
+.mock .mbar{ display:flex; gap:4px; align-items:center; padding:5px 9px; background:#fff; border-bottom:1px solid var(--line); }
+.mock .mbar i{ width:6px; height:6px; border-radius:50%; background:#C9D6EE; }
+.mock .mbar span{ margin-left:6px; font-size:7px; color:#66708A; letter-spacing:.06em; }
+.mock .mbody{ flex:1; display:flex; gap:7px; padding:8px 9px; }
+.mock .mside{ width:26%; background:#fff; border:1px solid var(--line); border-radius:6px; padding:5px; }
+.mock .mside i{ display:block; height:6px; border-radius:3px; background:#E3EBFA; margin-bottom:5px; }
+.mock .mside i.on{ background:var(--blue); }
+.mock .mmain{ flex:1; background:#fff; border:1px solid var(--line); border-radius:6px; padding:6px 8px; }
+.mock .mmain .tt{ font-size:7.5px; font-weight:700; color:#20293E; margin-bottom:4px; }
+.mock .mrow{ display:flex; gap:5px; margin-bottom:5px; }
+.mock .mstat{ flex:1; background:#F3F6FC; border:1px solid #E0E6F0; border-radius:5px; padding:4px 6px; }
+.mock .mstat b{ display:block; font-size:9px; font-weight:800; color:#1F419B; }
+.mock .mstat span{ font-size:6.2px; color:#66708A; }
+.mock .mbars{ display:flex; align-items:flex-end; gap:4px; height:11mm; padding:2px 2px 0; }
+.mock .mbars i{ flex:1; border-radius:2px 2px 0 0; background:linear-gradient(180deg,#3E7BFA,#8FB0F5); }
 .onec .rgt{ flex:1; }
-.onec .rgt .it{ display:flex; gap:9px; margin-bottom:6px; }
+.onec .rgt .it{ display:flex; gap:9px; margin-bottom:7px; }
 .onec .rgt .it .n{ flex:none; width:9px; height:9px; border-radius:50%; background:var(--blue); align-self:center; }
-.onec .rgt .it b{ font-size:12.5px; font-weight:700; display:block; }
-.onec .rgt .it span{ font-size:9.3px; font-weight:300; color:var(--mut); display:block; }
-.pr3{ display:flex; gap:9px; margin:4mm 10mm 0; }
-.pr3 .p{ flex:1; text-align:center; padding:12px 8px; }
-.pr3 .p b{ font-size:12.5px; font-weight:900; color:var(--blue); }
-.pr3 .p span{ font-size:9px; font-weight:300; color:var(--mut); margin-left:7px; }
+.onec .rgt .it b{ font-size:13px; font-weight:700; display:block; }
+.onec .rgt .it span{ font-size:9.5px; font-weight:300; color:var(--mut); display:block; }
 
 /* ============ P6 尾页 ============ */
 .p6{ background:linear-gradient(168deg,var(--deep) 0%,var(--blue) 70%,#24499F 100%); color:#fff; }
 .p6 .netbg{ position:absolute; inset:0; z-index:1 }
 .p6 .z{ position:relative; z-index:2 }
-.p6 .logo-c{ display:flex; align-items:center; justify-content:center; gap:11px; margin-top:13mm; }
-.p6 .logo-c .mk{ width:44px; height:44px; font-size:21px; border-radius:10px; background:#fff; color:var(--blue); }
-.p6 .logo-c .nm{ font-size:30px; font-weight:900; letter-spacing:.06em; }
-.fv4{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:12mm 11mm 0; }
-.fv4 .f{ text-align:center; padding:17px 9px 15px; background:rgba(255,255,255,.09);
+.p6 .logo-c{ display:flex; align-items:center; justify-content:center; gap:14px; margin-top:16mm; }
+.p6 .logo-c .mk{ width:52px; height:52px; font-size:25px; border-radius:12px; background:#fff; color:var(--blue);
+  display:grid; place-items:center; font-weight:900; }
+.p6 .logo-c .nm{ font-size:36px; font-weight:900; letter-spacing:.08em; }
+.fv4{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14mm 13mm 0; }
+.fv4 .f{ text-align:center; padding:20px 10px 18px; background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.3); border-radius:13px; }
-.fv4 .f .ic{ width:44px; height:44px; margin:0 auto 8px; border-radius:50%; border:1.5px solid rgba(255,255,255,.6);
-  display:grid; place-items:center; font-size:20px; }
-.fv4 .f b{ display:block; font-size:16px; font-weight:900; letter-spacing:.12em; }
+.fv4 .f .ic{ width:48px; height:48px; margin:0 auto 9px; border-radius:50%; border:1.5px solid rgba(255,255,255,.6);
+  display:grid; place-items:center; font-size:22px; }
+.fv4 .f b{ display:block; font-size:17px; font-weight:900; letter-spacing:.12em; }
 .fv4 .f .ln{ width:18px; height:1px; background:rgba(255,255,255,.4); margin:3mm auto; }
-.fv4 .f span{ font-size:10px; font-weight:300; color:#C9D5F2; line-height:1.75; display:block; }
-.searchbar{ display:flex; align-items:center; gap:11px; margin:11mm 24mm 0; border:1.5px solid rgba(255,255,255,.5);
-  border-radius:999px; padding:14px 22px; font-size:12.5px; font-weight:300; color:#C9D5F2; }
+.fv4 .f span{ font-size:10.5px; font-weight:300; color:#C9D5F2; line-height:1.75; display:block; }
+.searchbar{ display:flex; align-items:center; justify-content:center; gap:11px; margin:13mm 24mm 0;
+  border:1.5px solid rgba(255,255,255,.5); border-radius:999px; padding:14px 22px; font-size:12.5px;
+  font-weight:300; color:#C9D5F2; }
 .searchbar .s{ font-size:15px; }
 .searchbar b{ font-weight:500; color:#fff; letter-spacing:.1em; }
-.qrs{ display:flex; justify-content:center; gap:13mm; margin-top:9mm; }
-.qrs .q{ width:33mm; text-align:center; }
-.qrs .q .box{ width:33mm; height:33mm; background:#fff; border-radius:3.5mm; display:grid; place-items:center;
+.qrs{ display:flex; justify-content:center; gap:14mm; margin-top:11mm; }
+.qrs .q{ width:34mm; text-align:center; }
+.qrs .q .box{ width:34mm; height:34mm; background:#fff; border-radius:3.5mm; display:grid; place-items:center;
   color:var(--blue); font-size:9px; font-weight:500; }
-.qrs .q span{ display:block; font-size:10px; font-weight:300; color:#C9D5F2; margin-top:3mm; letter-spacing:.1em; }
-.p6 .contact{ display:flex; justify-content:center; gap:10mm; margin-top:9mm; font-size:13px; font-weight:300; color:#C9D5F2; }
+.qrs .q span{ display:block; font-size:10.5px; font-weight:300; color:#C9D5F2; margin-top:3mm; letter-spacing:.1em; }
+.p6 .contact{ display:flex; justify-content:center; gap:10mm; margin-top:11mm; font-size:13px; font-weight:300; color:#C9D5F2; }
 .p6 .contact b{ font-weight:700; color:#fff; }
 .p6 .copy{ text-align:center; margin-top:auto; padding-bottom:8mm; font-size:9px; font-weight:300;
   color:#8FA3D9; letter-spacing:.14em; position:relative; z-index:2 }
@@ -273,72 +282,66 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 </head>
 <body>
 
-<!-- ============ P1 封面 ============ -->
-<div class="page p1 on-blue">
+<!-- ============ P1 封面：左对齐大标题 + 副题 + 轨道球体 + 四面板 ============ -->
+<div class="page p1">
   <svg class="nebula" viewBox="0 0 794 1123" preserveAspectRatio="xMidYMid slice">
     <defs>
       <radialGradient id="nb1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#3E7BFA" stop-opacity=".5"/><stop offset="100%" stop-color="#3E7BFA" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#3E7BFA" stop-opacity=".45"/><stop offset="100%" stop-color="#3E7BFA" stop-opacity="0"/>
       </radialGradient>
       <radialGradient id="nb2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#8B5CF6" stop-opacity=".38"/><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#8B5CF6" stop-opacity=".3"/><stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="nb3" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#22D3EE" stop-opacity=".3"/><stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="lnk" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#7F9BFF" stop-opacity=".8"/><stop offset="100%" stop-color="#67E8F7" stop-opacity=".5"/>
-      </linearGradient>
     </defs>
-    <ellipse cx="180" cy="240" rx="300" ry="240" fill="url(#nb1)"/>
-    <ellipse cx="640" cy="700" rx="340" ry="260" fill="url(#nb2)"/>
-    <ellipse cx="420" cy="980" rx="360" ry="220" fill="url(#nb3)"/>
-    <g stroke="url(#lnk)" stroke-width="1">
-      <line x1="120" y1="760" x2="240" y2="700"/><line x1="240" y1="700" x2="360" y2="740"/><line x1="360" y1="740" x2="470" y2="690"/>
-      <line x1="470" y1="690" x2="590" y2="730"/><line x1="590" y1="730" x2="700" y2="680"/><line x1="240" y1="700" x2="330" y2="640"/>
-      <line x1="470" y1="690" x2="410" y2="620"/><line x1="120" y1="760" x2="180" y2="850"/><line x1="180" y1="850" x2="300" y2="820"/>
-      <line x1="300" y1="820" x2="430" y2="850"/><line x1="430" y1="850" x2="560" y2="810"/><line x1="560" y1="810" x2="680" y2="850"/>
-      <line x1="700" y1="680" x2="720" y2="600"/><line x1="330" y1="640" x2="410" y2="620"/>
-    </g>
-    <g fill="#BFD3FF">
-      <circle cx="120" cy="760" r="3"/><circle cx="240" cy="700" r="4"/><circle cx="360" cy="740" r="3"/><circle cx="470" cy="690" r="4"/>
-      <circle cx="590" cy="730" r="3"/><circle cx="700" cy="680" r="3.5"/><circle cx="330" cy="640" r="2.5"/><circle cx="410" cy="620" r="3"/>
-      <circle cx="180" cy="850" r="3"/><circle cx="300" cy="820" r="3.5"/><circle cx="430" cy="850" r="3"/><circle cx="560" cy="810" r="3"/>
-      <circle cx="680" cy="850" r="3"/><circle cx="720" cy="600" r="2.5"/>
-    </g>
+    <ellipse cx="640" cy="820" rx="380" ry="280" fill="url(#nb1)"/>
+    <ellipse cx="150" cy="980" rx="320" ry="220" fill="url(#nb2)"/>
     <g fill="#8FA3D9" opacity=".7">
       <circle cx="90" cy="140" r="1.3"/><circle cx="200" cy="90" r="1.6"/><circle cx="330" cy="60" r="1.2"/><circle cx="470" cy="110" r="1.5"/>
-      <circle cx="600" cy="70" r="1.3"/><circle cx="700" cy="150" r="1.6"/><circle cx="90" cy="480" r="1.4"/><circle cx="730" cy="420" r="1.4"/>
-      <circle cx="60" cy="620" r="1.3"/><circle cx="740" cy="900" r="1.5"/><circle cx="70" cy="1040" r="1.4"/><circle cx="760" cy="1040" r="1.3"/>
+      <circle cx="600" cy="70" r="1.3"/><circle cx="700" cy="150" r="1.6"/><circle cx="60" cy="620" r="1.3"/><circle cx="740" cy="900" r="1.5"/>
+      <circle cx="70" cy="1040" r="1.4"/><circle cx="760" cy="1040" r="1.3"/>
     </g>
   </svg>
-  <div class="bb"><div class="brand"><div class="mk w">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
-    <div class="pn">AI RESEARCH OS · 01</div></div>
+  <div class="top">
+    <div class="mk">N</div>
+    <div class="bn">研擎<span>NEBULALAB</span></div>
+  </div>
   <div class="mid">
-    <div class="kk">AI-DRIVEN RESEARCH SYSTEM</div>
-    <h1><span class="w9">让科研，</span><span class="w3">自己跑起来。</span></h1>
-    <div class="en">LITERATURE · REPRODUCTION · PUBLISHING · MANAGEMENT</div>
-    <div class="zh">文献 · 复现 · 写作 · 发表 · 招生 · 调度 · 经费 · 日程 —— <b>AI 全程参与</b></div>
+    <h1><span class="w">让科研，</span><span class="w">自己跑起来。</span></h1>
+    <div class="sub">AI驱动的下一代科研经营体系</div>
   </div>
   <div class="orb">
-    <div class="o1"></div><div class="o2"></div>
-    <div class="core"><div><b>研擎 Claw</b><span>AI 科研智能体中枢</span></div></div>
-    <div class="g" style="left:50%; top:1mm; transform:translate(-50%,0)"><b>研擎 ERP</b><span>科研经营的操作内核</span></div>
-    <div class="g" style="right:1mm; top:50%; transform:translate(0,-50%)"><b>研擎投稿</b><span>智慧发表引擎</span></div>
-    <div class="g" style="left:50%; bottom:1mm; transform:translate(-50%,0)"><b>研擎慧眼</b><span>文献情报与创新发现</span></div>
-    <div class="g" style="left:1mm; top:50%; transform:translate(0,-50%)"><b>研擎 Studio</b><span>科研启航与创作工厂</span></div>
-  </div>
-  <div class="foot">
-    <div>面向高校 · 科研院所 · 课题组<br>一站式 AI 科研经营平台</div>
-    <div class="r">TSINGHUA SHENZHEN INTERNATIONAL<br>GRADUATE SCHOOL</div>
+    <div class="ring r3"></div>
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="odot" style="left:14%; top:64%"></div>
+    <div class="odot" style="left:26%; top:74%"></div>
+    <div class="odot" style="right:12%; top:30%"></div>
+    <div class="odot" style="right:22%; top:70%"></div>
+    <div class="odot" style="left:48%; top:82%"></div>
+    <div class="sphere"><b>N</b></div>
+    <div class="slabel">研擎 Claw</div>
+    <div class="pane" style="left:11%; top:8%">
+      <span class="ic">📊</span>
+      <div><span>研擎</span><b>ERP</b></div>
+    </div>
+    <div class="pane" style="right:7%; top:3%">
+      <span class="ic">📣</span>
+      <div><span>研擎</span><b>投稿</b></div>
+    </div>
+    <div class="pane" style="left:6%; bottom:10%">
+      <span class="ic">🖼️</span>
+      <div><span>研擎</span><b>Studio</b></div>
+    </div>
+    <div class="pane" style="right:9%; bottom:5%">
+      <span class="ic">🔭</span>
+      <div><span>研擎</span><b>慧眼</b></div>
+    </div>
   </div>
 </div>
 
 <!-- ============ P2 一站汇聚 ============ -->
 <div class="page">
-  <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
-    <div class="pn">RESEARCH OS · 02</div></div>
-  <div class="ct big" style="margin-top:10mm">科研所需，一站汇聚</div>
+  <div class="ct big" style="margin-top:13mm">科研所需，一站汇聚</div>
 
   <div class="bigclaw">
     <div class="lft">
@@ -373,11 +376,6 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
       <h5>让科研自己跑起来</h5>
       <p>理解科研目标，组织专家协作，调用文献数据与业务系统，持续推进任务并交付科研成果。</p>
       <div class="tg">理解目标 · 拆解任务 · 协同执行</div>
-      <div class="claw-stats">
-        <div class="cs"><b>23 篇</b><span>文献自动精读</span></div>
-        <div class="cs"><b>3 次</b><span>复现沙箱运行</span></div>
-        <div class="cs"><b>92%</b><span>任务按时交付</span></div>
-      </div>
     </div>
   </div>
 
@@ -388,8 +386,10 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="card f"><div class="itile">🚀</div><div><b>研擎投稿</b><i>让发表持续提速</i><span>聚焦期刊匹配与审稿追踪，AI 完成诊断、适配与投稿优化。</span></div></div>
   </div>
 
-  <div class="ct mid" style="margin-top:11mm; font-size:37px">从科研洞察，到科研成果</div>
-  <div class="ct s" style="margin-top:2mm; font-size:21px">分析有依据，决策有方向，执行有动作，交付有结果</div>
+  <div class="p2mid">
+    <div class="ct mid">从科研洞察，到科研成果</div>
+    <div class="ct s2">分析有依据，决策有方向，执行有动作，交付有结果</div>
+  </div>
 
   <div class="p2low">
     <div class="lft">
@@ -409,36 +409,40 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
 
 <!-- ============ P3 ERP + Studio ============ -->
 <div class="page">
-  <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
-    <div class="pn">RESEARCH ERP · 03</div></div>
-  <div class="ct big" style="margin-top:6mm">研擎 ERP</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:20px">科研经营的操作内核</div>
-  <div class="ct tiny" style="font-size:18px">十大核心业务模块</div>
+  <div class="ct big" style="margin-top:9mm">研擎 ERP</div>
+  <div class="ct s">科研经营的操作内核</div>
+  <div class="ct tag">十大核心业务模块</div>
 
   <div class="mods10">
-    <div class="card m"><span class="e">📦</span><b>产品成果</b><span>论文 · 专利 · 台账归集</span></div>
-    <div class="card m"><span class="e">🧾</span><b>项目管理</b><span>申报 · 里程碑 · 结题</span></div>
-    <div class="card m"><span class="e">💰</span><b>经费管理</b><span>预算 · 执行 · 决算</span></div>
-    <div class="card m"><span class="e">👥</span><b>人员管理</b><span>画像 · 负载 · 档案</span></div>
-    <div class="card m"><span class="e">🎯</span><b>招生管理</b><span>套磁 · 匹配 · 名额</span></div>
-    <div class="card m"><span class="e">📅</span><b>日程管理</b><span>组会 · 讲座 · 提醒</span></div>
-    <div class="card m"><span class="e">📚</span><b>文献资产</b><span>机构库 · 组内沉淀</span></div>
-    <div class="card m"><span class="e">⚗️</span><b>实验设备</b><span>预约 · 耗材 · ELN</span></div>
-    <div class="card m"><span class="e">⚖️</span><b>伦理合规</b><span>审查 · 诚信 · 披露</span></div>
-    <div class="card m"><span class="e">📈</span><b>统计分析</b><span>驾驶舱 · 自定义指标</span></div>
+    <div class="card m"><div class="hd"><span class="e">📦</span><b>产品成果</b></div><span>论文 · 专利 · 台账归集</span></div>
+    <div class="card m"><div class="hd"><span class="e">🧾</span><b>项目管理</b></div><span>申报 · 里程碑 · 结题</span></div>
+    <div class="card m"><div class="hd"><span class="e">💰</span><b>经费管理</b></div><span>预算 · 执行 · 决算</span></div>
+    <div class="card m"><div class="hd"><span class="e">👥</span><b>人员管理</b></div><span>画像 · 负载 · 档案</span></div>
+    <div class="card m"><div class="hd"><span class="e">🎯</span><b>招生管理</b></div><span>套磁 · 匹配 · 名额</span></div>
+    <div class="card m"><div class="hd"><span class="e">📅</span><b>日程管理</b></div><span>组会 · 讲座 · 提醒</span></div>
+    <div class="card m"><div class="hd"><span class="e">📚</span><b>文献资产</b></div><span>机构库 · 组内沉淀</span></div>
+    <div class="card m"><div class="hd"><span class="e">⚗️</span><b>实验设备</b></div><span>预约 · 耗材 · ELN</span></div>
+    <div class="card m"><div class="hd"><span class="e">⚖️</span><b>伦理合规</b></div><span>审查 · 诚信 · 披露</span></div>
+    <div class="card m"><div class="hd"><span class="e">📈</span><b>统计分析</b></div><span>驾驶舱 · 自定义指标</span></div>
   </div>
 
-  <div class="ct tiny" style="margin-top:6mm; font-size:20px">AI 科研协同，从发现到行动</div>
+  <div class="ct tag" style="margin-top:7mm; font-size:22px">AI 科研协同，从发现到行动</div>
   <div class="loop">
-    <div class="nd" style="left:22%; top:16%"><div class="c">01</div><b>发现问题</b></div>
-    <div class="nd" style="left:50%; top:10%"><div class="c">02</div><b>理解原因</b></div>
-    <div class="nd" style="left:78%; top:16%"><div class="c">03</div><b>定位对象</b></div>
+    <span class="ar" style="left:34%; top:-1px">▶</span>
+    <span class="ar" style="left:64%; top:-1px">▶</span>
+    <span class="ar" style="right:-4px; top:47%">▼</span>
+    <span class="ar" style="left:64%; bottom:-1px">◀</span>
+    <span class="ar" style="left:34%; bottom:-1px">◀</span>
+    <span class="ar" style="left:-4px; top:47%">▲</span>
+    <div class="nd" style="left:17%; top:13%"><b>发现问题</b><div class="c">01</div></div>
+    <div class="nd" style="left:50%; top:13%"><b>理解原因</b><div class="c">02</div></div>
+    <div class="nd" style="left:83%; top:13%"><b>定位对象</b><div class="c">03</div></div>
     <div class="midq">
       <b>从“人找问题”，到“问题主动找人”</b>
       <div>每一轮反馈，都进入下一轮判断与协同</div>
     </div>
-    <div class="nd" style="left:26%; top:81%"><div class="c">05</div><b>结果反馈</b></div>
-    <div class="nd" style="left:74%; top:81%"><div class="c">04</div><b>推动处理</b></div>
+    <div class="nd" style="left:24%; top:88%"><div class="c">05</div><b>结果反馈</b></div>
+    <div class="nd" style="left:76%; top:88%"><div class="c">04</div><b>推动处理</b></div>
   </div>
   <div class="tri3">
     <div class="card t"><b>看得清</b><span>关键科研信号统一呈现</span></div>
@@ -446,42 +450,87 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="card t"><b>动得快</b><span>定位业务对象，协同推进处理</span></div>
   </div>
 
-  <div class="ct mid" style="margin-top:7mm; font-size:30px">研擎 Studio</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让创意无限释放，让科研更有表达力</div>
-  <div class="ct tiny" style="font-size:18px; margin-top:4mm">功能模块介绍</div>
+  <div class="ct big" style="margin-top:9mm; font-size:36px">研擎 Studio</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:21px">让创意无限释放，让科研更有表达力</div>
+  <div class="ct tag" style="margin-top:4mm">功能模块介绍</div>
   <div class="stu4">
-    <div class="s"><div class="th" style="background:linear-gradient(120deg,#1F419B,#3E7BFA)">✍️</div>
-      <div class="bd"><div class="hd"><b>AI 写作</b><span>5 大场景</span></div><p>文献综述 / 期刊论文 / 基金本子 / 审稿回复 / 学术邮件，风格与格式自动适配</p></div></div>
-    <div class="s"><div class="th" style="background:linear-gradient(120deg,#7C3AED,#C084FC)">📊</div>
-      <div class="bd"><div class="hd"><b>AI 图表</b><span>期刊规范</span></div><p>机制图 / 数据图 / 流程图，符合期刊分辨率与色盲友好配色</p></div></div>
-    <div class="s"><div class="th" style="background:linear-gradient(120deg,#0E7490,#22D3EE)">🌐</div>
-      <div class="bd"><div class="hd"><b>AI 翻译</b><span>术语一致</span></div><p>学术中英互译，保留公式与引用，支持全文术语统一检查</p></div></div>
-    <div class="s"><div class="th" style="background:linear-gradient(120deg,#B45309,#F59E0B)">📽️</div>
-      <div class="bd"><div class="hd"><b>AI 汇报</b><span>一键生成</span></div><p>组会 PPT / 会议 Poster / 答辩讲稿，多场景自动适配</p></div></div>
+    <div class="card s"><div class="hd"><span class="e">✍️</span><b>AI 写作</b><span>5 大场景</span></div>
+      <p>文献综述 / 期刊论文 / 基金本子 / 审稿回复 / 学术邮件，风格与格式自动适配</p></div>
+    <div class="card s"><div class="hd"><span class="e">📊</span><b>AI 图表</b><span>期刊规范</span></div>
+      <p>机制图 / 数据图 / 流程图，符合期刊分辨率与色盲友好配色</p></div>
+    <div class="card s"><div class="hd"><span class="e">🌐</span><b>AI 翻译</b><span>术语一致</span></div>
+      <p>学术中英互译，保留公式与引用，支持全文术语统一检查</p></div>
+    <div class="card s"><div class="hd"><span class="e">📽️</span><b>AI 汇报</b><span>一键生成</span></div>
+      <p>组会 PPT / 会议 Poster / 答辩讲稿，多场景自动适配</p></div>
   </div>
 
-  <div class="ct tiny" style="margin-top:5mm; font-size:20px">一站式创作全链路</div>
+  <div class="ct tag" style="margin-top:4mm">一站式创作全链路</div>
   <div class="chain4">
-    <div class="card c4"><div class="n">01</div><b>原始数据</b><span>清洗 / 标注导入</span></div><div class="a">→</div>
-    <div class="card c4"><div class="n">02</div><b>一张图</b><span>发表级图表</span></div><div class="a">→</div>
-    <div class="card c4"><div class="n">03</div><b>一篇初稿</b><span>IMRaD 成稿</span></div><div class="a">→</div>
-    <div class="card c4"><div class="n">04</div><b>一份投稿件</b><span>格式适配投稿</span></div>
+    <div class="c4">
+      <div class="tt"><span class="n">01</span><b>原始数据</b></div>
+      <span class="ds">清洗 / 标注导入</span>
+      <div class="th"><svg viewBox="0 0 160 100">
+        <rect x="30" y="14" width="100" height="72" rx="6" fill="#fff" stroke="#C9D6EE"/>
+        <rect x="30" y="14" width="100" height="14" rx="6" fill="#1F419B"/>
+        <rect x="36" y="19" width="40" height="4" rx="2" fill="#fff" opacity=".85"/>
+        <g fill="#E3EBFA"><rect x="36" y="34" width="24" height="8" rx="2"/><rect x="64" y="34" width="24" height="8" rx="2"/><rect x="92" y="34" width="32" height="8" rx="2"/>
+        <rect x="36" y="48" width="24" height="8" rx="2"/><rect x="64" y="48" width="24" height="8" rx="2"/><rect x="92" y="48" width="32" height="8" rx="2"/>
+        <rect x="36" y="62" width="24" height="8" rx="2"/><rect x="64" y="62" width="24" height="8" rx="2"/><rect x="92" y="62" width="32" height="8" rx="2"/></g>
+        <rect x="36" y="76" width="52" height="5" rx="2.5" fill="#3E7BFA" opacity=".7"/>
+      </svg></div>
+    </div>
+    <div class="a">▶</div>
+    <div class="c4">
+      <div class="tt"><span class="n">02</span><b>一张图</b></div>
+      <span class="ds">发表级图表</span>
+      <div class="th"><svg viewBox="0 0 160 100">
+        <line x1="34" y1="78" x2="132" y2="78" stroke="#C9D6EE" stroke-width="2"/>
+        <rect x="44" y="52" width="14" height="26" rx="2" fill="#8FB0F5"/>
+        <rect x="66" y="40" width="14" height="38" rx="2" fill="#5B87E8"/>
+        <rect x="88" y="28" width="14" height="50" rx="2" fill="#3E7BFA"/>
+        <rect x="110" y="18" width="14" height="60" rx="2" fill="#1F419B"/>
+        <polyline points="48,44 72,32 96,22 118,12" fill="none" stroke="#E8A23C" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="118" cy="12" r="4" fill="#E8A23C"/>
+      </svg></div>
+    </div>
+    <div class="a">▶</div>
+    <div class="c4">
+      <div class="tt"><span class="n">03</span><b>一篇初稿</b></div>
+      <span class="ds">IMRaD 成稿</span>
+      <div class="th"><svg viewBox="0 0 160 100">
+        <rect x="48" y="12" width="64" height="78" rx="5" fill="#fff" stroke="#C9D6EE"/>
+        <rect x="56" y="22" width="34" height="6" rx="3" fill="#1F419B"/>
+        <g fill="#E3EBFA"><rect x="56" y="36" width="48" height="4" rx="2"/><rect x="56" y="44" width="48" height="4" rx="2"/><rect x="56" y="52" width="40" height="4" rx="2"/>
+        <rect x="56" y="64" width="48" height="4" rx="2"/><rect x="56" y="72" width="44" height="4" rx="2"/></g>
+        <rect x="94" y="70" width="20" height="12" rx="3" fill="#3E7BFA"/>
+      </svg></div>
+    </div>
+    <div class="a">▶</div>
+    <div class="c4">
+      <div class="tt"><span class="n">04</span><b>一份投稿件</b></div>
+      <span class="ds">格式适配投稿</span>
+      <div class="th"><svg viewBox="0 0 160 100">
+        <rect x="34" y="34" width="76" height="48" rx="6" fill="#fff" stroke="#C9D6EE"/>
+        <path d="M34 38 L72 62 L110 38" fill="none" stroke="#5B87E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="108" cy="30" r="14" fill="#1F419B"/>
+        <path d="M101 30 l5 5 l9 -10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M120 12 l14 -6 l-6 14 l-3 -5 Z" fill="#3E7BFA"/>
+      </svg></div>
+    </div>
   </div>
   <div class="databar">
-    <div class="d"><b>1</b><span>组数据全程流转</span></div>
-    <div class="d"><b>4</b><span>步自动生成</span></div>
-    <div class="d"><b>↑30%</b><span>写作效率提升</span></div>
-    <div class="d"><b>N</b><span>次场景复用</span></div>
+    <div class="d"><b class="n">1</b><div class="tx"><b>组数据全程流转</b><span>一次接入多次复用</span></div></div>
+    <div class="d"><b class="n">4</b><div class="tx"><b>步自动生成</b><span>图表 / 初稿 / 投稿件</span></div></div>
+    <div class="d"><b class="n">↑30%</b><div class="tx"><b>写作效率提升</b><span>初稿到成稿加速</span></div></div>
+    <div class="d"><b class="n">N</b><div class="tx"><b>次场景复用</b><span>论文 / 基金 / 汇报</span></div></div>
   </div>
 </div>
 
 <!-- ============ P4 投稿 + 慧眼 ============ -->
 <div class="page">
-  <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
-    <div class="pn">PUBLISH & INSIGHT · 04</div></div>
-  <div class="ct big" style="margin-top:6mm">研擎投稿</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让发表更简单，让等待更短</div>
-  <div class="ct tiny" style="font-size:18px">核心价值主张</div>
+  <div class="ct big" style="margin-top:11mm">研擎投稿</div>
+  <div class="ct s">让发表更简单，让等待更短</div>
+  <div class="ct tag">核心价值主张</div>
 
   <div class="vals5">
     <div class="card v"><div class="itile">🔍</div><b>全流程托管</b><p>从期刊诊断到投稿执行，AI 持续管理发表流程</p><div class="tg">诊断 · 执行 · 反馈</div></div>
@@ -491,20 +540,20 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="card v"><div class="itile">📈</div><b>全链路洞察</b><p>贯通投稿效果与录用概率，洞察周期与命中率</p><div class="tg">周期 · 概率 · 命中</div></div>
   </div>
 
-  <div class="ct tiny" style="font-size:21px">发表操作流程</div>
-  <div class="ct s" style="margin-top:0; font-size:13px">从成稿到见刊，全程可见、可控、可追踪</div>
+  <div class="ct tag" style="margin-top:7mm; font-size:22px">发表操作流程</div>
+  <div class="ct s2" style="margin-top:1mm">从成稿到见刊，全程可见、可控、可追踪</div>
   <div class="psix">
-    <div class="card p"><div class="n">01</div><b>成果整理</b><span>稿件数据齐备检查</span></div>
-    <div class="card p"><div class="n">02</div><b>期刊诊断</b><span>冲稳保梯度方案</span></div>
-    <div class="card p"><div class="n">03</div><b>开启托管</b><span>确定目标与顺序</span></div>
-    <div class="card p"><div class="n">04</div><b>自动执行</b><span>格式适配材料核对</span></div>
-    <div class="card p"><div class="n">05</div><b>状态追踪</b><span>审稿时间线监测</span></div>
-    <div class="card p"><div class="n">06</div><b>复盘转投</b><span>审稿响应转投方案</span></div>
+    <div class="card p"><div class="tt"><span class="n">01</span><b>成果整理</b></div><span>稿件数据齐备检查</span></div>
+    <div class="card p"><div class="tt"><span class="n">02</span><b>期刊诊断</b></div><span>冲稳保梯度方案</span></div>
+    <div class="card p"><div class="tt"><span class="n">03</span><b>开启托管</b></div><span>确定目标与顺序</span></div>
+    <div class="card p"><div class="tt"><span class="n">04</span><b>自动执行</b></div><span>格式适配材料核对</span></div>
+    <div class="card p"><div class="tt"><span class="n">05</span><b>状态追踪</b></div><span>审稿时间线监测</span></div>
+    <div class="card p"><div class="tt"><span class="n">06</span><b>复盘转投</b></div><span>审稿响应转投方案</span></div>
   </div>
   <div class="cover-line">全链路覆盖：标题 · 期刊 · 审稿 · 修改 · 录用 · 检索 · 影响力</div>
 
-  <div class="ct mid" style="margin-top:9mm; font-size:32px">研擎慧眼</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让创新点主动敲门</div>
+  <div class="ct big" style="margin-top:9mm; font-size:36px">研擎慧眼</div>
+  <div class="ct s" style="margin-top:1.5mm; font-size:21px">让创新点主动敲门</div>
   <div class="p4low">
     <div class="lft">
       <div class="sub-t">三大核心亮点</div>
@@ -513,69 +562,116 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
       <div class="card hl"><div class="n">03</div><div><b>AI 自迭代闭环</b><span>结合引用、内容表现与领域动态，自动归因，持续优化研究路线。</span></div></div>
     </div>
     <div class="rgt">
-      <div class="sub-t">从选题到转化的科研增长飞轮</div>
-      <div class="fw">
-        <svg viewBox="0 0 200 200" style="width:100%">
-          <defs>
-            <linearGradient id="fw1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1F419B"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
-            <linearGradient id="fw2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3E7BFA"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient>
-            <linearGradient id="fw3" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22D3EE"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
-            <linearGradient id="fw4" x1="1" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#6D5CF6"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
-            <marker id="ah" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" fill="#1F419B"/>
-            </marker>
-          </defs>
-          <path d="M 62.4 29.4 A 80 80 0 0 1 137.6 29.4" fill="none" stroke="url(#fw1)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
-          <path d="M 155.6 42.5 A 80 80 0 0 1 178.8 113.9" fill="none" stroke="url(#fw2)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
-          <path d="M 171.9 135.1 A 80 80 0 0 1 111.1 179.2" fill="none" stroke="url(#fw3)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
-          <path d="M 88.9 179.2 A 80 80 0 0 1 21.2 113.9" fill="none" stroke="url(#fw4)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
-          <path d="M 21.2 113.9 A 80 80 0 0 1 44.4 42.5" fill="none" stroke="url(#fw1)" stroke-width="11" stroke-linecap="round" marker-end="url(#ah)"/>
-        </svg>
+      <div class="sub-t" style="text-align:center">从选题到转化的科研增长飞轮</div>
+      <div class="flow">
+        <div class="phone">
+          <div class="pt">选题洞察诊断</div>
+          <div class="row"><i></i><div><b>研究空白</b><span>2 个新机会</span></div></div>
+          <div class="row"><i class="g"></i><div><b>方向热度</b><span>环比 +18%</span></div></div>
+          <div class="row"><i class="o"></i><div><b>竞品进展</b><span>3 篇新论文</span></div></div>
+          <div class="bars"><i style="height:30%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:75%"></i><i style="height:95%"></i></div>
+        </div>
+        <div class="fwwrap">
+          <svg viewBox="-22 0 264 200">
+            <defs>
+              <linearGradient id="fwA" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#16306F"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
+              <linearGradient id="fwB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3E7BFA"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient>
+              <linearGradient id="fwC" x1="1" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#6D5CF6"/><stop offset="100%" stop-color="#3E7BFA"/></linearGradient>
+              <marker id="ah" markerWidth="6" markerHeight="6" refX="3.5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#1F419B"/>
+              </marker>
+            </defs>
+            <path d="M 123.5 36.6 A 60 60 0 0 1 161.4 64.3" fill="none" stroke="url(#fwA)" stroke-width="7.5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <path d="M 169.7 89.8 A 60 60 0 0 1 155.3 134.4" fill="none" stroke="url(#fwB)" stroke-width="7.5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <path d="M 133.4 150.2 A 60 60 0 0 1 86.6 150.2" fill="none" stroke="url(#fwC)" stroke-width="7.5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <path d="M 64.7 134.4 A 60 60 0 0 1 50.3 89.8" fill="none" stroke="url(#fwA)" stroke-width="7.5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <path d="M 51.5 81.5 A 60 60 0 0 1 79.1 43.6" fill="none" stroke="url(#fwB)" stroke-width="7.5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <g>
+              <circle cx="110" cy="35" r="10.5" fill="#fff" stroke="#1F419B" stroke-width="1.5"/>
+              <text x="110" y="39.2" text-anchor="middle" font-size="11" font-weight="700" fill="#1F419B">1</text>
+              <circle cx="167.1" cy="76.5" r="10.5" fill="#fff" stroke="#1F419B" stroke-width="1.5"/>
+              <text x="167.1" y="80.7" text-anchor="middle" font-size="11" font-weight="700" fill="#1F419B">2</text>
+              <circle cx="145.3" cy="143.5" r="10.5" fill="#fff" stroke="#1F419B" stroke-width="1.5"/>
+              <text x="145.3" y="147.7" text-anchor="middle" font-size="11" font-weight="700" fill="#1F419B">3</text>
+              <circle cx="74.7" cy="143.5" r="10.5" fill="#fff" stroke="#1F419B" stroke-width="1.5"/>
+              <text x="74.7" y="147.7" text-anchor="middle" font-size="11" font-weight="700" fill="#1F419B">4</text>
+              <circle cx="52.9" cy="76.5" r="10.5" fill="#fff" stroke="#1F419B" stroke-width="1.5"/>
+              <text x="52.9" y="80.7" text-anchor="middle" font-size="11" font-weight="700" fill="#1F419B">5</text>
+            </g>
+            <text x="110" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#33415E">发现机会</text>
+            <text x="185" y="70" text-anchor="start" font-size="12" font-weight="700" fill="#33415E">创新验证</text>
+            <text x="163" y="165" text-anchor="start" font-size="12" font-weight="700" fill="#33415E">成果产出</text>
+            <text x="57" y="165" text-anchor="end" font-size="12" font-weight="700" fill="#33415E">影响力扩散</text>
+            <text x="35" y="70" text-anchor="end" font-size="12" font-weight="700" fill="#33415E">迭代优化</text>
+            <text x="110" y="92" text-anchor="middle" font-size="13" font-weight="900" fill="#1F419B">科研增长飞轮</text>
+            <text x="110" y="108" text-anchor="middle" font-size="8.5" font-weight="400" fill="#66708A">持续增长 · 越转越快</text>
+          </svg>
+        </div>
+        <div class="phone">
+          <div class="pt">选题资产沉淀</div>
+          <div class="ic3">
+            <div><div class="c">💡</div><span>选题库</span></div>
+            <div><div class="c">📑</div><span>数据集</span></div>
+            <div><div class="c">📈</div><span>影响力</span></div>
+          </div>
+          <div style="margin-top:3mm">
+            <div class="row"><i></i><div><b>可复用选题</b><span>24 个持续增值</span></div></div>
+            <div class="row"><i class="g"></i><div><b>引用与转化</b><span>自动归因追踪</span></div></div>
+          </div>
+          <div class="bars"><i style="height:35%"></i><i style="height:60%"></i><i style="height:48%"></i><i style="height:82%"></i><i style="height:100%"></i></div>
+        </div>
       </div>
-      <div class="nd" style="left:50%; top:4%"><div class="c">1</div><b>发现机会</b></div>
-      <div class="nd" style="left:92%; top:36%"><div class="c">2</div><b>创新验证</b></div>
-      <div class="nd" style="left:72%; top:89%"><div class="c">3</div><b>成果产出</b></div>
-      <div class="nd" style="left:28%; top:89%"><div class="c">4</div><b>影响力扩散</b></div>
-      <div class="nd" style="left:8%; top:36%"><div class="c">5</div><b>迭代优化</b></div>
-      <div class="ctr"><b>科研增长飞轮</b><span>持续增长 · 越转越快</span></div>
     </div>
   </div>
   <div class="endnote">每一轮反馈，都进入下一轮策略，让科研持续增长</div>
-  <div class="databar">
-    <div class="d"><b>300+</b><span>期刊规则与预警库</span></div>
-    <div class="d"><b>45天</b><span>平均节省等待周期</span></div>
-    <div class="d"><b>2周</b><span>催稿提醒提前量</span></div>
-    <div class="d"><b>100%</b><span>投稿状态可追踪</span></div>
-  </div>
 </div>
 
 <!-- ============ P5 Claw ============ -->
 <div class="page">
-  <div class="bb"><div class="brand"><div class="mk">N</div><div class="bn">研擎<span>NEBULALAB</span></div></div>
-    <div class="pn">CLAW · 05</div></div>
-  <div class="ct big" style="margin-top:6mm">研擎 Claw</div>
-  <div class="ct s" style="margin-top:1.5mm; font-size:20px">让科研自己跑起来</div>
-  <div class="ct tiny" style="font-size:18px">五大核心功能，让 AI 真正进入科研</div>
+  <div class="ct big" style="margin-top:11mm">研擎 Claw</div>
+  <div class="ct s">让科研自己跑起来</div>
+  <div class="ct tag">五大核心功能，让 AI 真正进入科研</div>
 
   <div class="cf5">
-    <div class="card c"><div class="no">01</div><div class="itile">🛠️</div><b>IDE 创作中心</b><p>从一个需求出发，创建轻应用、专家、工作流与技能，沉淀可复用能力</p></div>
-    <div class="card c"><div class="no">02</div><div class="itile">👥</div><b>科研专家团队</b><p>围绕科研目标，按专业领域分工，协同推进任务，让结果持续落地</p></div>
-    <div class="card c"><div class="no">03</div><div class="itile">🔔</div><b>任务及通知</b><p>任务按计划运行，进度、待办与异常主动送达，及时跟进结果</p></div>
-    <div class="card c"><div class="no">04</div><div class="itile">🧩</div><b>扩展空间</b><p>专家、技能、工作流与连接器，按需获取和调用，扩展科研能力</p></div>
-    <div class="card c"><div class="no">05</div><div class="itile">🌐</div><b>研擎生态</b><p>连接 ERP、慧眼、Lab 等业务系统，将 AI 能力延伸到真实科研</p></div>
+    <div class="card c"><div class="tt"><span class="n">01</span><b>IDE 创作中心</b></div>
+      <div class="itile">🛠️</div>
+      <p>从一个需求出发，创建轻应用、专家、工作流与技能，沉淀可复用能力</p></div>
+    <div class="card c"><div class="tt"><span class="n">02</span><b>科研专家团队</b></div>
+      <div class="itile">👥</div>
+      <p>围绕科研目标，按专业领域分工，协同推进任务，让结果持续落地</p></div>
+    <div class="card c"><div class="tt"><span class="n">03</span><b>任务及通知</b></div>
+      <div class="itile">🔔</div>
+      <p>任务按计划运行，进度、待办与异常主动送达，及时跟进结果</p></div>
+    <div class="card c"><div class="tt"><span class="n">04</span><b>扩展空间</b></div>
+      <div class="itile">🧩</div>
+      <p>专家、技能、工作流与连接器，按需获取和调用，扩展科研能力</p></div>
+    <div class="card c"><div class="tt"><span class="n">05</span><b>研擎生态</b></div>
+      <div class="itile">🌐</div>
+      <p>连接 ERP、慧眼、Lab 等业务系统，将 AI 能力延伸到真实科研</p></div>
   </div>
 
-  <div class="blk" style="margin-top:6mm"><h4 style="font-size:16px">IDE 创作中心 × 扩展空间</h4><span>创作与扩展，一体贯通</span></div>
+  <div class="blk" style="margin-top:7mm"><h4>IDE 创作中心 × 扩展空间</h4><span>创作与扩展，一体贯通</span></div>
   <div class="ellipse">
-    <div class="el"></div>
-    <div class="arc" style="left:12%; top:4%">创建</div>
-    <div class="arc" style="right:11%; top:4%">发布</div>
+    <svg class="elarc" viewBox="0 0 600 190" preserveAspectRatio="none">
+      <defs>
+        <marker id="ea" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#3E7BFA"/>
+        </marker>
+        <marker id="eb" markerWidth="7" markerHeight="7" refX="4" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#6D5CF6"/>
+        </marker>
+      </defs>
+      <path d="M 150 22 A 285 72 0 0 1 560 88" fill="none" stroke="#3E7BFA" stroke-width="2" marker-end="url(#ea)"/>
+      <path d="M 450 168 A 285 72 0 0 1 40 102" fill="none" stroke="#6D5CF6" stroke-width="2" marker-end="url(#eb)"/>
+    </svg>
+    <div class="arc" style="left:13%; top:1%">创建</div>
+    <div class="arc" style="right:11%; top:1%">发布</div>
     <div class="arc" style="left:11%; bottom:2%">扩展</div>
     <div class="arc" style="right:13%; bottom:2%">使用</div>
-    <div class="item" style="left:18%"><div class="ic" style="background:#E8F0FE">🗃️</div><b>轻应用</b></div>
+    <div class="item" style="left:17%"><div class="ic" style="background:#E8F0FE">🗃️</div><b>轻应用</b></div>
     <div class="item" style="left:39%"><div class="ic" style="background:#E6F8F0">🧑‍🔬</div><b>Agent 专家</b></div>
     <div class="item" style="left:61%"><div class="ic" style="background:#FFF3DE">🔀</div><b>工作流</b></div>
-    <div class="item" style="left:80%"><div class="ic" style="background:#F1E8FE">⚡</div><b>Skill 技能</b></div>
+    <div class="item" style="left:82%"><div class="ic" style="background:#F1E8FE">⚡</div><b>Skill 技能</b></div>
   </div>
 
   <div class="exp8">
@@ -588,32 +684,38 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
     <div class="e"><div class="c">💰</div><b>经费财务</b></div>
     <div class="e"><div class="c">📅</div><b>日程管家</b></div>
   </div>
-  <div class="blk" style="margin-top:3mm"><h4 style="font-size:20px">办公室 · 专家团队</h4><span style="font-size:12px">交代目标，专业分工，协同推进</span></div>
+  <div class="blk" style="margin-top:4mm"><h4 style="font-size:24px">办公室 · 专家团队</h4><span style="font-size:12.5px">交代目标，专业分工，协同推进</span></div>
 
   <div class="onec">
     <div class="solid lft">
       <div class="txt">
         <h5>一句话，开始推进科研任务</h5>
         <div class="q"><b>导师：</b>“帮我把这学期组里的项目，安排到最合适的人身上。”</div>
-        <div class="q"><b>Claw：</b>读取能力画像 × 负载 × 意愿，生成分配方案，您确认后任务自动下发成员日历</div>
+        <div class="q"><b>Claw：</b>读取能力画像 × 负载 × 意愿，生成分配方案，确认后自动下发成员日历</div>
       </div>
       <div class="mock">
         <div class="mbar"><i></i><i></i><i></i><span>研擎 CLAW · 本周科研计划执行中</span></div>
-        <div class="mrow">
-          <div class="mstats">
-            <div class="mstat"><b>12 项</b><span>任务推进中</span></div>
-            <div class="mstat"><b>8 项</b><span>已完成</span></div>
-            <div class="mstat" style="background:#3A2A12"><b style="color:#FBBF24">2 项</b><span>风险预警</span></div>
+        <div class="mbody">
+          <div class="mside">
+            <i class="on"></i><i></i><i style="width:70%"></i><i style="width:85%"></i><i style="width:60%"></i>
           </div>
-          <div class="mbars">
-            <i style="height:34%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:70%"></i>
-            <i style="height:58%"></i><i style="height:82%"></i><i style="height:95%"></i>
+          <div class="mmain">
+            <div class="tt">本周科研计划</div>
+            <div class="mrow">
+              <div class="mstat"><b>12 项</b><span>任务推进中</span></div>
+              <div class="mstat"><b>8 项</b><span>已完成</span></div>
+              <div class="mstat" style="background:#FDF3E1;border-color:#F0DDB4"><b style="color:#B47A1E">2 项</b><span>风险预警</span></div>
+            </div>
+            <div class="mbars">
+              <i style="height:34%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:70%"></i>
+              <i style="height:58%"></i><i style="height:82%"></i><i style="height:95%"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="rgt">
-      <div class="blk" style="justify-content:flex-start; margin:0 0 6px"><h4 style="font-size:14px">最佳实践</h4></div>
+      <div class="blk" style="justify-content:flex-start; margin:0 0 8px"><h4 style="font-size:15px">最佳实践</h4></div>
       <div class="it"><div class="n"></div><div><b>明确科研目标</b><span>说清创新、成果或育人目标</span></div></div>
       <div class="it"><div class="n"></div><div><b>拆解研究计划</b><span>明确任务、责任与交付结果</span></div></div>
       <div class="it"><div class="n"></div><div><b>多专家协同推进</b><span>按专业领域分工、接力执行</span></div></div>
@@ -621,15 +723,10 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
       <div class="it"><div class="n"></div><div><b>持续反馈与优化</b><span>根据结果调整，沉淀可复用能力</span></div></div>
     </div>
   </div>
-  <div class="pr3">
-    <div class="card p"><b>AI 建议 · 人决策</b><span>关键决策人工确认</span></div>
-    <div class="card p"><b>结论可溯源</b><span>引用/数据/条款给出处</span></div>
-    <div class="card p"><b>全程留痕</b><span>日志可审计可回溯</span></div>
-  </div>
 </div>
 
 <!-- ============ P6 尾页 ============ -->
-<div class="page p6 on-blue">
+<div class="page p6">
   <svg class="netbg" viewBox="0 0 794 1123" preserveAspectRatio="xMidYMid slice">
     <g stroke="rgba(159,192,255,.35)" stroke-width="1">
       <line x1="80" y1="180" x2="220" y2="120"/><line x1="220" y1="120" x2="360" y2="170"/>
@@ -652,8 +749,8 @@ body { font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-se
   </div>
   <div class="z searchbar"><span class="s">🔍</span><span>|</span><b>在线演示</b><span>|</span><span>jennyyang58.github.io/AIIC-personal-product/app.html</span></div>
   <div class="z qrs">
-    <div class="q"><div class="box">公众号<br>二维码</div><span>公众号二维码</span></div>
-    <div class="q"><div class="box">交流群<br>二维码</div><span>研擎交流群</span></div>
+    <div class="q"><div class="box"><svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#fff"/><g fill="#16306F"><rect x="0" y="0" width="4" height="4"/><rect x="4" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="12" y="0" width="4" height="4"/><rect x="16" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/><rect x="24" y="0" width="4" height="4"/><rect x="0" y="4" width="4" height="4"/><rect x="24" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="12" y="8" width="4" height="4"/><rect x="16" y="8" width="4" height="4"/><rect x="24" y="8" width="4" height="4"/><rect x="0" y="12" width="4" height="4"/><rect x="8" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/><rect x="16" y="12" width="4" height="4"/><rect x="24" y="12" width="4" height="4"/><rect x="0" y="16" width="4" height="4"/><rect x="8" y="16" width="4" height="4"/><rect x="12" y="16" width="4" height="4"/><rect x="16" y="16" width="4" height="4"/><rect x="24" y="16" width="4" height="4"/><rect x="0" y="20" width="4" height="4"/><rect x="24" y="20" width="4" height="4"/><rect x="0" y="24" width="4" height="4"/><rect x="4" y="24" width="4" height="4"/><rect x="8" y="24" width="4" height="4"/><rect x="12" y="24" width="4" height="4"/><rect x="16" y="24" width="4" height="4"/><rect x="20" y="24" width="4" height="4"/><rect x="24" y="24" width="4" height="4"/><rect x="72" y="0" width="4" height="4"/><rect x="76" y="0" width="4" height="4"/><rect x="80" y="0" width="4" height="4"/><rect x="84" y="0" width="4" height="4"/><rect x="88" y="0" width="4" height="4"/><rect x="92" y="0" width="4" height="4"/><rect x="96" y="0" width="4" height="4"/><rect x="72" y="4" width="4" height="4"/><rect x="96" y="4" width="4" height="4"/><rect x="72" y="8" width="4" height="4"/><rect x="80" y="8" width="4" height="4"/><rect x="84" y="8" width="4" height="4"/><rect x="88" y="8" width="4" height="4"/><rect x="96" y="8" width="4" height="4"/><rect x="72" y="12" width="4" height="4"/><rect x="80" y="12" width="4" height="4"/><rect x="84" y="12" width="4" height="4"/><rect x="88" y="12" width="4" height="4"/><rect x="96" y="12" width="4" height="4"/><rect x="72" y="16" width="4" height="4"/><rect x="80" y="16" width="4" height="4"/><rect x="84" y="16" width="4" height="4"/><rect x="88" y="16" width="4" height="4"/><rect x="96" y="16" width="4" height="4"/><rect x="72" y="20" width="4" height="4"/><rect x="96" y="20" width="4" height="4"/><rect x="72" y="24" width="4" height="4"/><rect x="76" y="24" width="4" height="4"/><rect x="80" y="24" width="4" height="4"/><rect x="84" y="24" width="4" height="4"/><rect x="88" y="24" width="4" height="4"/><rect x="92" y="24" width="4" height="4"/><rect x="96" y="24" width="4" height="4"/><rect x="0" y="72" width="4" height="4"/><rect x="4" y="72" width="4" height="4"/><rect x="8" y="72" width="4" height="4"/><rect x="12" y="72" width="4" height="4"/><rect x="16" y="72" width="4" height="4"/><rect x="20" y="72" width="4" height="4"/><rect x="24" y="72" width="4" height="4"/><rect x="0" y="76" width="4" height="4"/><rect x="24" y="76" width="4" height="4"/><rect x="0" y="80" width="4" height="4"/><rect x="8" y="80" width="4" height="4"/><rect x="12" y="80" width="4" height="4"/><rect x="16" y="80" width="4" height="4"/><rect x="24" y="80" width="4" height="4"/><rect x="0" y="84" width="4" height="4"/><rect x="8" y="84" width="4" height="4"/><rect x="12" y="84" width="4" height="4"/><rect x="16" y="84" width="4" height="4"/><rect x="24" y="84" width="4" height="4"/><rect x="0" y="88" width="4" height="4"/><rect x="8" y="88" width="4" height="4"/><rect x="12" y="88" width="4" height="4"/><rect x="16" y="88" width="4" height="4"/><rect x="24" y="88" width="4" height="4"/><rect x="0" y="92" width="4" height="4"/><rect x="24" y="92" width="4" height="4"/><rect x="0" y="96" width="4" height="4"/><rect x="4" y="96" width="4" height="4"/><rect x="8" y="96" width="4" height="4"/><rect x="12" y="96" width="4" height="4"/><rect x="16" y="96" width="4" height="4"/><rect x="20" y="96" width="4" height="4"/><rect x="24" y="96" width="4" height="4"/><rect x="32" y="0" width="4" height="4"/><rect x="36" y="0" width="4" height="4"/><rect x="44" y="0" width="4" height="4"/><rect x="52" y="0" width="4" height="4"/><rect x="56" y="0" width="4" height="4"/><rect x="64" y="0" width="4" height="4"/><rect x="32" y="4" width="4" height="4"/><rect x="36" y="4" width="4" height="4"/><rect x="40" y="4" width="4" height="4"/><rect x="44" y="4" width="4" height="4"/><rect x="52" y="4" width="4" height="4"/><rect x="56" y="4" width="4" height="4"/><rect x="36" y="8" width="4" height="4"/><rect x="44" y="8" width="4" height="4"/><rect x="52" y="8" width="4" height="4"/><rect x="56" y="8" width="4" height="4"/><rect x="60" y="8" width="4" height="4"/><rect x="64" y="8" width="4" height="4"/><rect x="36" y="12" width="4" height="4"/><rect x="48" y="12" width="4" height="4"/><rect x="56" y="12" width="4" height="4"/><rect x="60" y="12" width="4" height="4"/><rect x="64" y="12" width="4" height="4"/><rect x="36" y="16" width="4" height="4"/><rect x="40" y="16" width="4" height="4"/><rect x="52" y="16" width="4" height="4"/><rect x="64" y="16" width="4" height="4"/><rect x="48" y="20" width="4" height="4"/><rect x="56" y="20" width="4" height="4"/><rect x="60" y="20" width="4" height="4"/><rect x="32" y="24" width="4" height="4"/><rect x="40" y="24" width="4" height="4"/><rect x="60" y="24" width="4" height="4"/><rect x="60" y="28" width="4" height="4"/><rect x="12" y="32" width="4" height="4"/><rect x="16" y="32" width="4" height="4"/><rect x="24" y="32" width="4" height="4"/><rect x="32" y="32" width="4" height="4"/><rect x="36" y="32" width="4" height="4"/><rect x="40" y="32" width="4" height="4"/><rect x="48" y="32" width="4" height="4"/><rect x="52" y="32" width="4" height="4"/><rect x="56" y="32" width="4" height="4"/><rect x="64" y="32" width="4" height="4"/><rect x="68" y="32" width="4" height="4"/><rect x="88" y="32" width="4" height="4"/><rect x="92" y="32" width="4" height="4"/><rect x="96" y="32" width="4" height="4"/><rect x="8" y="36" width="4" height="4"/><rect x="12" y="36" width="4" height="4"/><rect x="16" y="36" width="4" height="4"/><rect x="20" y="36" width="4" height="4"/><rect x="32" y="36" width="4" height="4"/><rect x="36" y="36" width="4" height="4"/><rect x="40" y="36" width="4" height="4"/><rect x="44" y="36" width="4" height="4"/><rect x="72" y="36" width="4" height="4"/><rect x="92" y="36" width="4" height="4"/><rect x="96" y="36" width="4" height="4"/><rect x="0" y="40" width="4" height="4"/><rect x="8" y="40" width="4" height="4"/><rect x="12" y="40" width="4" height="4"/><rect x="16" y="40" width="4" height="4"/><rect x="20" y="40" width="4" height="4"/><rect x="24" y="40" width="4" height="4"/><rect x="28" y="40" width="4" height="4"/><rect x="32" y="40" width="4" height="4"/><rect x="36" y="40" width="4" height="4"/><rect x="40" y="40" width="4" height="4"/><rect x="44" y="40" width="4" height="4"/><rect x="48" y="40" width="4" height="4"/><rect x="60" y="40" width="4" height="4"/><rect x="64" y="40" width="4" height="4"/><rect x="68" y="40" width="4" height="4"/><rect x="72" y="40" width="4" height="4"/><rect x="76" y="40" width="4" height="4"/><rect x="96" y="40" width="4" height="4"/><rect x="0" y="44" width="4" height="4"/><rect x="4" y="44" width="4" height="4"/><rect x="8" y="44" width="4" height="4"/><rect x="16" y="44" width="4" height="4"/><rect x="20" y="44" width="4" height="4"/><rect x="32" y="44" width="4" height="4"/><rect x="40" y="44" width="4" height="4"/><rect x="60" y="44" width="4" height="4"/><rect x="64" y="44" width="4" height="4"/><rect x="68" y="44" width="4" height="4"/><rect x="84" y="44" width="4" height="4"/><rect x="88" y="44" width="4" height="4"/><rect x="16" y="48" width="4" height="4"/><rect x="24" y="48" width="4" height="4"/><rect x="28" y="48" width="4" height="4"/><rect x="32" y="48" width="4" height="4"/><rect x="36" y="48" width="4" height="4"/><rect x="40" y="48" width="4" height="4"/><rect x="52" y="48" width="4" height="4"/><rect x="68" y="48" width="4" height="4"/><rect x="72" y="48" width="4" height="4"/><rect x="76" y="48" width="4" height="4"/><rect x="80" y="48" width="4" height="4"/><rect x="84" y="48" width="4" height="4"/><rect x="12" y="52" width="4" height="4"/><rect x="36" y="52" width="4" height="4"/><rect x="44" y="52" width="4" height="4"/><rect x="56" y="52" width="4" height="4"/><rect x="60" y="52" width="4" height="4"/><rect x="72" y="52" width="4" height="4"/><rect x="76" y="52" width="4" height="4"/><rect x="80" y="52" width="4" height="4"/><rect x="92" y="52" width="4" height="4"/><rect x="8" y="56" width="4" height="4"/><rect x="16" y="56" width="4" height="4"/><rect x="20" y="56" width="4" height="4"/><rect x="40" y="56" width="4" height="4"/><rect x="52" y="56" width="4" height="4"/><rect x="56" y="56" width="4" height="4"/><rect x="60" y="56" width="4" height="4"/><rect x="64" y="56" width="4" height="4"/><rect x="72" y="56" width="4" height="4"/><rect x="76" y="56" width="4" height="4"/><rect x="80" y="56" width="4" height="4"/><rect x="88" y="56" width="4" height="4"/><rect x="4" y="60" width="4" height="4"/><rect x="24" y="60" width="4" height="4"/><rect x="28" y="60" width="4" height="4"/><rect x="32" y="60" width="4" height="4"/><rect x="36" y="60" width="4" height="4"/><rect x="44" y="60" width="4" height="4"/><rect x="60" y="60" width="4" height="4"/><rect x="76" y="60" width="4" height="4"/><rect x="84" y="60" width="4" height="4"/><rect x="88" y="60" width="4" height="4"/><rect x="12" y="64" width="4" height="4"/><rect x="60" y="64" width="4" height="4"/><rect x="76" y="64" width="4" height="4"/><rect x="80" y="64" width="4" height="4"/><rect x="84" y="64" width="4" height="4"/><rect x="88" y="64" width="4" height="4"/><rect x="92" y="64" width="4" height="4"/><rect x="96" y="64" width="4" height="4"/><rect x="44" y="68" width="4" height="4"/><rect x="56" y="68" width="4" height="4"/><rect x="68" y="68" width="4" height="4"/><rect x="76" y="68" width="4" height="4"/><rect x="92" y="68" width="4" height="4"/><rect x="96" y="68" width="4" height="4"/><rect x="36" y="72" width="4" height="4"/><rect x="40" y="72" width="4" height="4"/><rect x="44" y="72" width="4" height="4"/><rect x="52" y="72" width="4" height="4"/><rect x="60" y="72" width="4" height="4"/><rect x="64" y="72" width="4" height="4"/><rect x="68" y="72" width="4" height="4"/><rect x="80" y="72" width="4" height="4"/><rect x="96" y="72" width="4" height="4"/><rect x="32" y="76" width="4" height="4"/><rect x="36" y="76" width="4" height="4"/><rect x="44" y="76" width="4" height="4"/><rect x="48" y="76" width="4" height="4"/><rect x="52" y="76" width="4" height="4"/><rect x="64" y="76" width="4" height="4"/><rect x="68" y="76" width="4" height="4"/><rect x="84" y="76" width="4" height="4"/><rect x="88" y="76" width="4" height="4"/><rect x="96" y="76" width="4" height="4"/><rect x="32" y="80" width="4" height="4"/><rect x="48" y="80" width="4" height="4"/><rect x="56" y="80" width="4" height="4"/><rect x="68" y="80" width="4" height="4"/><rect x="80" y="80" width="4" height="4"/><rect x="84" y="80" width="4" height="4"/><rect x="92" y="80" width="4" height="4"/><rect x="96" y="80" width="4" height="4"/><rect x="32" y="84" width="4" height="4"/><rect x="36" y="84" width="4" height="4"/><rect x="40" y="84" width="4" height="4"/><rect x="44" y="84" width="4" height="4"/><rect x="48" y="84" width="4" height="4"/><rect x="56" y="84" width="4" height="4"/><rect x="64" y="84" width="4" height="4"/><rect x="68" y="84" width="4" height="4"/><rect x="72" y="84" width="4" height="4"/><rect x="76" y="84" width="4" height="4"/><rect x="80" y="84" width="4" height="4"/><rect x="92" y="84" width="4" height="4"/><rect x="36" y="88" width="4" height="4"/><rect x="44" y="88" width="4" height="4"/><rect x="56" y="88" width="4" height="4"/><rect x="72" y="88" width="4" height="4"/><rect x="88" y="88" width="4" height="4"/><rect x="92" y="88" width="4" height="4"/><rect x="96" y="88" width="4" height="4"/><rect x="32" y="92" width="4" height="4"/><rect x="36" y="92" width="4" height="4"/><rect x="44" y="92" width="4" height="4"/><rect x="48" y="92" width="4" height="4"/><rect x="52" y="92" width="4" height="4"/><rect x="68" y="92" width="4" height="4"/><rect x="72" y="92" width="4" height="4"/><rect x="76" y="92" width="4" height="4"/><rect x="84" y="92" width="4" height="4"/><rect x="88" y="92" width="4" height="4"/><rect x="92" y="92" width="4" height="4"/><rect x="40" y="96" width="4" height="4"/><rect x="48" y="96" width="4" height="4"/><rect x="52" y="96" width="4" height="4"/><rect x="56" y="96" width="4" height="4"/><rect x="60" y="96" width="4" height="4"/><rect x="72" y="96" width="4" height="4"/><rect x="80" y="96" width="4" height="4"/><rect x="84" y="96" width="4" height="4"/><rect x="88" y="96" width="4" height="4"/><rect x="92" y="96" width="4" height="4"/><rect x="96" y="96" width="4" height="4"/></g></svg></div><span>公众号二维码</span></div>
+    <div class="q"><div class="box"><svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#fff"/><g fill="#16306F"><rect x="0" y="0" width="4" height="4"/><rect x="4" y="0" width="4" height="4"/><rect x="8" y="0" width="4" height="4"/><rect x="12" y="0" width="4" height="4"/><rect x="16" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/><rect x="24" y="0" width="4" height="4"/><rect x="0" y="4" width="4" height="4"/><rect x="24" y="4" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="12" y="8" width="4" height="4"/><rect x="16" y="8" width="4" height="4"/><rect x="24" y="8" width="4" height="4"/><rect x="0" y="12" width="4" height="4"/><rect x="8" y="12" width="4" height="4"/><rect x="12" y="12" width="4" height="4"/><rect x="16" y="12" width="4" height="4"/><rect x="24" y="12" width="4" height="4"/><rect x="0" y="16" width="4" height="4"/><rect x="8" y="16" width="4" height="4"/><rect x="12" y="16" width="4" height="4"/><rect x="16" y="16" width="4" height="4"/><rect x="24" y="16" width="4" height="4"/><rect x="0" y="20" width="4" height="4"/><rect x="24" y="20" width="4" height="4"/><rect x="0" y="24" width="4" height="4"/><rect x="4" y="24" width="4" height="4"/><rect x="8" y="24" width="4" height="4"/><rect x="12" y="24" width="4" height="4"/><rect x="16" y="24" width="4" height="4"/><rect x="20" y="24" width="4" height="4"/><rect x="24" y="24" width="4" height="4"/><rect x="72" y="0" width="4" height="4"/><rect x="76" y="0" width="4" height="4"/><rect x="80" y="0" width="4" height="4"/><rect x="84" y="0" width="4" height="4"/><rect x="88" y="0" width="4" height="4"/><rect x="92" y="0" width="4" height="4"/><rect x="96" y="0" width="4" height="4"/><rect x="72" y="4" width="4" height="4"/><rect x="96" y="4" width="4" height="4"/><rect x="72" y="8" width="4" height="4"/><rect x="80" y="8" width="4" height="4"/><rect x="84" y="8" width="4" height="4"/><rect x="88" y="8" width="4" height="4"/><rect x="96" y="8" width="4" height="4"/><rect x="72" y="12" width="4" height="4"/><rect x="80" y="12" width="4" height="4"/><rect x="84" y="12" width="4" height="4"/><rect x="88" y="12" width="4" height="4"/><rect x="96" y="12" width="4" height="4"/><rect x="72" y="16" width="4" height="4"/><rect x="80" y="16" width="4" height="4"/><rect x="84" y="16" width="4" height="4"/><rect x="88" y="16" width="4" height="4"/><rect x="96" y="16" width="4" height="4"/><rect x="72" y="20" width="4" height="4"/><rect x="96" y="20" width="4" height="4"/><rect x="72" y="24" width="4" height="4"/><rect x="76" y="24" width="4" height="4"/><rect x="80" y="24" width="4" height="4"/><rect x="84" y="24" width="4" height="4"/><rect x="88" y="24" width="4" height="4"/><rect x="92" y="24" width="4" height="4"/><rect x="96" y="24" width="4" height="4"/><rect x="0" y="72" width="4" height="4"/><rect x="4" y="72" width="4" height="4"/><rect x="8" y="72" width="4" height="4"/><rect x="12" y="72" width="4" height="4"/><rect x="16" y="72" width="4" height="4"/><rect x="20" y="72" width="4" height="4"/><rect x="24" y="72" width="4" height="4"/><rect x="0" y="76" width="4" height="4"/><rect x="24" y="76" width="4" height="4"/><rect x="0" y="80" width="4" height="4"/><rect x="8" y="80" width="4" height="4"/><rect x="12" y="80" width="4" height="4"/><rect x="16" y="80" width="4" height="4"/><rect x="24" y="80" width="4" height="4"/><rect x="0" y="84" width="4" height="4"/><rect x="8" y="84" width="4" height="4"/><rect x="12" y="84" width="4" height="4"/><rect x="16" y="84" width="4" height="4"/><rect x="24" y="84" width="4" height="4"/><rect x="0" y="88" width="4" height="4"/><rect x="8" y="88" width="4" height="4"/><rect x="12" y="88" width="4" height="4"/><rect x="16" y="88" width="4" height="4"/><rect x="24" y="88" width="4" height="4"/><rect x="0" y="92" width="4" height="4"/><rect x="24" y="92" width="4" height="4"/><rect x="0" y="96" width="4" height="4"/><rect x="4" y="96" width="4" height="4"/><rect x="8" y="96" width="4" height="4"/><rect x="12" y="96" width="4" height="4"/><rect x="16" y="96" width="4" height="4"/><rect x="20" y="96" width="4" height="4"/><rect x="24" y="96" width="4" height="4"/><rect x="32" y="0" width="4" height="4"/><rect x="48" y="0" width="4" height="4"/><rect x="32" y="4" width="4" height="4"/><rect x="36" y="4" width="4" height="4"/><rect x="40" y="4" width="4" height="4"/><rect x="48" y="4" width="4" height="4"/><rect x="56" y="4" width="4" height="4"/><rect x="60" y="4" width="4" height="4"/><rect x="64" y="4" width="4" height="4"/><rect x="48" y="8" width="4" height="4"/><rect x="52" y="8" width="4" height="4"/><rect x="60" y="8" width="4" height="4"/><rect x="32" y="12" width="4" height="4"/><rect x="36" y="12" width="4" height="4"/><rect x="44" y="12" width="4" height="4"/><rect x="60" y="12" width="4" height="4"/><rect x="32" y="16" width="4" height="4"/><rect x="36" y="16" width="4" height="4"/><rect x="44" y="16" width="4" height="4"/><rect x="52" y="16" width="4" height="4"/><rect x="44" y="20" width="4" height="4"/><rect x="56" y="20" width="4" height="4"/><rect x="32" y="24" width="4" height="4"/><rect x="36" y="24" width="4" height="4"/><rect x="44" y="24" width="4" height="4"/><rect x="52" y="24" width="4" height="4"/><rect x="56" y="24" width="4" height="4"/><rect x="60" y="24" width="4" height="4"/><rect x="52" y="28" width="4" height="4"/><rect x="0" y="32" width="4" height="4"/><rect x="4" y="32" width="4" height="4"/><rect x="8" y="32" width="4" height="4"/><rect x="16" y="32" width="4" height="4"/><rect x="24" y="32" width="4" height="4"/><rect x="28" y="32" width="4" height="4"/><rect x="32" y="32" width="4" height="4"/><rect x="44" y="32" width="4" height="4"/><rect x="64" y="32" width="4" height="4"/><rect x="88" y="32" width="4" height="4"/><rect x="92" y="32" width="4" height="4"/><rect x="0" y="36" width="4" height="4"/><rect x="4" y="36" width="4" height="4"/><rect x="24" y="36" width="4" height="4"/><rect x="28" y="36" width="4" height="4"/><rect x="32" y="36" width="4" height="4"/><rect x="36" y="36" width="4" height="4"/><rect x="40" y="36" width="4" height="4"/><rect x="44" y="36" width="4" height="4"/><rect x="48" y="36" width="4" height="4"/><rect x="68" y="36" width="4" height="4"/><rect x="84" y="36" width="4" height="4"/><rect x="88" y="36" width="4" height="4"/><rect x="8" y="40" width="4" height="4"/><rect x="20" y="40" width="4" height="4"/><rect x="28" y="40" width="4" height="4"/><rect x="36" y="40" width="4" height="4"/><rect x="48" y="40" width="4" height="4"/><rect x="68" y="40" width="4" height="4"/><rect x="72" y="40" width="4" height="4"/><rect x="84" y="40" width="4" height="4"/><rect x="88" y="40" width="4" height="4"/><rect x="92" y="40" width="4" height="4"/><rect x="96" y="40" width="4" height="4"/><rect x="0" y="44" width="4" height="4"/><rect x="4" y="44" width="4" height="4"/><rect x="16" y="44" width="4" height="4"/><rect x="24" y="44" width="4" height="4"/><rect x="32" y="44" width="4" height="4"/><rect x="36" y="44" width="4" height="4"/><rect x="40" y="44" width="4" height="4"/><rect x="44" y="44" width="4" height="4"/><rect x="56" y="44" width="4" height="4"/><rect x="76" y="44" width="4" height="4"/><rect x="84" y="44" width="4" height="4"/><rect x="92" y="44" width="4" height="4"/><rect x="0" y="48" width="4" height="4"/><rect x="8" y="48" width="4" height="4"/><rect x="12" y="48" width="4" height="4"/><rect x="16" y="48" width="4" height="4"/><rect x="20" y="48" width="4" height="4"/><rect x="28" y="48" width="4" height="4"/><rect x="44" y="48" width="4" height="4"/><rect x="64" y="48" width="4" height="4"/><rect x="80" y="48" width="4" height="4"/><rect x="92" y="48" width="4" height="4"/><rect x="96" y="48" width="4" height="4"/><rect x="4" y="52" width="4" height="4"/><rect x="8" y="52" width="4" height="4"/><rect x="12" y="52" width="4" height="4"/><rect x="24" y="52" width="4" height="4"/><rect x="32" y="52" width="4" height="4"/><rect x="40" y="52" width="4" height="4"/><rect x="48" y="52" width="4" height="4"/><rect x="52" y="52" width="4" height="4"/><rect x="56" y="52" width="4" height="4"/><rect x="60" y="52" width="4" height="4"/><rect x="64" y="52" width="4" height="4"/><rect x="68" y="52" width="4" height="4"/><rect x="88" y="52" width="4" height="4"/><rect x="92" y="52" width="4" height="4"/><rect x="8" y="56" width="4" height="4"/><rect x="56" y="56" width="4" height="4"/><rect x="64" y="56" width="4" height="4"/><rect x="84" y="56" width="4" height="4"/><rect x="88" y="56" width="4" height="4"/><rect x="92" y="56" width="4" height="4"/><rect x="96" y="56" width="4" height="4"/><rect x="0" y="60" width="4" height="4"/><rect x="8" y="60" width="4" height="4"/><rect x="12" y="60" width="4" height="4"/><rect x="28" y="60" width="4" height="4"/><rect x="40" y="60" width="4" height="4"/><rect x="44" y="60" width="4" height="4"/><rect x="56" y="60" width="4" height="4"/><rect x="64" y="60" width="4" height="4"/><rect x="68" y="60" width="4" height="4"/><rect x="76" y="60" width="4" height="4"/><rect x="84" y="60" width="4" height="4"/><rect x="92" y="60" width="4" height="4"/><rect x="96" y="60" width="4" height="4"/><rect x="8" y="64" width="4" height="4"/><rect x="16" y="64" width="4" height="4"/><rect x="20" y="64" width="4" height="4"/><rect x="24" y="64" width="4" height="4"/><rect x="28" y="64" width="4" height="4"/><rect x="32" y="64" width="4" height="4"/><rect x="40" y="64" width="4" height="4"/><rect x="56" y="64" width="4" height="4"/><rect x="64" y="64" width="4" height="4"/><rect x="76" y="64" width="4" height="4"/><rect x="80" y="64" width="4" height="4"/><rect x="88" y="64" width="4" height="4"/><rect x="92" y="64" width="4" height="4"/><rect x="36" y="68" width="4" height="4"/><rect x="40" y="68" width="4" height="4"/><rect x="56" y="68" width="4" height="4"/><rect x="60" y="68" width="4" height="4"/><rect x="64" y="68" width="4" height="4"/><rect x="72" y="68" width="4" height="4"/><rect x="92" y="68" width="4" height="4"/><rect x="32" y="72" width="4" height="4"/><rect x="48" y="72" width="4" height="4"/><rect x="52" y="72" width="4" height="4"/><rect x="76" y="72" width="4" height="4"/><rect x="80" y="72" width="4" height="4"/><rect x="84" y="72" width="4" height="4"/><rect x="88" y="72" width="4" height="4"/><rect x="32" y="76" width="4" height="4"/><rect x="36" y="76" width="4" height="4"/><rect x="48" y="76" width="4" height="4"/><rect x="52" y="76" width="4" height="4"/><rect x="56" y="76" width="4" height="4"/><rect x="60" y="76" width="4" height="4"/><rect x="76" y="76" width="4" height="4"/><rect x="80" y="76" width="4" height="4"/><rect x="92" y="76" width="4" height="4"/><rect x="40" y="80" width="4" height="4"/><rect x="48" y="80" width="4" height="4"/><rect x="52" y="80" width="4" height="4"/><rect x="56" y="80" width="4" height="4"/><rect x="68" y="80" width="4" height="4"/><rect x="80" y="80" width="4" height="4"/><rect x="32" y="84" width="4" height="4"/><rect x="56" y="84" width="4" height="4"/><rect x="72" y="84" width="4" height="4"/><rect x="76" y="84" width="4" height="4"/><rect x="96" y="84" width="4" height="4"/><rect x="44" y="88" width="4" height="4"/><rect x="68" y="88" width="4" height="4"/><rect x="72" y="88" width="4" height="4"/><rect x="76" y="88" width="4" height="4"/><rect x="80" y="88" width="4" height="4"/><rect x="92" y="88" width="4" height="4"/><rect x="96" y="88" width="4" height="4"/><rect x="32" y="92" width="4" height="4"/><rect x="36" y="92" width="4" height="4"/><rect x="44" y="92" width="4" height="4"/><rect x="52" y="92" width="4" height="4"/><rect x="56" y="92" width="4" height="4"/><rect x="76" y="92" width="4" height="4"/><rect x="80" y="92" width="4" height="4"/><rect x="84" y="92" width="4" height="4"/><rect x="36" y="96" width="4" height="4"/><rect x="40" y="96" width="4" height="4"/><rect x="44" y="96" width="4" height="4"/><rect x="52" y="96" width="4" height="4"/><rect x="64" y="96" width="4" height="4"/><rect x="92" y="96" width="4" height="4"/><rect x="96" y="96" width="4" height="4"/></g></svg></div><span>研擎交流群</span></div>
   </div>
   <div class="z contact">
     <span>地址：<b>清华大学深圳国际研究生院</b></span>
