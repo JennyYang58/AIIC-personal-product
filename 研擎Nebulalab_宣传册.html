@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研擎 NebulaLab · 让科研，自己跑起来</title>
+<link rel="preconnect" href="https://fonts.googleapis.cn">
+<link href="https://fonts.googleapis.cn/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+      --bg:#E9EDF4; --card:#F3F6FC; --border:#E0E6F0;
+      --blue:#1F419B; --deep:#16306F; --mid:#3E7BFA; --lblue:#8FB0F5;
+      --text:#20293E; --muted:#66708A; --dim:#98A1B6;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{background:var(--bg);}
+    body{
+      font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.62;
+      -webkit-font-smoothing:antialiased;padding:28px 0 56px;
+    }
+    .page{
+      width:min(820px,94vw);height:1123px;margin:0 auto 30px;
+      padding:34px 44px 26px;position:relative;overflow:hidden;
+      border:1px solid rgba(31,65,155,.10);border-radius:18px;background:#fff;
+      box-shadow:0 10px 34px rgba(22,48,111,.10);
+    }
+    @media print{
+      body{padding:0;background:#fff;}
+      .page{width:794px;height:1123px;margin:0 auto;border-radius:0;border:none;box-shadow:none;page-break-after:always;}
+    }
+    @page{size:A4;margin:0;}
+
+    .kicker{display:block;text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mid);margin-bottom:5px;}
+    .page-title{text-align:center;font-size:clamp(25px,3.9vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.25;color:var(--blue);}
+    .page-sub{text-align:center;margin-top:3px;font-size:13.5px;color:var(--muted);letter-spacing:.04em;}
+    .sec-label{display:block;text-align:center;margin:13px 0 3px;font-size:14.6px;font-weight:700;letter-spacing:.1em;color:var(--text);}
+    .sec-note{display:block;text-align:center;margin-bottom:13px;font-size:11.8px;color:var(--dim);letter-spacing:.05em;}
+    .grad{background:linear-gradient(92deg,#FFFFFF 0%,#AFC6FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .muted{color:var(--muted);}
+    .divider{height:1px;margin:12px auto;max-width:640px;background:linear-gradient(90deg,transparent,rgba(31,65,155,.35),transparent);}
+    .glass{background:var(--card);border:1px solid var(--border);border-radius:14px;}
+    .tag{display:inline-block;padding:2px 11px;border-radius:999px;border:1px solid rgba(31,65,155,.30);font-size:11px;color:var(--mid);letter-spacing:.08em;background:#fff;}
+    .foot-brand{position:absolute;right:20px;bottom:11px;font-size:10px;letter-spacing:.14em;color:rgba(31,65,155,.35);}
+    .cover .foot-brand,.back .foot-brand{color:rgba(255,255,255,.35);}
+
+    .ico{width:44px;height:44px;flex-shrink:0;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#EDF2FB,#E3EAF7);border:1px solid #D8E1F2;box-shadow:0 2px 10px rgba(31,65,155,.08);}
+    .ico svg{width:26px;height:26px;}
+    .ico.sm{width:36px;height:36px;border-radius:10px;}
+    .ico.sm svg{width:21px;height:21px;}
+
+    /* ============ P1 封面（深蓝渐变） ============ */
+    .cover{display:flex;flex-direction:column;padding-bottom:24px;color:#fff;border:none;
+      background:radial-gradient(560px 380px at 18% 6%,rgba(62,123,250,.30),transparent 62%),
+        radial-gradient(620px 420px at 86% 82%,rgba(109,92,246,.22),transparent 60%),
+        linear-gradient(168deg,#16306F 0%,#1F419B 62%,#24499F 100%);}
+    .logo-row{display:flex;align-items:center;gap:13px;}
+    .logo-mark{width:46px;height:46px;filter:drop-shadow(0 4px 12px rgba(10,22,58,.5));}
+    .logo-name{font-size:23px;font-weight:800;letter-spacing:.14em;line-height:1.1;}
+    .logo-en{font-size:10.5px;letter-spacing:.34em;color:#8FA3D9;margin-top:2px;}
+    .cover-hero{margin-top:36px;}
+    .cover-hero h1{font-size:clamp(40px,5.8vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.2;}
+    .cover-hero .sub{margin-top:13px;font-size:clamp(14px,1.9vw,18px);color:#C9D5F2;letter-spacing:.1em;}
+    .orbit{position:relative;flex:1;min-height:400px;margin-top:4px;}
+    .ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-9deg);border:1px solid rgba(255,255,255,.28);border-radius:50%;box-shadow:inset 0 0 40px rgba(143,176,245,.12);}
+    .ring.r1{width:490px;height:202px;}
+    .ring.r2{width:610px;height:256px;opacity:.5;}
+    .ring.r3{width:282px;height:118px;border-color:rgba(143,176,245,.45);opacity:.85;}
+    .sphere{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);width:160px;height:160px;border-radius:50%;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+      background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.45),transparent 42%),
+        radial-gradient(circle at 68% 78%,rgba(143,176,245,.40),transparent 55%),
+        linear-gradient(135deg,#24499F,#16306F);
+      border:1.5px solid rgba(255,255,255,.45);
+      box-shadow:0 0 60px rgba(62,123,250,.45),inset 0 0 30px rgba(255,255,255,.16);}
+    .sphere svg{width:48px;height:48px;}
+    .sphere b{font-size:14.5px;letter-spacing:.06em;text-shadow:0 1px 8px rgba(0,0,0,.35);}
+    .sat{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:13px;
+      background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 10px 30px rgba(10,22,58,.35);animation:floaty 7s ease-in-out infinite;}
+    .sat .ico{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);box-shadow:none;}
+    .sat .ico svg{width:22px;height:22px;}
+    .sat b{display:block;font-size:13.5px;letter-spacing:.03em;line-height:1.3;}
+    .sat span{display:block;font-size:10.5px;color:#AFC6FF;letter-spacing:.08em;}
+    .sat.s1{left:4%;top:12%;}
+    .sat.s2{right:3%;top:10%;animation-delay:-2.2s;}
+    .sat.s3{left:50%;bottom:4%;transform:translateX(-50%);animation-delay:-4.1s;}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    .sat.s3{animation-name:floatyX;}
+    @keyframes floatyX{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
+    @media (prefers-reduced-motion:reduce){.sat{animation:none;}}
+    .orbit-deco{position:absolute;inset:0;z-index:0;pointer-events:none;}
+    .onode{position:absolute;width:6px;height:6px;border-radius:50%;background:#BFD3FF;
+      box-shadow:0 0 9px rgba(143,176,245,.95);z-index:1;}
+    .onode.b{width:4px;height:4px;background:#8FA3D9;box-shadow:0 0 6px rgba(143,176,245,.6);}
+    .sphere::before{content:"";position:absolute;inset:-13px;border:1px dashed rgba(255,255,255,.32);border-radius:50%;}
+    .sdot{position:absolute;width:8px;height:8px;border-radius:50%;background:#BFD3FF;box-shadow:0 0 10px rgba(191,211,255,1);}
+    .sdot.s2{width:5px;height:5px;background:#8FA3D9;box-shadow:0 0 6px rgba(143,176,245,.8);}
+    .conn-strip{margin-top:10px;padding:12px 16px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;justify-content:center;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.30);border-radius:14px;}
+    .conn-strip .c-lab{font-size:11px;letter-spacing:.14em;color:#AFC6FF;font-weight:600;}
+    .conn-strip .c-chip{font-size:11px;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);color:#DFE8FF;}
+    .cover-claim{text-align:center;margin-top:13px;font-size:14px;color:#C9D5F2;letter-spacing:.1em;}
+    .cover-claim b{color:#fff;}
+
+    /* ============ P2 三平面 ============ */
+    .claw-hero{display:flex;gap:20px;align-items:center;padding:16px 22px;margin-top:20px;}
+    .claw-hero .brain{width:104px;height:104px;flex-shrink:0;filter:drop-shadow(0 6px 14px rgba(31,65,155,.22));}
+    .claw-hero h3{font-size:20px;font-weight:800;letter-spacing:-.015em;color:var(--blue);}
+    .claw-hero .h-sub{font-size:13px;color:var(--mid);margin:2px 0 6px;font-weight:600;}
+    .claw-hero p{font-size:12.6px;color:var(--muted);line-height:1.7;}
+    .claw-hero .tags{margin-top:9px;display:flex;gap:8px;flex-wrap:wrap;}
+    .plane-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:14px;}
+    .plane{padding:15px 14px;text-align:center;}
+    .plane .p-art{width:74px;height:74px;margin:0 auto 8px;}
+    .plane .p-art svg{width:74px;height:74px;}
+    .plane .p-tag{font-size:10.5px;letter-spacing:.14em;color:var(--mid);}
+    .plane h4{font-size:15.5px;font-weight:700;margin:2px 0 4px;letter-spacing:.01em;color:var(--text);}
+    .plane .p-who{font-size:11px;color:var(--blue);margin-bottom:6px;font-weight:600;}
+    .plane p{font-size:11.5px;color:var(--muted);line-height:1.66;text-align:left;}
+    @media(max-width:640px){.plane-grid{grid-template-columns:1fr;}}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:13px;}
+    .cap-card{padding:13px 12px;text-align:center;}
+    .cap-card .ico{margin:0 auto 8px;}
+    .cap-card b{display:block;font-size:13.8px;}
+    .cap-card span{display:block;font-size:10.8px;color:var(--dim);margin-top:2px;}
+    @media(max-width:640px){.cap-grid{grid-template-columns:1fr 1fr;}}
+    .mcp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:13px;}
+    .mcp-cell{padding:13px 14px;}
+    .mcp-cell .ico{margin-bottom:8px;}
+    .mcp-cell b{display:block;font-size:13.4px;margin-bottom:3px;}
+    .mcp-cell p{font-size:11.2px;color:var(--muted);line-height:1.6;}
+    @media(max-width:640px){.mcp{grid-template-columns:1fr;}}
+
+    /* ============ P3 导师 / 机构平面 ============ */
+    .mod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:13px;}
+    .mod{padding:9px 8px;text-align:center;border-radius:12px;}
+    .mod .ico{margin:0 auto 6px;width:40px;height:40px;border-radius:11px;}
+    .mod .ico svg{width:24px;height:24px;}
+    .mod b{display:block;font-size:12.6px;}
+    .mod span{display:block;font-size:9.8px;color:var(--dim);margin-top:2px;line-height:1.45;}
+    @media(max-width:640px){.mod-grid{grid-template-columns:repeat(2,1fr);}}
+    .plus-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:13px;}
+    .plus{padding:10px 9px;text-align:center;border-radius:12px;
+      background:linear-gradient(180deg,rgba(62,123,250,.10),rgba(143,176,245,.04));
+      border:1px solid rgba(31,65,155,.30);}
+    .plus .ico{margin:0 auto 7px;width:40px;height:40px;border-radius:11px;background:#fff;}
+    .plus .ico svg{width:24px;height:24px;}
+    .plus b{display:block;font-size:12.4px;}
+    .plus span{display:block;font-size:9.6px;color:var(--dim);margin-top:3px;line-height:1.45;}
+    @media(max-width:640px){.plus-grid{grid-template-columns:repeat(2,1fr);}}
+    .loop-claim{text-align:center;margin-top:18px;font-size:clamp(18px,2.5vw,24px);font-weight:800;letter-spacing:-.015em;color:var(--blue);}
+    .loop-claim .lc-sub{display:block;font-size:12.2px;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-top:4px;}
+    .loop-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px;}
+    .loop-track::before{content:"";position:absolute;left:6%;right:6%;top:19px;height:2px;border-radius:2px;
+      background:linear-gradient(90deg,rgba(62,123,250,.55),rgba(31,65,155,.55),rgba(109,92,246,.45));opacity:.75;}
+    .lstep{text-align:center;position:relative;z-index:1;}
+    .lstep .dot{width:38px;height:38px;margin:0 auto 7px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:12.5px;font-weight:700;color:var(--blue);background:#fff;
+      border:2px solid rgba(31,65,155,.55);box-shadow:0 0 0 4px rgba(31,65,155,.07);}
+    .lstep b{display:block;font-size:13.4px;}
+    .lstep span{display:block;font-size:10.4px;color:var(--dim);margin-top:1px;line-height:1.45;}
+    .tri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:16px;}
+    .tri-card{padding:13px 13px;text-align:center;}
+    .tri-card b{font-size:15px;display:block;color:var(--blue);}
+    .tri-card p{font-size:11.4px;color:var(--muted);margin-top:3px;line-height:1.58;}
+    .inst-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px;}
+    .inst{display:flex;align-items:center;gap:9px;padding:10px 10px;border-radius:12px;}
+    .inst .ico{width:32px;height:32px;border-radius:9px;}
+    .inst .ico svg{width:19px;height:19px;}
+    .inst b{font-size:11.8px;}
+    @media(max-width:640px){.inst-row{grid-template-columns:1fr 1fr;}}
+
+    /* ============ P4 学生平面 ============ */
+    .pipe-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:10px;}
+    .pipe{padding:8px 8px;text-align:center;border-radius:12px;position:relative;}
+    .pipe .p-no{font-size:10.6px;font-weight:700;color:var(--mid);letter-spacing:.1em;}
+    .pipe .ico{margin:5px auto 6px;width:36px;height:36px;border-radius:10px;}
+    .pipe .ico svg{width:22px;height:22px;}
+    .pipe b{display:block;font-size:12.4px;}
+    .pipe span{display:block;font-size:9.8px;color:var(--dim);margin-top:2px;line-height:1.4;}
+    @media(max-width:640px){.pipe-grid{grid-template-columns:repeat(2,1fr);}}
+    .artifact{margin-top:9px;padding:9px 15px;display:flex;align-items:center;gap:14px;}
+    .artifact .ico{width:42px;height:42px;}
+    .artifact .ico svg{width:26px;height:26px;}
+    .artifact b{font-size:14.5px;display:block;}
+    .artifact p{font-size:11.8px;color:var(--muted);margin-top:2px;line-height:1.6;}
+    .gain-row{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:12px;}
+    .gain{padding:10px 10px;text-align:center;}
+    .gain .ico{margin:0 auto 7px;}
+    .gain b{display:block;font-size:13.4px;}
+    .gain span{display:block;font-size:10.4px;color:var(--dim);margin-top:2px;}
+    @media(max-width:640px){.gain-row{grid-template-columns:1fr 1fr;}}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:10px;}
+    .trust-cell{padding:10px 12px;}
+    .trust-cell .t-no{font-size:11.2px;font-weight:700;color:var(--mid);letter-spacing:.08em;}
+    .trust-cell b{display:block;font-size:13.2px;margin:3px 0 3px;}
+    .trust-cell p{font-size:10.8px;color:var(--muted);line-height:1.5;}
+    @media(max-width:640px){.trust{grid-template-columns:1fr;}}
+    .sub5{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:6px;}
+    .sub5 .c{padding:9px 10px 10px;border-radius:12px;text-align:left;}
+    .sub5 .tt{font-size:12.2px;color:var(--text);white-space:nowrap;}
+    .sub5 .tt .n{font-weight:400;color:var(--mid);margin-right:4px;}
+    .sub5 .tt b{font-weight:700;}
+    .sub5 .c p{font-size:9.8px;color:var(--dim);margin-top:4px;line-height:1.5;font-weight:400;}
+    .geo-foot{text-align:center;font-size:10.8px;color:var(--mid);letter-spacing:.05em;margin-top:5px;font-weight:500;}
+
+    /* ============ P5 Claw（卡通人物 + 流程图重排） ============ */
+    .bot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:13px;}
+    .bot{padding:9px 8px 9px;text-align:center;border-radius:14px;
+      background:linear-gradient(180deg,#F6F9FE,#EDF2FB);border:1px solid #D8E1F2;}
+    .bot svg{width:84px;height:84px;}
+    .bot b{display:block;font-size:13.6px;margin-top:4px;color:var(--text);}
+    .bot span{display:block;font-size:10.6px;color:var(--mid);margin-top:1px;letter-spacing:.06em;}
+    @media(max-width:640px){.bot-grid{grid-template-columns:1fr 1fr;}}
+    .studio-loop{margin-top:2px;}
+    .flow-canvas{position:relative;margin-top:9px;padding:30px 26px 26px;border-radius:14px;
+      background:var(--card);border:1px solid var(--border);}
+    .flow-canvas svg.arcs{position:absolute;inset:0;width:100%;height:100%;}
+    .flabel{position:absolute;font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--blue);background:#fff;padding:1px 5px;border-radius:4px;border:1px solid var(--border);}
+    .flabel.tl{left:34px;top:8px;}
+    .flabel.tr{right:34px;top:8px;}
+    .flabel.bl{left:34px;bottom:6px;}
+    .flabel.br{right:34px;bottom:6px;}
+    .chip-row{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+    .chip{display:flex;align-items:center;gap:10px;justify-content:center;padding:14px 8px;border-radius:12px;
+      font-size:13.4px;font-weight:600;color:var(--text);background:#fff;border:1px solid #D8E1F2;
+      box-shadow:0 4px 14px rgba(22,48,111,.07);}
+    .chip .ico{width:32px;height:32px;border-radius:9px;}
+    .chip .ico svg{width:19px;height:19px;}
+    @media(max-width:640px){.chip-row{grid-template-columns:1fr 1fr;}}
+    .one-shot{display:grid;grid-template-columns:1.32fr 1fr;margin-top:14px;overflow:hidden;}
+    .one-shot .os-left{padding:13px 18px;}
+    .one-shot .os-right{padding:13px 18px;border-left:1px solid var(--border);}
+    .os-left h4,.os-right h4{font-size:16.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px;color:var(--blue);}
+    .fake-ui{border-radius:12px;border:1px solid #D8E1F2;background:#F7FAFF;padding:12px 15px;font-size:12px;}
+    .fake-ui .q{color:var(--blue);font-weight:600;}
+    .fake-ui .a{color:var(--muted);margin-top:7px;line-height:1.72;}
+    .fake-ui .a b{color:var(--text);}
+    .bp-list{list-style:none;}
+    .bp-list li{display:flex;gap:10px;margin-bottom:7px;font-size:11.6px;color:var(--muted);line-height:1.52;}
+    .bp-list li i{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;background:var(--blue);box-shadow:0 0 8px rgba(31,65,155,.35);}
+    .bp-list li b{color:var(--text);display:block;font-size:12.6px;}
+    @media(max-width:640px){.one-shot{grid-template-columns:1fr;}.os-right{border-left:none;border-top:1px solid var(--border);}}
+    .audit{margin-top:11px;padding:10px 16px;display:flex;align-items:center;gap:14px;}
+    .audit .ico{width:42px;height:42px;}
+    .audit b{font-size:13.6px;display:block;}
+    .audit p{font-size:11.4px;color:var(--muted);margin-top:2px;line-height:1.55;}
+
+    /* ============ P6 封底（深蓝渐变） ============ */
+    .back{display:flex;flex-direction:column;align-items:center;text-align:center;padding:52px 46px 34px;color:#fff;border:none;
+      background:radial-gradient(560px 380px at 18% 8%,rgba(62,123,250,.28),transparent 62%),
+        radial-gradient(620px 420px at 86% 85%,rgba(109,92,246,.20),transparent 60%),
+        linear-gradient(168deg,#16306F 0%,#1F419B 70%,#24499F 100%);}
+    .back .logo-row{justify-content:center;}
+    .back .logo-name{font-size:28px;}
+    .back .page-sub{color:#C9D5F2;}
+    .back .page-sub b{color:#fff;}
+    .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:32px;width:100%;}
+    .v-card{padding:19px 12px 17px;border-radius:16px;
+      background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.30);box-shadow:0 0 30px rgba(10,22,58,.30);}
+    .v-card svg{width:58px;height:58px;margin:0 auto 10px;display:block;}
+    .v-card b{display:block;font-size:15.6px;letter-spacing:.06em;}
+    .v-card i{display:block;width:26px;height:2px;margin:8px auto;background:rgba(255,255,255,.4);border-radius:2px;}
+    .v-card p{font-size:11.8px;color:#C9D5F2;line-height:1.62;}
+    @media(max-width:640px){.value-grid{grid-template-columns:1fr 1fr;}}
+    .site-pill{display:inline-flex;align-items:center;gap:12px;margin-top:30px;padding:12px 26px;border-radius:999px;
+      border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.08);font-size:13.2px;letter-spacing:.04em;color:#C9D5F2;}
+    .site-pill svg{width:16px;height:16px;stroke:#AFC6FF;fill:none;stroke-width:2;stroke-linecap:round;}
+    .site-pill b{color:#fff;font-weight:600;}
+    .site-pill .sep{width:1px;height:15px;background:rgba(255,255,255,.4);}
+    .qr-row{display:flex;gap:50px;margin-top:27px;}
+    .qr-wrap{text-align:center;}
+    .qr{width:106px;height:106px;border-radius:10px;margin:0 auto;border:5px solid #fff;
+      background:repeating-linear-gradient(0deg,#16306F 0 6px,transparent 6px 12px),
+        repeating-linear-gradient(90deg,#16306F 0 6px,#fff 6px 12px);
+      box-shadow:0 8px 24px rgba(10,22,58,.35);}
+    .qr-wrap span{display:block;margin-top:9px;font-size:12.2px;color:#C9D5F2;letter-spacing:.08em;}
+    .back-foot{margin-top:auto;padding-top:24px;font-size:10.4px;color:rgba(255,255,255,.4);letter-spacing:.2em;}
+
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5B87E8"/><stop offset="1" stop-color="#1F419B"/></linearGradient>
+    <linearGradient id="ig2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3E7BFA"/><stop offset="1" stop-color="#5B87E8"/></linearGradient>
+    <linearGradient id="ig3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#16306F"/><stop offset="1" stop-color="#3E7BFA"/></linearGradient>
+    <linearGradient id="ig4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8FB0F5"/><stop offset="1" stop-color="#1F419B"/></linearGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3E7BFA"/><stop offset=".55" stop-color="#1F419B"/><stop offset="1" stop-color="#6D5CF6"/></linearGradient>
+    <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3E7BFA"/><stop offset="1" stop-color="#8FB0F5"/></linearGradient>
+  </defs>
+</svg>
+
+<!-- ================= P1 封面 ================= -->
+<section class="page cover">
+  <div class="logo-row">
+    <svg class="logo-mark" viewBox="0 0 48 48" fill="none">
+      <path d="M6 10 L26 3 L22 16 Z" fill="url(#lg)"/>
+      <path d="M8 20 L30 12 L25 26 Z" fill="url(#lg2)"/>
+      <path d="M12 31 L34 23 L29 38 Z" fill="url(#lg)" opacity=".85"/>
+    </svg>
+    <div>
+      <div class="logo-name">研擎</div>
+      <div class="logo-en">NEBULALAB</div>
+    </div>
+  </div>
+
+  <div class="cover-hero">
+    <h1>让科研，<br>自己<span class="grad">跑起来</span>。</h1>
+    <p class="sub">课题组科研操作系统 · AI 不长在对话框里，而长在任务上</p>
+  </div>
+
+  <div class="orbit">
+    <svg class="orbit-deco" viewBox="0 0 700 430" preserveAspectRatio="xMidYMid slice" fill="none">
+      <g stroke="rgba(143,176,245,.42)" stroke-width="1">
+        <path d="M95 78 L160 52 L225 78 L275 50"/>
+        <path d="M160 52 L140 132 L88 108"/>
+        <path d="M470 320 L530 296 L596 322 L648 292"/>
+        <path d="M530 296 L516 372 L580 388"/>
+        <path d="M368 30 L404 14 M300 398 L336 412"/>
+      </g>
+      <g fill="#BFD3FF">
+        <circle cx="95" cy="78" r="3"/><circle cx="160" cy="52" r="4"/><circle cx="225" cy="78" r="3"/>
+        <circle cx="275" cy="50" r="2.6"/><circle cx="140" cy="132" r="3"/><circle cx="88" cy="108" r="2.6"/>
+        <circle cx="470" cy="320" r="3"/><circle cx="530" cy="296" r="4"/><circle cx="596" cy="322" r="3"/>
+        <circle cx="648" cy="292" r="2.6"/><circle cx="516" cy="372" r="3"/><circle cx="580" cy="388" r="2.6"/>
+      </g>
+      <path d="M330 62h10M335 57v10" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/>
+      <path d="M560 214h12M566 208v12" stroke="rgba(255,255,255,.45)" stroke-width="1.2"/>
+      <path d="M622 92l8.5 4.8v9.6l-8.5 4.8-8.5-4.8v-9.6z" stroke="rgba(255,255,255,.38)" stroke-width="1.2"/>
+      <path d="M108 330l7 4v8l-7 4-7-4v-8z" stroke="rgba(255,255,255,.30)" stroke-width="1.1"/>
+      <circle cx="392" cy="120" r="11" stroke="rgba(255,255,255,.30)" stroke-dasharray="3 4"/>
+      <circle cx="242" cy="300" r="8" stroke="rgba(255,255,255,.26)" stroke-dasharray="2.5 3.5"/>
+      <g fill="#8FA3D9" opacity=".75">
+        <circle cx="60" cy="180" r="1.6"/><circle cx="640" cy="150" r="1.8"/><circle cx="420" cy="388" r="1.6"/>
+        <circle cx="255" cy="22" r="1.5"/><circle cx="55" cy="300" r="1.5"/><circle cx="655" cy="370" r="1.6"/>
+      </g>
+    </svg>
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <span class="onode" style="left:7.5%;top:56%"></span>
+    <span class="onode" style="left:92%;top:44%"></span>
+    <span class="onode" style="left:44%;top:15.5%"></span>
+    <span class="onode" style="left:56%;top:85%"></span>
+    <span class="onode" style="left:14%;top:53%"></span>
+    <span class="onode" style="left:86.5%;top:47%"></span>
+    <span class="onode b" style="left:30%;top:54%"></span>
+    <span class="onode b" style="left:69.5%;top:46%"></span>
+    <span class="onode b" style="left:20%;top:28%"></span>
+    <span class="onode b" style="left:78%;top:70%"></span>
+    <span class="onode b" style="left:63%;top:10%"></span>
+    <span class="onode b" style="left:36%;top:90%"></span>
+    <span class="onode b" style="left:90%;top:24%"></span>
+    <span class="onode b" style="left:10%;top:78%"></span>
+
+    <div class="sphere"><span class="sdot" style="right:-7px;top:15%"></span><span class="sdot s2" style="left:-9px;bottom:17%"></span>
+      <svg viewBox="0 0 48 48" fill="none">
+        <path d="M6 10 L26 3 L22 16 Z" fill="rgba(255,255,255,.92)"/>
+        <path d="M8 20 L30 12 L25 26 Z" fill="rgba(255,255,255,.75)"/>
+        <path d="M12 31 L34 23 L29 38 Z" fill="rgba(255,255,255,.6)"/>
+      </svg>
+      <b>研擎 Claw</b>
+    </div>
+
+    <div class="sat s1">
+      <div class="ico"><svg viewBox="0 0 32 32"><path d="M6 8a3 3 0 0 1 3-3h4l2 3h3v3H6V8Z" fill="url(#ig)"/><rect x="5" y="10" width="22" height="15" rx="3" fill="#16306F"/><path d="M10 8h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M11 17l3 3 6-6" stroke="#3E7BFA" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><b>学生平面 · 启航流水线</b><span>从选题到 rebuttal 九步陪跑</span></div>
+    </div>
+    <div class="sat s2">
+      <div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="16" rx="3" fill="url(#ig2)"/><rect x="6" y="8" width="20" height="12" rx="2" fill="#16306F"/><path d="M9 14h5M17 11v6" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M10 26h12" stroke="#3E7BFA" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="16" cy="26" r="2" fill="#6D5CF6"/></svg></div>
+      <div><b>导师平面 · 课题组驾驶舱</b><span>组盘 · 负载 · 套磁 · 经费</span></div>
+    </div>
+    <div class="sat s3">
+      <div class="ico"><svg viewBox="0 0 32 32"><path d="M16 4 5 9v9c0 6 5 8.6 11 10 6-1.4 11-4 11-10V9L16 4Z" fill="url(#ig3)"/><path d="M16 8v16" stroke="#16306F" stroke-width="1.6" fill="none"/><path d="M11 14h10M11 18h6" stroke="#16306F" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M12 20l3 3 6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><b>机构平面 · 治理与资产</b><span>全院驾驶舱 · 红线 · 成果库</span></div>
+    </div>
+  </div>
+
+  <div class="conn-strip glass">
+    <span class="c-lab">MCP 连接器层</span>
+    <span class="c-chip">Zotero</span><span class="c-chip">Notion</span><span class="c-chip">GitHub</span>
+    <span class="c-chip">Overleaf</span><span class="c-chip">本地模型 GLM / DeepSeek</span><span class="c-chip">校内教务财务</span>
+  </div>
+
+  <p class="cover-claim">一个课题组 = 一次部署拿下 <b>5–20 个活跃用户</b>　·　导师装了，学生必须装</p>
+
+  <div class="foot-brand">研擎 NEBULALAB · 课题组的科研操作系统</div>
+</section>
+
+<!-- ================= P2 一个系统，三种身份 ================= -->
+<section class="page">
+  <span class="kicker">NebulaLab · One System, Three Planes</span>
+  <h2 class="page-title">一个系统，三种身份</h2>
+  <p class="page-sub">同一群 AI 员工、同一份组内资产、同一套可审计的流程</p>
+
+  <div class="claw-hero glass">
+    <svg class="brain" viewBox="0 0 120 120" fill="none">
+      <path d="M60 14c-14 0-24 8-26 18-9 3-14 11-12 20 1 6 5 10 10 13-2 10 4 20 15 23 6 2 13 1 18-3 8 4 18 2 23-5 5-7 4-15-1-21 4-7 3-16-3-21-1-11-11-24-24-24Z" fill="rgba(31,65,155,.12)" stroke="url(#lg)" stroke-width="2"/>
+      <circle cx="42" cy="44" r="3" fill="#5B87E8"/><circle cx="66" cy="36" r="3" fill="#3E7BFA"/>
+      <circle cx="80" cy="58" r="3" fill="#6D5CF6"/><circle cx="52" cy="72" r="3" fill="#5B87E8"/>
+      <circle cx="70" cy="86" r="3" fill="#3E7BFA"/><circle cx="34" cy="62" r="3" fill="#6D5CF6"/>
+      <path d="M42 44 L66 36 M66 36 L80 58 M80 58 L70 86 M52 72 L70 86 M34 62 L42 44 M34 62 L52 72 M66 36 L52 72" stroke="rgba(31,65,155,.35)" stroke-width="1.2"/>
+    </svg>
+    <div>
+      <h3>研擎 Claw　<span class="tag">AI 中枢</span></h3>
+      <p class="h-sub">八位 AI 员工，长在任务上</p>
+      <p>理解科研目标、组织专家协作、调用课题组数据与外部系统，持续推进任务并交付成果；每一次调用都带权限边界与审计日志。</p>
+      <div class="tags">
+        <span class="tag">理解目标</span><span class="tag">拆解任务</span><span class="tag">协同执行</span><span class="tag">留痕可审</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="plane-grid">
+    <div class="plane glass">
+      <div class="p-art"><svg viewBox="0 0 96 96">
+        <circle cx="48" cy="48" r="40" fill="rgba(31,65,155,.10)"/>
+        <path d="M30 44a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v26a4 4 0 0 1-4 4H34a4 4 0 0 1-4-4V44Z" fill="url(#ig)"/>
+        <rect x="34" y="48" width="28" height="22" rx="3" fill="#16306F"/>
+        <path d="M38 54h20M38 60h14M38 66h9" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="48" cy="30" r="9" fill="url(#ig2)"/>
+        <path d="M44 28c1.5-2 4-2 5.5 0" stroke="#16306F" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="45.5" cy="31" r="1.4" fill="#16306F"/><circle cx="51.5" cy="31" r="1.4" fill="#16306F"/>
+        <path d="M39 26c3-6 15-6 18 0" stroke="#6D5CF6" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg></div>
+      <span class="p-tag">STUDENT PLANE</span>
+      <h4>启航流水线</h4>
+      <p class="p-who">本科生 / 研究生 · 免费</p>
+      <p>引导式流水线而非工具箱：每步只问 3 个问题、产出 1 个工件，新手不必再纠结"该用哪个工具"。</p>
+    </div>
+    <div class="plane glass">
+      <div class="p-art"><svg viewBox="0 0 96 96">
+        <circle cx="48" cy="48" r="40" fill="rgba(62,123,250,.09)"/>
+        <rect x="16" y="38" width="64" height="34" rx="5" fill="url(#ig2)"/>
+        <rect x="21" y="43" width="54" height="24" rx="3" fill="#16306F"/>
+        <path d="M27 56l7-8 6 5 9-13 8 9" stroke="#8FB0F5" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 62h42" stroke="rgba(255,255,255,.25)" stroke-width="1.6" fill="none"/>
+        <circle cx="48" cy="26" r="10" fill="url(#ig4)"/>
+        <path d="M42 22c3-5 9-5 12 0" stroke="#16306F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle cx="44.5" cy="25" r="1.5" fill="#16306F"/><circle cx="51.5" cy="25" r="1.5" fill="#16306F"/>
+        <path d="M44 30c1.5 2 5 2 6.5 0" stroke="#16306F" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </svg></div>
+      <span class="p-tag">PI PLANE</span>
+      <h4>课题组驾驶舱</h4>
+      <p class="p-who">导师 / PI · 核心付费方</p>
+      <p>组盘谁卡住了、能力×负载矩阵怎么分工、套磁学生证据匹配、经费燃烧与审批流——蓝海核心。</p>
+    </div>
+    <div class="plane glass">
+      <div class="p-art"><svg viewBox="0 0 96 96">
+        <circle cx="48" cy="48" r="40" fill="rgba(109,92,246,.09)"/>
+        <path d="M22 44h52v26a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V44Z" fill="url(#ig3)"/>
+        <path d="M18 44 48 26l30 18H18Z" fill="url(#ig)"/>
+        <rect x="30" y="52" width="12" height="22" rx="2" fill="#16306F"/><rect x="54" y="52" width="12" height="22" rx="2" fill="#16306F"/>
+        <path d="M34 60v6M58 60v6" stroke="#6D5CF6" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M48 12l7 4v8l-7 4-7-4v-8l7-4Z" fill="#6D5CF6"/>
+        <path d="M45 18l2.5 2.5L50 17" stroke="#16306F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <span class="p-tag">INSTITUTE PLANE</span>
+      <h4>治理与资产</h4>
+      <p class="p-who">院系 / 科研处 · 私有化</p>
+      <p>全院统计、经费红线、结题预警、成果与 IP 登记、AIGC 合规披露；只导出数据，不替代学校填报系统。</p>
+    </div>
+  </div>
+
+  <span class="sec-label">四大能力</span>
+  <div class="cap-grid">
+    <div class="cap-card glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="5" width="24" height="18" rx="3" fill="url(#ig)"/><rect x="6" y="7" width="20" height="14" rx="2" fill="#16306F"/><path d="M9 18l4-4 3 3 5-7" stroke="#8FB0F5" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 27h10" stroke="#3E7BFA" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div>
+      <b>会分析</b><span>感知科研信号</span>
+    </div>
+    <div class="cap-card glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><circle cx="9" cy="9" r="5" fill="url(#ig2)"/><circle cx="23" cy="9" r="5" fill="url(#ig3)"/><circle cx="16" cy="23" r="5" fill="url(#ig4)"/><path d="M13 12l-2 7M19 12l2 7M14 9h4" stroke="#3E7BFA" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></div>
+      <b>会决策</b><span>判断下一步行动</span>
+    </div>
+    <div class="cap-card glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="6" fill="url(#ig)"/><path d="M16 4v5M16 23v5M4 16h5M23 16h5M7.5 7.5l3.5 3.5M21 21l3.5 3.5M24.5 7.5 21 11M11 21l-3.5 3.5" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M17 12l-4 6h4l-1 4 4-6h-4l1-4Z" fill="#fff"/></svg></div>
+      <b>会执行</b><span>跨系统真实执行</span>
+    </div>
+    <div class="cap-card glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><path d="M6 11h20v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V11Z" fill="url(#ig2)"/><path d="M4 7h24v4H4z" fill="url(#ig3)"/><path d="M12 17l3 3 6-6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <b>会交付</b><span>追踪科研成果</span>
+    </div>
+  </div>
+
+  <span class="sec-label">连接器层 · MCP 集成战略</span>
+  <p class="sec-note">红海环节集成别人的，无人区环节自建自己的</p>
+  <div class="mcp">
+    <div class="mcp-cell glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="8" width="10" height="16" rx="3" fill="url(#ig)"/><rect x="18" y="8" width="10" height="16" rx="3" fill="url(#ig2)"/><path d="M14 16h4" stroke="#6D5CF6" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg></div>
+      <b>集成红海环节</b>
+      <p>文献走 Zotero、写作走 Notion / Overleaf，不重复造轮子。</p>
+    </div>
+    <div class="mcp-cell glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><path d="M16 5l10 5v12l-10 5-10-5V10l10-5Z" fill="url(#ig3)"/><path d="M16 12l5 2.5v5L16 22l-5-2.5v-5L16 12Z" fill="#16306F"/><circle cx="16" cy="16" r="2.4" fill="#6D5CF6"/></svg></div>
+      <b>自建无人区</b>
+      <p>驾驶舱、套磁、经费、组会——没人做，必须自己建。</p>
+    </div>
+    <div class="mcp-cell glass">
+      <div class="ico"><svg viewBox="0 0 32 32"><ellipse cx="16" cy="9" rx="10" ry="4" fill="url(#ig4)"/><path d="M6 9v14c0 2.2 4.5 4 10 4s10-1.8 10-4V9" fill="url(#ig2)" opacity=".85"/><path d="M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4" stroke="#16306F" stroke-width="1.6" fill="none"/></svg></div>
+      <b>流程数据必须留在本库</b>
+      <p>文档型数据可同步出去，任务 / 审批 / 实验台账绝不外流。</p>
+    </div>
+  </div>
+
+  <div class="foot-brand">研擎 NEBULALAB</div>
+</section>
+
+<!-- ================= P3 导师平面 + 机构平面 ================= -->
+<section class="page">
+  <span class="kicker">PI Plane · Cockpit</span>
+  <h2 class="page-title">课题组驾驶舱</h2>
+  <p class="page-sub">课题组经营的操作内核 · 解痛点 5–7</p>
+
+  <span class="sec-label">十大核心模块</span>
+  <div class="mod-grid">
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M4 10a3 3 0 0 1 3-3h6l3 3h9a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V10Z" fill="url(#ig)"/><rect x="4" y="14" width="24" height="12" rx="2" fill="#16306F" opacity=".7"/><path d="M11 20l3 3 6-6" stroke="#3E7BFA" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>项目管理</b><span>课题拆解 · 里程碑 · 进度</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><ellipse cx="16" cy="9" rx="10" ry="4" fill="url(#ig2)"/><path d="M6 9v6c0 2.2 4.5 4 10 4s10-1.8 10-4V9" fill="url(#ig2)" opacity=".8"/><path d="M6 15v6c0 2.2 4.5 4 10 4s10-1.8 10-4v-6" fill="url(#ig)" opacity=".7"/><path d="M16 13v8" stroke="#fff" stroke-width="1.8" fill="none"/></svg></div><b>经费管理</b><span>预算 · 报销 · 执行预警</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M9 5h14v7a7 7 0 0 1-14 0V5Z" fill="url(#ig3)"/><path d="M9 8H5v3a5 5 0 0 0 4 4M23 8h4v3a5 5 0 0 1-4 4" stroke="#3E7BFA" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M16 19v6M11 27h10" stroke="#6D5CF6" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div><b>成果管理</b><span>论文 · 专利 · 结题归档</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="12" cy="11" r="5" fill="url(#ig)"/><circle cx="22" cy="13" r="4" fill="url(#ig2)"/><path d="M4 27c0-4 3.6-7 8-7s8 3 8 7M18 27c.6-3.6 2.6-6 6-6s6 2.4 6 6" fill="url(#ig4)" opacity=".85"/></svg></div><b>人员管理</b><span>学生画像 · 培养路线</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M6 8h12v18H6z" fill="url(#ig2)"/><path d="M10 8h12v18H10z" fill="url(#ig)" opacity=".9"/><path d="M14 12h4M14 16h4" stroke="#16306F" stroke-width="1.6" fill="none"/></svg></div><b>文献资产</b><span>组内文库 · 共享批注</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M13 5h6v7l6 12a2 2 0 0 1-2 3H9a2 2 0 0 1-2-3l6-12V5Z" fill="url(#ig4)"/><path d="M9 20h14" stroke="#16306F" stroke-width="1.6" fill="none"/><circle cx="14" cy="23" r="1.8" fill="#8FB0F5"/><circle cx="19" cy="25" r="1.4" fill="#6D5CF6"/></svg></div><b>实验数据 ELN</b><span>数据集 · 复现记录</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="6" width="22" height="15" rx="3" fill="url(#ig)"/><rect x="8" y="9" width="16" height="9" rx="1.5" fill="#16306F"/><path d="M11 24h10M16 21v3M10 28h12" stroke="#3E7BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><b>设备管理</b><span>仪器预约 · 使用台账</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M16 6 6 11l10 5 10-5-10-5Z" fill="url(#ig3)"/><path d="M9 15v6c0 2 3.1 3.6 7 3.6s7-1.6 7-3.6v-6" fill="url(#ig2)" opacity=".85"/><path d="M24 22l4 6h-8l4-6Z" fill="#6D5CF6"/></svg></div><b>招生管理</b><span>证据匹配 · 面试辅助</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="19" rx="3" fill="url(#ig4)"/><path d="M5 13h22" stroke="#16306F" stroke-width="2" fill="none"/><path d="M10 4v5M22 4v5" stroke="#3E7BFA" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="16" cy="20" r="3.4" fill="#16306F"/><path d="M16 18v2.5l2 1.5" stroke="#8FB0F5" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div><b>日程会议</b><span>组会 · 讲座 · Deadline</span></div>
+    <div class="mod glass"><div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="18" width="6" height="10" rx="2" fill="url(#ig)"/><rect x="13" y="12" width="6" height="16" rx="2" fill="url(#ig2)"/><rect x="22" y="6" width="6" height="22" rx="2" fill="url(#ig3)"/><path d="M4 14l9-4 9 6" stroke="#8FB0F5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>统计分析</b><span>看板 · 自定义指标</span></div>
+  </div>
+
+  <span class="sec-label">五道补强 · 决定机构是否买单</span>
+  <div class="plus-grid">
+    <div class="plus"><div class="ico"><svg viewBox="0 0 32 32"><path d="M16 4l10 4v9c0 7-4.6 10.6-10 12-5.4-1.4-10-5-10-12V8l10-4Z" fill="url(#ig)"/><path d="M11 16l3.5 3.5L22 12" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>AIGC 合规</b><span>AI 参与留痕 · 披露声明</span></div>
+    <div class="plus"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="8" cy="9" r="4" fill="url(#ig2)"/><circle cx="24" cy="9" r="4" fill="url(#ig3)"/><circle cx="16" cy="24" r="4" fill="url(#ig4)"/><path d="M11 12l3 8M21 12l-3 8M12 9h8" stroke="#3E7BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><b>数据血缘</b><span>结论回溯到那次 run</span></div>
+    <div class="plus"><div class="ico"><svg viewBox="0 0 32 32"><path d="M5 8h17l4 4v12H5z" fill="url(#ig)"/><path d="M9 14h12M9 18h8" stroke="#16306F" stroke-width="1.8" fill="none"/><path d="M20 24l6 5-6 3v-8Z" fill="#6D5CF6"/></svg></div><b>Rebuttal 响应</b><span>大修小修才是痛点</span></div>
+    <div class="plus"><div class="ico"><svg viewBox="0 0 32 32"><path d="M7 12h18v15a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V12Z" fill="url(#ig2)"/><path d="M5 8h22v4H5z" fill="url(#ig3)"/><path d="M16 8v6M13 14l3 3 3-3" stroke="#16306F" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>知识传承</b><span>毕业不归零 · Handover</span></div>
+    <div class="plus"><div class="ico"><svg viewBox="0 0 32 32"><path d="M7 6h14l5 5v15a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V6Z" fill="url(#ig4)"/><circle cx="19" cy="19" r="6" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M23 23l5 5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></div><b>经费审计</b><span>规则引擎提前预警</span></div>
+  </div>
+
+  <span class="sec-label">AI 科研协同，从发现到行动</span>
+  <p class="sec-note">从接手任务到成果复盘，全程可见、可控、可追踪</p>
+  <div class="loop-claim">
+    从"人找问题"，到"问题主动找人"
+    <span class="lc-sub">每一轮反馈，都进入下一轮判断与协同</span>
+  </div>
+  <div class="loop-track">
+    <div class="lstep"><div class="dot">01</div><b>发现问题</b><span>组盘信号主动感知</span></div>
+    <div class="lstep"><div class="dot">02</div><b>创建活动</b><span>定位课题与责任人</span></div>
+    <div class="lstep"><div class="dot">03</div><b>开启托管</b><span>设定目标与策略边界</span></div>
+    <div class="lstep"><div class="dot">04</div><b>自动执行</b><span>推进任务与策略落地</span></div>
+    <div class="lstep"><div class="dot">05</div><b>复盘优化</b><span>结果沉淀 · 策略迭代</span></div>
+  </div>
+  <div class="tri-grid">
+    <div class="tri-card glass"><b>看得清</b><p>谁在哪个阶段、卡了多久，红灯预警</p></div>
+    <div class="tri-card glass"><b>算得准</b><p>能力×负载矩阵，分工不再凭感觉</p></div>
+    <div class="tri-card glass"><b>动得快</b><p>定位真实问题，多专家协同推进</p></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <span class="kicker">Institute Plane</span>
+  <h2 class="page-title" style="font-size:clamp(20px,2.8vw,28px);">机构平面 · 治理与资产</h2>
+  <div class="inst-row">
+    <div class="inst glass"><div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="20" rx="3" fill="url(#ig)"/><rect x="7" y="9" width="8" height="14" rx="1.5" fill="#16306F"/><rect x="17" y="9" width="8" height="6" rx="1.5" fill="#16306F"/><rect x="17" y="17" width="8" height="6" rx="1.5" fill="#16306F"/></svg></div><b>全院驾驶舱</b></div>
+    <div class="inst glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M16 4l11 4v8c0 7-5 11-11 12C10 27 5 23 5 16V8l11-4Z" fill="url(#ig3)"/><path d="M16 12v8" stroke="#16306F" stroke-width="2.4" stroke-linecap="round"/></svg></div><b>经费红线</b></div>
+    <div class="inst glass"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="16" cy="18" r="9" fill="url(#ig2)"/><path d="M16 14v5l3 2" stroke="#16306F" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M11 5h10" stroke="#6D5CF6" stroke-width="2.4" stroke-linecap="round"/></svg></div><b>结题预警</b></div>
+    <div class="inst glass"><div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="6" width="22" height="20" rx="3" fill="url(#ig4)"/><path d="M11 6V4h10v2" stroke="#3E7BFA" stroke-width="2" fill="none"/><circle cx="12" cy="16" r="3" fill="#16306F"/><path d="M18 13h6M18 19h6" stroke="#16306F" stroke-width="1.8" fill="none"/></svg></div><b>权限矩阵</b></div>
+    <div class="inst glass"><div class="ico"><svg viewBox="0 0 32 32"><path d="M8 8h16v18a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V8Z" fill="url(#ig)"/><path d="M6 8h20v3H6z" fill="url(#ig3)"/><path d="M13 16h6M13 20h6" stroke="#16306F" stroke-width="1.8" fill="none"/></svg></div><b>成果与 IP 库</b></div>
+  </div>
+
+  <div class="foot-brand">研擎 NEBULALAB</div>
+</section>
+
+<!-- ================= P4 学生平面 ================= -->
+<section class="page">
+  <span class="kicker">Student Plane · Guided Pipeline</span>
+  <h2 class="page-title">启航流水线</h2>
+  <p class="page-sub">引导式流水线，不是工具箱 · 解痛点 1–4、8</p>
+
+  <span class="sec-label">九步陪跑 · 每步产出一件工件</span>
+  <div class="pipe-grid">
+    <div class="pipe glass"><span class="p-no">01</span><div class="ico"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" fill="url(#ig)"/><circle cx="16" cy="16" r="7" fill="#16306F"/><path d="M20 12l-3 7-7 3 3-7 7-3Z" fill="#6D5CF6"/></svg></div><b>选题定位</b><span>方向 · 空白 · 可行性</span></div>
+    <div class="pipe glass"><span class="p-no">02</span><div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="6" width="22" height="20" rx="3" fill="url(#ig2)"/><path d="M5 12h22M5 18h22M13 6v20" stroke="#16306F" stroke-width="1.8" fill="none"/><path d="M16 9v3M9 15v3M23 15v3" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div><b>文献矩阵</b><span>自动横向对比</span></div>
+    <div class="pipe glass"><span class="p-no">03</span><div class="ico"><svg viewBox="0 0 32 32"><path d="M7 8h18v18H7z" fill="url(#ig3)"/><path d="M11 16l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>可行性评估</b><span>有没有代码与数据</span></div>
+    <div class="pipe glass"><span class="p-no">04</span><div class="ico"><svg viewBox="0 0 32 32"><path d="M12 5h8v8l7 14a2 2 0 0 1-2 3H9a2 2 0 0 1-2-3l7-14V5Z" fill="url(#ig4)"/><circle cx="14" cy="21" r="2" fill="#8FB0F5"/><circle cx="20" cy="24" r="1.6" fill="#6D5CF6"/><path d="M12 5h8" stroke="#3E7BFA" stroke-width="2"/></svg></div><b>零代码复现</b><span>自动环境 · 结果对齐</span></div>
+    <div class="pipe glass"><span class="p-no">05</span><div class="ico"><svg viewBox="0 0 32 32"><rect x="4" y="18" width="6" height="10" rx="2" fill="url(#ig)"/><rect x="13" y="12" width="6" height="16" rx="2" fill="url(#ig2)"/><rect x="22" y="6" width="6" height="22" rx="2" fill="url(#ig3)"/><path d="M4 14l9-4 9 6" stroke="#8FB0F5" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><b>结果图表</b><span>期刊规格自适应</span></div>
+    <div class="pipe glass"><span class="p-no">06</span><div class="ico"><svg viewBox="0 0 32 32"><path d="M8 5h16v22H8z" fill="url(#ig2)"/><path d="M11 10h10M11 14h10M11 18h6" stroke="#16306F" stroke-width="1.8" fill="none"/><path d="M20 24l6-6 3 3-6 6-3-3Z" fill="#6D5CF6"/></svg></div><b>成稿排版</b><span>LaTeX / Word · 引用</span></div>
+    <div class="pipe glass"><span class="p-no">07</span><div class="ico"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" fill="url(#ig3)"/><circle cx="16" cy="16" r="7" fill="#16306F"/><circle cx="16" cy="16" r="3" fill="#6D5CF6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4" stroke="#3E7BFA" stroke-width="2" stroke-linecap="round"/></svg></div><b>期刊匹配</b><span>范围 · 周期 · 命中率</span></div>
+    <div class="pipe glass"><span class="p-no">08</span><div class="ico"><svg viewBox="0 0 32 32"><path d="M4 16l24-10-8 24-5-9-11-5Z" fill="url(#ig4)"/><path d="M4 16l11 5" stroke="#16306F" stroke-width="1.6" fill="none"/></svg></div><b>投稿追踪</b><span>状态 · 时间线 · 提醒</span></div>
+    <div class="pipe glass"><span class="p-no">09</span><div class="ico"><svg viewBox="0 0 32 32"><path d="M5 7h18l4 4v12H5z" fill="url(#ig)"/><path d="M9 13h12M9 17h8" stroke="#16306F" stroke-width="1.8" fill="none"/><path d="M14 23v5l-4-3h8l-4-2Z" fill="#6D5CF6"/></svg></div><b>Rebuttal 响应</b><span>意见解析 · 回复草稿</span></div>
+  </div>
+
+  <div class="artifact glass">
+    <div class="ico"><svg viewBox="0 0 32 32"><path d="M16 5l10 5v12l-10 5-10-5V10l10-5Z" fill="url(#ig2)"/><path d="M16 12l5 2.5v5L16 22l-5-2.5v-5L16 12Z" fill="#16306F"/><path d="M13 16l2.5 2.5L20 14" stroke="#8FB0F5" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div>
+      <b>一步一工件，工件自动进资产层</b>
+      <p>新手不需要"选工具"，流水线已经替他选好了；每一步产出的文献矩阵、复现报告、图表、稿件，都自动沉淀为组内资产。</p>
+    </div>
+  </div>
+
+    <span class="sec-label">研擎投稿 · 让成果，更快被看见</span>
+  <p class="sec-note" style="margin-bottom:0;">让投稿决策更简单 —— 从论文分析到期刊选择，全程可见、可控、可追踪</p>
+  <div class="sub5">
+    <div class="c glass"><div class="tt"><span class="n">01</span><b>期刊智能匹配</b></div><p>基于论文内容与期刊范围、影响因子、历史接受率精准匹配</p></div>
+    <div class="c glass"><div class="tt"><span class="n">02</span><b>审稿周期预测</b></div><p>基于真实投稿数据预测审稿时长，减少无效等待</p></div>
+    <div class="c glass"><div class="tt"><span class="n">03</span><b>投稿序列策略</b></div><p>制定投稿梯队与转投预案，一稿多路径规划</p></div>
+    <div class="c glass"><div class="tt"><span class="n">04</span><b>审稿意见辅助</b></div><p>审稿意见结构化解析，回复信草稿智能生成</p></div>
+    <div class="c glass"><div class="tt"><span class="n">05</span><b>全链路洞察</b></div><p>贯通投稿状态与课题组成果看板，进度一目了然</p></div>
+  </div>
+
+  <span class="kicker">NebulaLab GEO</span>
+  <h2 class="page-title" style="font-size:clamp(18px,2.6vw,26px);">研擎 GEO</h2>
+  <p class="page-sub">让成果被 AI 发现和持续信任 —— 大模型时代的学术可见性</p>
+  <div class="trust" style="grid-template-columns:repeat(4,1fr);">
+    <div class="trust-cell glass"><span class="t-no">01</span><b>学术意图诊断</b><p>洞察研究方向的搜索意图、热点空白与竞品表现，锁定应优先占领的学术内容阵地。</p></div>
+    <div class="trust-cell glass"><span class="t-no">02</span><b>策略—执行—监控自动化</b><p>全天候 Agent 形成策略、推进学术内容落地、承接引用反馈，无需人工盯盘。</p></div>
+    <div class="trust-cell glass"><span class="t-no">03</span><b>AI 引用自迭代闭环</b><p>结合 AI 可见性、学术引用表现与竞品动态，自动归因，持续优化内容策略。</p></div>
+    <div class="trust-cell glass"><span class="t-no">04</span><b>科研资产沉淀</b><p>论文、开源代码、数据集统一沉淀为可被大模型引用的可信资产。</p></div>
+  </div>
+  <p class="geo-foot">每一轮反馈，都进入下一轮策略，让科研影响力持续增长。</p>
+
+  <span class="sec-label">信任设计 · 双端产品的生死线</span>
+  <div class="trust">
+    <div class="trust-cell glass"><span class="t-no">铁律 01</span><b>可见性三级</b><p>仅自己 / 对导师可见 / 组内公开，由学生控制，导师端不显示"是否有隐藏内容"。</p></div>
+    <div class="trust-cell glass"><span class="t-no">铁律 02</span><b>数据边界合同</b><p>白纸黑字写清哪些数据可用于画像与推荐、哪些永不离开学校。</p></div>
+    <div class="trust-cell glass"><span class="t-no">铁律 03</span><b>不与考核挂钩</b><p>定位是"帮扶与资源匹配"，一旦变成扣奖学金依据，数据立刻失真。</p></div>
+  </div>
+
+  <div class="foot-brand">研擎 NEBULALAB</div>
+</section>
+
+<!-- ================= P5 研擎 Claw ================= -->
+<section class="page">
+  <span class="kicker">NebulaLab Claw</span>
+  <h2 class="page-title">研擎 Claw</h2>
+  <p class="page-sub">八位 AI 员工，长在任务上</p>
+
+  <span class="sec-label">实验室 · 专家团队</span>
+  <p class="sec-note">交代目标，专业分工，协同推进</p>
+
+      <div class="bot-grid">
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#16306F"/><path d="M53 85l7 7 7-7" fill="none" stroke="#8FB0F5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 88v10" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round"/><rect x="67" y="92" width="10" height="7" rx="1.5" fill="#8FB0F5"/><path d="M70 95.5l1.6 2.6 3 .4-2.2 2.1.5 3-2.9-1.5-2.9 1.5.5-3-2.2-2.1 3-.4z" fill="#fff"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#26324F"/><path d="M45 28l-3-8 8 4 2-9 5 8 5-8 2 9 8-4-3 8z" fill="#26324F"/><path d="M48 40q4-2.6 8-1M64 39q4-1.6 8 1" stroke="#26324F" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="67.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><circle cx="66.7" cy="46.2" r=".9" fill="#fff"/><path d="M52.5 56q5.5 5.5 11.5 1.5" stroke="#22304F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="46.5" cy="53.5" r="2.4" fill="rgba(240,140,140,.25)"/><circle cx="73.5" cy="53.5" r="2.4" fill="rgba(240,140,140,.25)"/><path d="M37 43a23.5 23.5 0 0 1 46 0" stroke="#1F419B" stroke-width="3.2" fill="none" stroke-linecap="round"/><rect x="33.5" y="40" width="9" height="13" rx="4" fill="#1F419B"/><rect x="77.5" y="40" width="9" height="13" rx="4" fill="#1F419B"/><circle cx="38" cy="46.5" r="1.6" fill="#7EE7F7"/><path d="M38 52q-6.5 3.5-5 9.5" stroke="#1F419B" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="33.5" cy="63.5" r="2.6" fill="#3E7BFA"/><g stroke="rgba(31,65,155,.32)" stroke-width="1.5"><path d="M97 83 L86 71 M97 83 L111 69 M97 83 L85 97 M97 83 L109 100 M97 83 L97 65"/></g><circle cx="97" cy="83" r="6" fill="#1F419B"/><circle cx="97" cy="83" r="2.4" fill="#7EE7F7"/><path d="M108 74a14 14 0 0 1 3 7M74 92a14 14 0 0 0 4 6" stroke="#8FB0F5" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="86" cy="71" r="3.4" fill="#3E7BFA"/><circle cx="111" cy="69" r="3" fill="#8FB0F5"/><circle cx="85" cy="97" r="3" fill="#8FB0F5"/><circle cx="109" cy="100" r="3.4" fill="#3E7BFA"/><circle cx="97" cy="65" r="2.6" fill="#8FB0F5"/></svg>
+      <b>科研大脑</b><span>总控调度</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#3E7BFA"/><path d="M46 84.5q14 10 28 0" stroke="#fff" stroke-width="4.5" fill="none" stroke-linecap="round"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><circle cx="60" cy="16.5" r="7.5" fill="#2E3D6B"/><rect x="55" y="21.5" width="10" height="3.4" rx="1.7" fill="#E8A23C"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#2E3D6B"/><path d="M41.5 41q18.5-12.5 37 0l-.5 4.5q-18-10.5-36 0z" fill="#2E3D6B"/><path d="M40.5 44c-1.5 9-.5 15.5 2.5 19.5l4-3c-3-4.5-4-10-3-16.5z" fill="#2E3D6B"/><path d="M79.5 44c1.5 9 .5 15.5-2.5 19.5l-4-3c3-4.5 4-10 3-16.5z" fill="#2E3D6B"/><path d="M49.5 46.5q3-3.6 6 0M64.5 46.5q3-3.6 6 0" stroke="#22304F" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M55 55.5q5 3.6 10 0" stroke="#22304F" stroke-width="2.3" fill="none" stroke-linecap="round"/><circle cx="47" cy="52" r="2.8" fill="rgba(240,140,140,.3)"/><circle cx="73" cy="52" r="2.8" fill="rgba(240,140,140,.3)"/><path d="M95 84.5c-5.5-3.5-12.5-3.5-18.5-.5v17c6-3 13-3 18.5.5z" fill="#fff" stroke="#1F419B" stroke-width="1.7" stroke-linejoin="round"/><path d="M95 84.5c5.5-3.5 12.5-3.5 18.5-.5v17c-6-3-13-3-18.5.5z" fill="#fff" stroke="#1F419B" stroke-width="1.7" stroke-linejoin="round"/><path d="M95 85v17" stroke="#1F419B" stroke-width="1.7"/><path d="M82.5 90c4-2 8.5-2 12-.5M82.5 94.5c4-2 8.5-2 12-.5M95.5 90c3.5-1.5 8-1.5 12 .5M95.5 94.5c3.5-1.5 8-1.5 12 .5" stroke="#8FB0F5" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M103 72l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z" fill="#E8A23C"/><circle cx="79" cy="66" r="1.7" fill="#8FB0F5"/></svg>
+      <b>文献情报</b><span>检索 · 综述</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M33 74c5-9 15-13.5 27-13.5S82 65 87 74l-5.5 3c-3.5-7-11.5-11-21.5-11s-18 4-21.5 11z" fill="#5B87E8"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#FFFFFF" stroke="#D8E1F2" stroke-width="1.6"/><path d="M50 84.5l10 10.5 10-10.5z" fill="#5B87E8"/><path d="M55 93v8.5M65 93v8.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="55" cy="102.5" r="1.5" fill="#fff"/><circle cx="65" cy="102.5" r="1.5" fill="#fff"/><path d="M50 85.5l10 12 10-12" fill="none" stroke="#B9C8EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#26324F"/><path d="M43 32c1.5-4 5-6.5 9-7M57 22.5c2.5-3 6.5-3.5 9.5-1M69 26c4 .5 7 2.5 8.5 6" stroke="#26324F" stroke-width="2.8" fill="none" stroke-linecap="round"/><path d="M62 21q1.5-6.5 8-7" stroke="#26324F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="67.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><circle cx="66.7" cy="46.2" r=".9" fill="#fff"/><path d="M54.5 55.5q5.5 4.5 11 0" stroke="#22304F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="46.5" cy="53.5" r="2.4" fill="rgba(240,140,140,.25)"/><circle cx="73.5" cy="53.5" r="2.4" fill="rgba(240,140,140,.25)"/><rect x="76" y="83" width="28" height="18" rx="2.5" fill="#16306F"/><rect x="78.5" y="85.5" width="23" height="13" rx="1.5" fill="#10254E"/><path d="M83 91.5l3 3 5.5-6.5" stroke="#7EE7F7" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M91.5 94.5h6.5" stroke="#7EE7F7" stroke-width="1.9" stroke-linecap="round" opacity=".8"/><rect x="73" y="101" width="34" height="3.6" rx="1.8" fill="#1F419B"/></svg>
+      <b>复现工程师</b><span>代码 · 实验</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#1F419B"/><path d="M47 92h26M49 98h22" stroke="rgba(255,255,255,.22)" stroke-width="1.6" stroke-linecap="round"/><path d="M54 88l-8-4.5v9zM66 88l8-4.5v9z" fill="#E8A23C"/><circle cx="60" cy="88" r="2.7" fill="#B47A1E"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M49 26q11-6 22 0" stroke="#3A4A73" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M39.5 47c-1.5-5-.5-9.5 1.5-12.5l4.5 3c-2 3-2.5 6.5-1.5 10z" fill="#3A4A73"/><path d="M80.5 47c1.5-5 .5-9.5-1.5-12.5l-4.5 3c2 3 2.5 6.5 1.5 10z" fill="#3A4A73"/><ellipse cx="60" cy="65" rx="5" ry="3.2" fill="#3A4A73"/><path d="M48 40q4-2 7.5-1M64.5 39q3.5-1 7.5.5" stroke="#3A4A73" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="67.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><circle cx="66.7" cy="46.2" r=".9" fill="#fff"/><path d="M54 58q5.5 4 11 0" stroke="#22304F" stroke-width="2.3" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="7.6" fill="rgba(255,255,255,.55)" stroke="#16306F" stroke-width="2"/><circle cx="67.5" cy="47" r="7.6" fill="rgba(255,255,255,.55)" stroke="#16306F" stroke-width="2"/><path d="M59.4 46.5h1.2" stroke="#16306F" stroke-width="2"/><path d="M45 45.8l-5.2-.8M75 45.8l5.2-.8" stroke="#16306F" stroke-width="2" stroke-linecap="round"/><path d="M44.5 50q-6.5 6-4 12" stroke="#3A4A73" stroke-width="1.5" fill="none"/><rect x="77" y="76" width="22" height="28" rx="2.2" fill="#fff" stroke="#B9C8EE" stroke-width="1.6"/><path d="M81 82.5h14M81 87h14M81 91.5h14M81 96h9.5" stroke="#8FB0F5" stroke-width="1.7" stroke-linecap="round"/><g transform="rotate(40 100 100)"><rect x="97.2" y="89" width="5.6" height="15" rx="2" fill="#3E7BFA"/><path d="M97.2 104h5.6l-2.8 5z" fill="#16306F"/></g></svg>
+      <b>写作教练</b><span>成稿 · 排版</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M37 38c-2.5 22-.5 41 5.5 54l11-4.5c-5.5-13-7-30-4.5-47z" fill="#22304F"/><path d="M83 38c2.5 22 .5 41-5.5 54l-11-4.5c5.5-13 7-30 4.5-47z" fill="#22304F"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#8FB0F5"/><path d="M53 84.5l7 17 7-17z" fill="#fff"/><path d="M50.5 85l9.5 11M69.5 85l-9.5 11" stroke="#5B87E8" stroke-width="2" stroke-linecap="round"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#22304F"/><path d="M41 42c1-8 6-14 13-17l17 5-19 6.5c-4.5 2-8.5 4-11 5.5z" fill="#22304F"/><path d="M47 40.5q4-2.4 8-1.2M63 39.5q4-1.4 8 .9" stroke="#22304F" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><path d="M64.5 47q3-3.4 6 0" stroke="#22304F" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M55.5 56q4.5 3.4 9 0" stroke="#22304F" stroke-width="2.3" fill="none" stroke-linecap="round"/><circle cx="46.5" cy="53.5" r="2.4" fill="rgba(240,140,140,.28)"/><circle cx="39.5" cy="55.5" r="1.9" fill="#E8A23C"/><circle cx="80.5" cy="55.5" r="1.9" fill="#E8A23C"/><path d="M74 89l34-16-13 26z" fill="#8FB0F5" stroke="#1F419B" stroke-width="1.4" stroke-linejoin="round"/><path d="M74 89l34-16-21 21z" fill="#3E7BFA"/><path d="M87 94l-4 9-3.5-7z" fill="#16306F"/><path d="M68 95h6M65 89h4.5" stroke="#8FB0F5" stroke-width="2" stroke-linecap="round"/></svg>
+      <b>投稿顾问</b><span>期刊 · 策略</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M78 30c9 3 13.5 12 11.5 22l-5 22h-7.5l4.5-22c1.2-8-.6-15-3.5-22z" fill="#2E3D6B"/><circle cx="79.5" cy="31.5" r="2.6" fill="#E8A23C"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#4A6FE3"/><path d="M45.5 84.5q14.5 10.5 29 0l4 5.5q-18.5 12.5-37 0z" fill="#fff"/><path d="M57 91.5h6l-3 5.5z" fill="#16306F"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#2E3D6B"/><path d="M60 24.5q-13.5.5-18.5 15l1.5 2.5q5.5-12.5 17-13.5z" fill="#2E3D6B"/><path d="M60 24.5q13.5.5 18.5 15l-1.5 2.5q-5.5-12.5-17-13.5z" fill="#2E3D6B"/><path d="M47.5 40.5q4-2.6 8-1.4M64.5 39.1q4-1.2 8 .9" stroke="#2E3D6B" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="3" fill="#22304F"/><circle cx="67.5" cy="47" r="3" fill="#22304F"/><circle cx="51.5" cy="46" r="1.2" fill="#fff"/><circle cx="53.5" cy="48" r=".6" fill="#fff"/><circle cx="66.5" cy="46" r="1.2" fill="#fff"/><circle cx="68.5" cy="48" r=".6" fill="#fff"/><path d="M53.5 55q6.5 7.5 13 0q-.5 7-6.5 7t-6.5-7z" fill="#9C4A3C"/><circle cx="46" cy="52.5" r="2.9" fill="rgba(240,140,140,.32)"/><circle cx="74" cy="52.5" r="2.9" fill="rgba(240,140,140,.32)"/><circle cx="93" cy="87" r="11.5" fill="rgba(143,176,245,.28)" stroke="#1F419B" stroke-width="2.6"/><path d="M87.5 87.5l3.5 3.5 7-7.5" stroke="#1F419B" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M101.3 95.3l7.2 7.2" stroke="#1F419B" stroke-width="3.4" stroke-linecap="round"/></svg>
+      <b>招生匹配官</b><span>证据 · 筛选</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#22304F"/><path d="M54 84.5h12l-1.5 4.5h-9z" fill="#fff"/><path d="M58 89h4l.8 4.5-2.4 8.5-2.4-8.5z" fill="#8FB0F5"/><path d="M50 86l10 8M70 86l-10 8" stroke="#5B6B94" stroke-width="1.8" stroke-linecap="round"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M46.5 25.5q13.5-4 27 1.5" stroke="#5B6B94" stroke-width="2" fill="none" opacity=".8"/><path d="M39.5 47.5c-1.5-5-.5-9.5 1.5-12.5l4.5 3.5c-2 3-2.5 6-1.5 9.5z" fill="#5B6B94"/><path d="M80.5 47.5c1.5-5 .5-9.5-1.5-12.5l-4.5 3.5c2 3 2.5 6 1.5 9.5z" fill="#5B6B94"/><path d="M48 40.5q4-2.2 7.5-1M64.5 39.5q3.5-1 7.5.7" stroke="#5B6B94" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="67.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><circle cx="66.7" cy="46.2" r=".9" fill="#fff"/><path d="M52 57q4-3 8-1.2 4-1.8 8 1.2-3 3.2-8 1.4-5 1.8-8-1.4z" fill="#5B6B94"/><path d="M56 62q4 2.4 8 0" stroke="#22304F" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="45.5" y="41.5" width="13" height="10.5" rx="3" fill="rgba(255,255,255,.55)" stroke="#16306F" stroke-width="2"/><rect x="61.5" y="41.5" width="13" height="10.5" rx="3" fill="rgba(255,255,255,.55)" stroke="#16306F" stroke-width="2"/><path d="M58.5 46h3" stroke="#16306F" stroke-width="2"/><path d="M45.5 45.5l-4.5-.6M74.5 45.5l4.5-.6" stroke="#16306F" stroke-width="2" stroke-linecap="round"/><circle cx="75" cy="71" r="6" fill="#E8A23C"/><circle cx="75" cy="71" r="3.2" fill="none" stroke="#B47A1E" stroke-width="1.3"/><circle cx="75" cy="84.5" r="5" fill="#E8A23C"/><circle cx="75" cy="84.5" r="2.7" fill="none" stroke="#B47A1E" stroke-width="1.1"/><rect x="80" y="76" width="24" height="29.5" rx="3" fill="#16306F"/><rect x="83" y="79.5" width="18" height="6.5" rx="1.2" fill="#8FB0F5"/><g fill="#C9D5F2"><circle cx="86.5" cy="91.5" r="1.7"/><circle cx="91.5" cy="91.5" r="1.7"/><circle cx="96.5" cy="91.5" r="1.7"/><circle cx="86.5" cy="96.3" r="1.7"/><circle cx="91.5" cy="96.3" r="1.7"/><circle cx="96.5" cy="96.3" r="1.7"/><circle cx="86.5" cy="101.1" r="1.7"/><circle cx="91.5" cy="101.1" r="1.7"/><circle cx="96.5" cy="101.1" r="1.7"/></g></svg>
+      <b>经费财务</b><span>预算 · 报销</span>
+    </div>
+    <div class="bot">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="109" rx="29" ry="6" fill="rgba(31,65,155,.14)"/><rect x="54" y="60" width="12" height="11" rx="4" fill="#F2BE90"/><path d="M31 108c0-15 13-24 29-24s29 9 29 24z" fill="#5B87E8"/><path d="M48 84.5q12 8.5 24 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="60" cy="93" r="2.6" fill="#E8A23C"/><path d="M58.5 95.5q1.5 2 3 0" stroke="#B47A1E" stroke-width="1.2" fill="none"/><circle cx="39.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="80.5" cy="48" r="4.2" fill="#FFD9B8"/><circle cx="60" cy="46" r="21" fill="#FFD9B8"/><path d="M39 46c0-16.5 9.2-25 21-25s21 8.5 21 25c-2.6-10.5-9.6-15.5-21-15.5S41.6 35.5 39 46z" fill="#32406B"/><path d="M41 42.5q19-13 38 0l-.5 4.5q-18.5-11-37 0z" fill="#32406B"/><path d="M38 44c-1.5 10-.5 17 3 22l5-3.5c-3.2-5.5-4.3-11.5-3-18.5z" fill="#32406B"/><path d="M82 44c1.5 10 .5 17-3 22l-5-3.5c3.2-5.5 4.3-11.5 3-18.5z" fill="#32406B"/><path d="M48 27l-8.5-3.5 1.5 8z" fill="#E8A23C"/><path d="M47.5 31l-8 3 6 4.5z" fill="#E8A23C"/><circle cx="49" cy="30" r="2.4" fill="#B47A1E"/><circle cx="52.5" cy="47" r="2.6" fill="#22304F"/><circle cx="67.5" cy="47" r="2.6" fill="#22304F"/><circle cx="51.7" cy="46.2" r=".9" fill="#fff"/><circle cx="66.7" cy="46.2" r=".9" fill="#fff"/><path d="M54 55q6 5 12 0" stroke="#22304F" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="46" cy="53" r="3" fill="rgba(240,140,140,.32)"/><circle cx="74" cy="53" r="3" fill="rgba(240,140,140,.32)"/><rect x="77" y="77.5" width="26" height="25" rx="3" fill="#fff" stroke="#1F419B" stroke-width="1.8"/><path d="M77 80.5a3 3 0 0 1 3-3h20a3 3 0 0 1 3 3v5H77z" fill="#1F419B"/><rect x="83" y="74" width="2.6" height="6.5" rx="1.3" fill="#16306F"/><rect x="94.4" y="74" width="2.6" height="6.5" rx="1.3" fill="#16306F"/><path d="M84.5 94.5l3.2 3.2 6.4-6.8" stroke="#3E7BFA" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <b>日程管家</b><span>会议 · Deadline</span>
+    </div>
+  </div>
+
+  <span class="sec-label">IDE 创作中心 × 扩展空间</span>
+  <p class="sec-note">创作与扩展，一体贯通</p>
+    <div class="studio-loop">
+    <div class="flow-canvas">
+      <svg class="arcs" viewBox="0 0 700 150" fill="none" preserveAspectRatio="none">
+        <defs>
+          <marker id="fa1" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#1F419B"/></marker>
+          <marker id="fa2" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#3E7BFA"/></marker>
+        </defs>
+        <circle cx="58" cy="96" r="4" fill="#8FB0F5"/><path d="M58 96 C 205 6, 495 6, 642 96" stroke="url(#lg)" stroke-width="3" marker-end="url(#fa1)"/>
+        <circle cx="642" cy="108" r="4" fill="#8FB0F5"/><path d="M642 108 C 495 158, 205 158, 58 108" stroke="url(#lg2)" stroke-width="3" marker-end="url(#fa2)"/>
+      </svg>
+      <span class="flabel tl">创建</span>
+      <span class="flabel tr">发布</span>
+      <span class="flabel bl">扩展</span>
+      <span class="flabel br">使用</span>
+      <div class="chip-row">
+        <div class="chip"><div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="9" height="9" rx="2.5" fill="url(#ig)"/><rect x="18" y="5" width="9" height="9" rx="2.5" fill="url(#ig2)"/><rect x="5" y="18" width="9" height="9" rx="2.5" fill="url(#ig3)"/><rect x="18" y="18" width="9" height="9" rx="2.5" fill="url(#ig4)"/></svg></div>轻应用</div>
+        <div class="chip"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="7" fill="url(#ig2)"/><circle cx="13" cy="11" r="1.6" fill="#16306F"/><circle cx="19" cy="11" r="1.6" fill="#16306F"/><path d="M6 28c0-5.5 4.5-9 10-9s10 3.5 10 9" fill="url(#ig4)"/></svg></div>Agent 专家</div>
+        <div class="chip"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="8" cy="9" r="4" fill="url(#ig)"/><circle cx="24" cy="9" r="4" fill="url(#ig3)"/><circle cx="16" cy="24" r="4" fill="url(#ig4)"/><path d="M11 12l3 8M21 12l-3 8M12 9h8" stroke="#3E7BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>工作流</div>
+        <div class="chip"><div class="ico"><svg viewBox="0 0 32 32"><path d="M18 3 8 18h7l-2 11 12-16h-8l3-10Z" fill="url(#ig3)"/></svg></div>Skill 技能</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="one-shot glass">
+    <div class="os-left">
+      <h4>一句话，开始推进科研任务</h4>
+      <div class="fake-ui">
+        <div class="q">❯ 本周课题组推进什么？</div>
+        <div class="a">✦ 已生成课题组周报：<b>王同学的复现实验连续 3 周无进展</b>，建议安排讨论；李同学项目经费消耗超出计划 40%，已推送预警；张三的论文建议转投备选期刊 B，预计审稿周期缩短 6 周。</div>
+      </div>
+    </div>
+    <div class="os-right">
+      <h4>最佳实践</h4>
+      <ul class="bp-list">
+        <li><i></i><div><b>明确科研目标</b>说清成果、项目或毕业要求</div></li>
+        <li><i></i><div><b>拆解科研计划</b>明确任务、责任人与交付结果</div></li>
+        <li><i></i><div><b>多专家协同推进</b>按专业领域分工、接力执行</div></li>
+        <li><i></i><div><b>调用科研系统执行</b>连接数据与工具，推进真实操作</div></li>
+        <li><i></i><div><b>持续反馈与优化</b>根据结果调整，沉淀可复用能力</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="audit glass">
+    <div class="ico"><svg viewBox="0 0 32 32"><path d="M16 4l11 4v8c0 7-5 11-11 12C10 27 5 23 5 16V8l11-4Z" fill="url(#ig)"/><path d="M12 16l3 3 6-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div>
+      <b>权限边界 + 审计日志</b>
+      <p>Agent 之间分工 handoff，每一次工具调用都带权限边界与审计日志——这是机构采购的第一个问题。</p>
+    </div>
+  </div>
+
+  <div class="foot-brand">研擎 NEBULALAB</div>
+</section>
+
+<!-- ================= P6 封底 ================= -->
+<section class="page back">
+  <div class="logo-row">
+    <svg class="logo-mark" style="width:52px;height:52px;" viewBox="0 0 48 48" fill="none">
+      <path d="M6 10 L26 3 L22 16 Z" fill="url(#lg)"/>
+      <path d="M8 20 L30 12 L25 26 Z" fill="url(#lg2)"/>
+      <path d="M12 31 L34 23 L29 38 Z" fill="url(#lg)" opacity=".85"/>
+    </svg>
+    <div style="text-align:left;">
+      <div class="logo-name">研擎</div>
+      <div class="logo-en">NEBULALAB</div>
+    </div>
+  </div>
+
+  <p class="page-sub" style="margin-top:26px;max-width:560px;">
+    别人在做科研工具（服务一个人的某一步），<br>研擎在做<b>实验室的操作系统</b>（服务一个组的全流程）
+  </p>
+
+  <div class="value-grid">
+    <div class="v-card">
+      <svg viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="34" fill="rgba(31,65,155,.12)"/>
+        <path d="M30 26h28v34a4 4 0 0 1-4 4H34a4 4 0 0 1-4-4V26Z" fill="url(#ig)"/>
+        <path d="M36 38h16M36 46h16M36 54h10" stroke="#16306F" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="44" cy="18" r="8" fill="url(#ig2)"/><path d="M40 16c1.5-2 5-2 6.5 0" stroke="#16306F" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="41.5" cy="18.5" r="1.5" fill="#16306F"/><circle cx="47" cy="18.5" r="1.5" fill="#16306F"/>
+      </svg>
+      <b>深入科研</b><i></i>
+      <p>聚焦高校与科研院所的真实科研需求</p>
+    </div>
+    <div class="v-card">
+      <svg viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="34" fill="rgba(62,123,250,.10)"/>
+        <circle cx="44" cy="30" r="9" fill="url(#ig4)"/><circle cx="22" cy="60" r="9" fill="url(#ig2)"/><circle cx="66" cy="60" r="9" fill="url(#ig3)"/>
+        <path d="M38 38 27 53M50 38l11 15M31 60h26" stroke="#3E7BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M40 28c1.5-2 5-2 6.5 0" stroke="#16306F" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <b>参与决策</b><i></i>
+      <p>让 AI 真正参与科研经营决策</p>
+    </div>
+    <div class="v-card">
+      <svg viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="34" fill="rgba(109,92,246,.10)"/>
+        <circle cx="44" cy="44" r="12" fill="url(#ig)"/>
+        <path d="M44 18v10M44 60v10M18 44h10M60 44h10M25 25l7 7M56 56l7 7M63 25l-7 7M32 56l-7 7" stroke="#8FB0F5" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M46 36l-6 9h6l-2 7 6-9h-6l2-7Z" fill="#fff"/>
+      </svg>
+      <b>推动执行</b><i></i>
+      <p>以 AI 重构课题组的科研方式</p>
+    </div>
+    <div class="v-card">
+      <svg viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r="34" fill="rgba(62,123,250,.10)"/>
+        <circle cx="44" cy="44" r="24" fill="url(#ig2)"/>
+        <path d="M20 44h48M44 20c8 9 8 39 0 48M44 20c-8 9-8 39 0 48" stroke="#16306F" stroke-width="2.4" fill="none"/>
+        <path d="M32 32c8-6 16-6 24 0M32 56c8 6 16 6 24 0" stroke="#DBE7FF" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <b>走向全球</b><i></i>
+      <p>助力中国科研提升全球影响力</p>
+    </div>
+  </div>
+
+  <div class="site-pill">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    <span class="sep"></span><span>官方网站</span><span class="sep"></span><b>https://www.nebulalab.ai</b>
+  </div>
+
+  <div class="qr-row">
+    <div class="qr-wrap"><div class="qr"></div><span>公众号二维码</span></div>
+    <div class="qr-wrap"><div class="qr"></div><span>研擎用户交流群</span></div>
+  </div>
+
+  <div class="back-foot">研擎 NEBULALAB · 课题组的科研操作系统 · 让科研，自己跑起来</div>
+</section>
+
+</body>
+</html>
