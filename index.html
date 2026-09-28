@@ -630,7 +630,7 @@ tr:hover td{background:#FAFCFF}
       </div>
       <div><h5>产品</h5><a href="#p-products">研擎 Claw</a><a href="#p-products">启航流水线</a><a href="#p-products">课题组驾驶舱</a><a href="#p-products">研擎投稿 / GEO</a></div>
       <div><h5>解决方案</h5><a href="#p-solutions">本科生</a><a href="#p-solutions">研究生</a><a href="#p-solutions">导师 PI</a><a href="#p-solutions">科研管理者</a></div>
-      <div><h5>资源</h5><a href="研擎Nebulalab_宣传册.html">产品宣传册</a><a href="app.html?role=pi&view=board">驾驶舱深链</a><a href="#p-trust">信任设计</a></div>
+      <div><h5>资源</h5><a href="研擎Nebulalab_宣传册.html">产品宣传册</a><a href="index.html?role=pi&view=board">驾驶舱深链</a><a href="#p-trust">信任设计</a></div>
     </div>
     <div class="cp"><span>© 2026 研擎 NebulaLab · 课题组的科研操作系统</span><span>私有化部署 · 数据不出校</span></div>
   </footer>
@@ -666,7 +666,7 @@ tr:hover td{background:#FAFCFF}
           <b>林 兰</b><div class="en">INSTITUTE · 科研处</div>
           <span>全院驾驶舱 · 经费红线<br>结题预警 · 权限矩阵</span></button>
       </div>
-      <div class="lg-tip">💡 九步流水线一步一工件 · 组盘红灯预警 · Rebuttal 响应 · 毕业交接包 · MCP 连接器 · 信任设计三级可见 · AI 审计日志。深链直达：<code>app.html?role=pi&view=board</code></div>
+      <div class="lg-tip">💡 九步流水线一步一工件 · 组盘红灯预警 · Rebuttal 响应 · 毕业交接包 · MCP 连接器 · 信任设计三级可见 · AI 审计日志。深链直达：<code>index.html?role=pi&view=board</code></div>
     </div>
   </div>
 </div>
@@ -883,7 +883,7 @@ function enter(r){ROLE=r;localStorage.setItem('nl_role',r);
   document.getElementById('login').classList.add('hide');
   document.getElementById('app').classList.remove('hide');
   window.scrollTo(0,0);boot()}
-function logout(){localStorage.removeItem('nl_role');location.href='app.html'}
+function logout(){localStorage.removeItem('nl_role');location.href='index.html'}
 function resetAll(){localStorage.removeItem(KEY);localStorage.removeItem('nl_role');location.reload()}
 function showLogin(){document.getElementById('login').classList.remove('hide');
   document.getElementById('home').classList.add('hide');
